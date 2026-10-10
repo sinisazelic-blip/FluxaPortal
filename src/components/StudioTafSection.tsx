@@ -119,6 +119,7 @@ export default function StudioTafSection() {
                     "Oliver Mandić",
                     "Revelation (Boris Relja)",
                     "Radio (Pop-Rock BL)",
+                    "Big Bang",
                     "Kovalsky Project",
                     "BasDans",
                   ].map((artist) => (

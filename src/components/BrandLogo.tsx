@@ -221,6 +221,13 @@ export default function BrandLogo({ id, name, className = "h-9 w-auto" }: BrandL
         </div>
       );
 
+    case "big-bang":
+      return (
+        <div className="flex items-center justify-center h-10 px-4 bg-slate-950 rounded-xl text-amber-400 shadow-xs border border-amber-900/40">
+          <span className="font-black text-sm tracking-widest uppercase">★ BIG BANG ★</span>
+        </div>
+      );
+
     case "demofest":
       return (
         <div className="flex items-center justify-center h-10 px-4 bg-amber-500 rounded-xl text-slate-950 shadow-xs">

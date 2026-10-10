@@ -9,7 +9,15 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  /* Soft, gentle snap with high tolerance - never aggressive */
+  scroll-snap-type: y proximity;
+}
+
+/* On mobile/tablets, disable scroll snap completely for 100% natural, smooth touch momentum */
+@media (max-width: 1024px) {
+  html {
+    scroll-snap-type: none !important;
+  }
 }
 
 body {
@@ -20,19 +28,19 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Discrete full section window with visible top-to-bottom raster gradient */
+/* Discrete section window with visible top-to-bottom raster gradient */
 .section-window {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
-  scroll-margin-top: 0px;
-  min-height: 100vh;
+  scroll-snap-stop: normal;
+  scroll-margin-top: 5rem;
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   /* Top is pure white #ffffff, bottom is visible soft gray #e2e8f0, with visible dot raster */
   background: 
-    radial-gradient(circle, rgba(15, 23, 42, 0.10) 1.2px, transparent 1.2px),
+    radial-gradient(circle, rgba(15, 23, 42, 0.08) 1.2px, transparent 1.2px),
     linear-gradient(180deg, #ffffff 0%, #f8fafc 45%, #e2e8f0 100%);
   background-size: 20px 20px, 100% 100%;
   border-bottom: 2px solid rgba(203, 213, 225, 0.85);

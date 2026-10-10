@@ -102,6 +102,17 @@ export const referencesData: ReferenceItem[] = [
     isLegalEntity: false,
   },
   {
+    id: "big-bang",
+    name: "Big Bang",
+    category: "music",
+    highlight: "Kultni Banjalučki Rock",
+    description: "Kultni rock bend • Muzički producent, aranžmani i studijsko snimanje",
+    logoText: "BIG BANG",
+    logoBg: "bg-slate-950",
+    logoColor: "text-amber-400 font-black tracking-widest",
+    isLegalEntity: false,
+  },
+  {
     id: "kovalsky",
     name: "Kovalsky Project",
     category: "music",
