@@ -77,7 +77,7 @@ export interface Translations {
         description: string;
         features: string[];
       };
-      fluxa: {
+      entersys: {
         name: string;
         tagline: string;
         description: string;
@@ -89,7 +89,13 @@ export interface Translations {
         description: string;
         features: string[];
       };
-      entersys: {
+      fluxar: {
+        name: string;
+        tagline: string;
+        description: string;
+        features: string[];
+      };
+      fluxa: {
         name: string;
         tagline: string;
         description: string;
@@ -120,6 +126,8 @@ export interface Translations {
     point2Desc: string;
     point3Title: string;
     point3Desc: string;
+    point4Title: string;
+    point4Desc: string;
     morningJoy: string;
   };
   portal: {
@@ -190,7 +198,7 @@ export const translations: Record<Language, Translations> = {
       p2Title: "HaaS & SaaS Poslovna Rješenja",
       p2Sub: "Sistem „Ključ u Ruke” Bez Velikih Investicija",
       p2Desc:
-        "Kompletan zakup hardvera i softvera (Zero Capex): tripodi, fiskalni POS, menadžeri objekata (ARGUS, PoolManager), MojRadio & MojTV, DokumentArt i profesionalni sportski tajming (SOCCS/SwimVoice).",
+        "Kompletan zakup hardvera i softvera (Zero Capex): tripodi, fiskalni POS, menadžeri objekata (ARGUS, PoolManager), FluxaR knjigovodstveni most, MojRadio & MojTV, DokumentArt i profesionalni sportski tajming (SOCCS/SwimVoice).",
       p3Title: "Tenant Samoposlužni Portal",
       p3Sub: "Automatizovano Licenciranje & Podrška",
       p3Desc:
@@ -271,6 +279,19 @@ export const translations: Record<Language, Translations> = {
             "Mogućnost samostalnog rada ili kao integrisani dio ARGUS sistema",
           ],
         },
+        fluxar: {
+          name: "FluxaR (Knjigovodstveni Most)",
+          tagline: "Sve „Na Tanjiru” za Eksterna Knjigovodstva",
+          description:
+            "Automatizovani digitalni most između maloprodajnih kasa (FluxaPOS), Cloud ERP-a i eksternih računovodstvenih agencija. Nema više nošenja fascikli, ručnog prekucavanja niti USB fleševa — knjigovodstvo preuzima sve podatke jednim klikom.",
+          features: [
+            "Jedan klik za knjigovođe: automatski izvoz KIF evidencije, pazara i računa",
+            "Direktan digitalni tunel sa bezbjednim autorizacionim tokenom",
+            "Potpuna eliminacija ručnog prekucavanja i ljudskih grešaka u knjigovodstvu",
+            "Automatsko preuzimanje dnevnih fiskalnih Z-izvještaja i bankovnih izvoda",
+            "Puna podrška za korisnike FluxaPOS maloprodaje i Fluxa Cloud ERP sistema",
+          ],
+        },
         fluxa: {
           name: "Fluxa Cloud & ERP",
           tagline: "Agencijski & Preduzetnički Menadžment",
@@ -313,20 +334,23 @@ export const translations: Record<Language, Translations> = {
     },
     philosophy: {
       badge: "Zanatstvo & Pogled na Život",
-      title: "Stvaranje Kao Životna Filozofija",
+      title: "Rješenja Rođena u Prašini Realnog Posla",
       quote:
-        "Iza nas ne stoje prazne floskule. Ime nije važno — važno je šta ostaje iza nas, ko nas je prepoznao kao kompetentne i vraćao nam se decenijama.",
+        "Ništa, bukvalno ništa nismo izmislili za radnim stolom. Svaka naša ideja rođena je u prašini, tamo gdje se stvarni problemi dešavaju. Rješavamo operativni problem na terenu, a upravi pružamo 100% kontrolu u realnom vremenu.",
       intro:
-        "Ova platforma nije nastala u sterilnim marketinškim laboratorijama, već iz 62 godine životnog iskustva, rada i učenja.",
-      point1Title: "Spoj Mašinstva, Akustike i Ekonomije",
+        "Ova platforma nije nastala u sterilnim marketinškim agencijama, već iz 62 godine životnog iskustva, stvarnih havarija, neprekidnog učenja i borbe sa realnim problemima.",
+      point1Title: "Olakšanje Operativi, Potpuna Kontrola Upravi",
       point1Desc:
-        "Formalno obrazovanje kroz mašinski fakultet, višu muzičku školu i ekonomiju, uz decenijsko rukovodno iskustvo u marketingu novina i upravljanju javnim preduzećima, ugrađeno je u svaku liniju koda i svaki sistem.",
-      point2Title: "Mir Završenog Posla",
+        "Naša misija je da rasteretimo najniži operativni nivo — radnike na blagajnama, recepcionere, tehničare i operatere na terenu, dok uprava i menadžment u realnom vremenu dobijaju tačne, filtrirane i kristalno jasne podatke za donošenje odluka.",
+      point2Title: "Spoj Mašinstva, Akustike i Ekonomije",
       point2Desc:
-        "Ustajanje u 5 ujutro sa nestrpljenjem da se stvara nešto opipljivo i korisno. Rad koji ne traži prečice, već se bori sa svakim tehničkim problemom do konačnog, besprekornog rješenja.",
-      point3Title: "Otpornost i Rješavanje Nemogućeg",
+        "Formalno obrazovanje kroz mašinski fakultet, višu muzičku školu i ekonomiju, uz decenijsko rukovodno iskustvo u marketingu novina i upravljanju javnim preduzećima, ugrađeno je u svaku liniju koda i svaki sistem.",
+      point3Title: "Mir Završenog Posla u 5 Ujutro",
       point3Desc:
-        "Od spasavanja i podizanja uništenih računarskih mreža u rekordnom roku do programiranja sistema koji rade bez prekida godinama — povjerenje se stiče samo djelima na terenu.",
+        "Ustajanje u 5 ujutro sa istinskim nestrpljenjem i radovanjem što stvaramo nešto opipljivo i korisno. Rad koji ne traži prečice, već se bori sa svakim tehničkim problemom do konačnog, besprekornog rješenja.",
+      point4Title: "Otpornost i Rješavanje Nemogućeg",
+      point4Desc:
+        "Od spasavanja uništene serverske i mrežne infrastrukture u rekordnom roku do programiranja sistema koji rade bez prekida godinama — povjerenje se stiče samo djelima na terenu.",
       morningJoy:
         "„Radost stvaranja i mir kada se na kraju dana okreneš i vidiš završen ogroman posao — to je ono što nas pokreće svakog jutra.”",
     },
@@ -402,7 +426,7 @@ export const translations: Record<Language, Translations> = {
       p2Title: "Turnkey HaaS & SaaS Solutions",
       p2Sub: "Complete System Deployment Without Large Capital Expenditure",
       p2Desc:
-        "Full hardware and software rental (Zero Capex): turnstiles, POS hardware, facility managers (ARGUS, PoolManager), MojRadio background audio, MojTV signage, and SwissTiming-grade sports timing (SOCCS/SwimVoice).",
+        "Full hardware and software rental (Zero Capex): turnstiles, POS hardware, facility managers (ARGUS, PoolManager), FluxaR accounting bridge, MojRadio background audio, MojTV signage, and SwissTiming-grade sports timing (SOCCS/SwimVoice).",
       p3Title: "Tenant Self-Service Portal",
       p3Sub: "Automated Licensing & Support",
       p3Desc:
@@ -483,6 +507,19 @@ export const translations: Record<Language, Translations> = {
             "Standalone operation or fully integrated with the ARGUS ecosystem",
           ],
         },
+        fluxar: {
+          name: "FluxaR (Accounting Bridge)",
+          tagline: "Instant Ledger & Z-Report Export for Accounting Bureaus",
+          description:
+            "Automated digital bridge between retail POS checkouts, Cloud ERP, and external accounting agencies. No physical document folders or manual data entry — accounting firms receive daily turnovers, invoices, and bank statements on a silver platter with a single click.",
+          features: [
+            "One-click accounting export: sales books (KIF), daily Z-reports, and bank records",
+            "Secure digital tunnel powered by authorization tokens",
+            "Zero manual retyping and complete elimination of accounting human errors",
+            "Instant daily turnover sync across all retail terminals",
+            "Seamless compatibility with FluxaPOS, Fluxa ERP, and EnterSYS platforms",
+          ],
+        },
         fluxa: {
           name: "Fluxa Cloud & ERP",
           tagline: "Enterprise & Agency Operations",
@@ -525,19 +562,22 @@ export const translations: Record<Language, Translations> = {
     },
     philosophy: {
       badge: "Craftsmanship & Life Philosophy",
-      title: "Creation as a Way of Life",
+      title: "Solutions Born in the Dust of Real Operations",
       quote:
-        "Behind us stand no empty buzzwords. A name means nothing — what matters is what remains behind us, who recognized our competence, and who returned to us across decades.",
+        "Nothing, absolutely nothing was invented in ivory towers. Every idea we built was born in the dust where real problems happen. We solve the operational headache on the ground, while giving management 100% real-time insight and control.",
       intro:
-        "This platform was not born in sterile marketing labs, but from 62 years of lived experience, relentless work, and continuous learning.",
-      point1Title: "A Synthesis of Engineering, Acoustics & Economics",
+        "This platform did not originate in sterile marketing agencies, but from 62 years of lived experience, network recoveries, relentless learning, and tackling impossible technical challenges.",
+      point1Title: "Operational Relief, Total Executive Control",
       point1Desc:
-        "Formal degrees in mechanical engineering, higher music school, and economics — combined with decades in newspaper marketing and public enterprise leadership — are embedded in every line of code and every system.",
-      point2Title: "The Peace of Finished Work",
+        "Our core mission is to unburden the frontline workers — cashiers, receptionists, technicians, and stadium operators — while providing executive leadership with pristine, filtered, real-time data for strategic decisions.",
+      point2Title: "A Synthesis of Engineering, Acoustics & Economics",
       point2Desc:
-        "Waking up at 5 AM eager to create something tangible and meaningful. Work that rejects shortcuts, tackling every technical obstacle until reaching an uncompromising solution.",
-      point3Title: "Resilience & Solving the Impossible",
+        "Formal degrees in mechanical engineering, higher music school, and economics — combined with decades in newspaper marketing and public enterprise leadership — are embedded in every line of code and every system.",
+      point3Title: "The Peace of Finished Work at 5 AM",
       point3Desc:
+        "Waking up at 5 AM eager to create something tangible and meaningful. Work that rejects shortcuts, tackling every technical obstacle until reaching an uncompromising solution.",
+      point4Title: "Resilience & Solving the Impossible",
+      point4Desc:
         "From reviving destroyed network infrastructures in record time to engineering platforms that run uninterrupted for years — true trust is earned exclusively on the field.",
       morningJoy:
         "“The joy of creating and the peace when looking back at the end of the day at massive work completed — that is what drives us every single morning.”",

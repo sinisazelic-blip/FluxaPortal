@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   Database,
   ArrowRight,
+  Share2,
   Tv,
   Radio,
 } from "lucide-react";
@@ -18,7 +19,7 @@ import {
 export default function SoftwareSection() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<
-    "haas" | "entersys" | "pos" | "fluxa" | "soccs" | "dokumentart"
+    "haas" | "entersys" | "pos" | "fluxar" | "fluxa" | "soccs" | "dokumentart"
   >("haas");
 
   const modules = [
@@ -51,6 +52,16 @@ export default function SoftwareSection() {
       color: "text-cyan-700 bg-cyan-50 border-cyan-200",
       accent: "text-cyan-700",
       badge: "Fiskalni POS",
+    },
+    {
+      id: "fluxar" as const,
+      icon: Share2,
+      name: t.software.modules.fluxar.name,
+      tagline: t.software.modules.fluxar.tagline,
+      data: t.software.modules.fluxar,
+      color: "text-violet-700 bg-violet-50 border-violet-200",
+      accent: "text-violet-700",
+      badge: "Knjigovodstveni Most",
     },
     {
       id: "fluxa" as const,
@@ -112,7 +123,7 @@ export default function SoftwareSection() {
               <button
                 key={m.id}
                 onClick={() => setActiveTab(m.id)}
-                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-2xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                className={`flex items-center gap-2 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-slate-900 text-white shadow-soft-xl"
                     : "bg-slate-50 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/80"
@@ -186,6 +197,8 @@ export default function SoftwareSection() {
                 <div className="text-xs font-bold text-slate-800">
                   {current.id === "haas"
                     ? "Inženjerska HaaS Garancija:"
+                    : current.id === "fluxar"
+                    ? "Knjigovodstveni Tunel:"
                     : current.id === "soccs"
                     ? "SwissTiming / Omega Standard:"
                     : "Tehnička Arhitektura:"}
@@ -193,6 +206,8 @@ export default function SoftwareSection() {
                 <p className="text-xs text-slate-600 leading-relaxed">
                   {current.id === "haas"
                     ? "Klijent ne kupuje opremu niti brine o kvarovima. Montiramo tripode, POS opremu, MojRadio i MojTV, uz 24/7 zamjenu i podršku."
+                    : current.id === "fluxar"
+                    ? "Eksterna knjigovodstva dobijaju digitalni tunel sa autorizacionim tokenom — sve evidencije, KIF i pazari se povlače jednim klikom."
                     : current.id === "soccs"
                     ? "15+ godina specijalizovanog iskustva na Omega sistemima, FINA/Lenex usklađenost i SwimVoice robotska zvučna najava."
                     : current.id === "pos"
@@ -208,7 +223,7 @@ export default function SoftwareSection() {
 
             <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-medium text-slate-500">
-                Status: <span className="font-semibold text-emerald-600">Spremno za teren</span>
+                Status: <span className="font-semibold text-emerald-600">Spremno za rad</span>
               </span>
               <a
                 href="#tenant-portal"

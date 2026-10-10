@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Compass, Layers, Sun, Shield, Sparkles } from "lucide-react";
+import { Compass, Layers, Sun, Shield, SlidersHorizontal, Sparkles } from "lucide-react";
 
 export default function PhilosophySection() {
   const { t } = useLanguage();
@@ -19,24 +19,42 @@ export default function PhilosophySection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 tracking-tight mb-4">
             {t.philosophy.title}
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg font-serif italic max-w-2xl mx-auto">
+          <p className="text-slate-600 text-base sm:text-lg font-serif italic max-w-2xl mx-auto leading-relaxed">
             „{t.philosophy.quote}“
           </p>
         </div>
 
-        {/* 3 Story Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-          {/* Card 1: 3 Disciplines */}
-          <div className="bg-slate-50/70 rounded-3xl p-7 border border-slate-200/90 flex flex-col justify-between">
+        {/* 4 Story Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+          {/* Card 1: Operational Relief & Executive Control */}
+          <div className="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/90 flex flex-col justify-between hover:border-slate-300 transition-all">
             <div>
-              <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mb-5">
-                <Layers className="w-5 h-5" />
+              <div className="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-5">
+                <SlidersHorizontal className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2.5">
+              <h3 className="text-base font-bold text-slate-900 mb-2">
                 {t.philosophy.point1Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                 {t.philosophy.point1Desc}
+              </p>
+            </div>
+            <div className="mt-5 pt-3.5 border-t border-slate-200/70 text-[11px] font-semibold text-emerald-800">
+              Operativna jednostavnost • 100% uvid
+            </div>
+          </div>
+
+          {/* Card 2: 3 Disciplines */}
+          <div className="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/90 flex flex-col justify-between hover:border-slate-300 transition-all">
+            <div>
+              <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mb-5">
+                <Layers className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900 mb-2">
+                {t.philosophy.point2Title}
+              </h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                {t.philosophy.point2Desc}
               </p>
             </div>
             <div className="mt-5 pt-3.5 border-t border-slate-200/70 text-[11px] font-semibold text-amber-800">
@@ -44,17 +62,17 @@ export default function PhilosophySection() {
             </div>
           </div>
 
-          {/* Card 2: 5 AM Creation */}
-          <div className="bg-slate-50/70 rounded-3xl p-7 border border-slate-200/90 flex flex-col justify-between">
+          {/* Card 3: 5 AM Creation */}
+          <div className="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/90 flex flex-col justify-between hover:border-slate-300 transition-all">
             <div>
               <div className="w-11 h-11 rounded-2xl bg-cyan-100 text-cyan-800 flex items-center justify-center mb-5">
                 <Sun className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2.5">
-                {t.philosophy.point2Title}
+              <h3 className="text-base font-bold text-slate-900 mb-2">
+                {t.philosophy.point3Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                {t.philosophy.point2Desc}
+                {t.philosophy.point3Desc}
               </p>
             </div>
             <div className="mt-5 pt-3.5 border-t border-slate-200/70 text-[11px] font-semibold text-cyan-800">
@@ -62,17 +80,17 @@ export default function PhilosophySection() {
             </div>
           </div>
 
-          {/* Card 3: Real world resilience */}
-          <div className="bg-slate-50/70 rounded-3xl p-7 border border-slate-200/90 flex flex-col justify-between">
+          {/* Card 4: Real world resilience */}
+          <div className="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/90 flex flex-col justify-between hover:border-slate-300 transition-all">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center mb-5">
+              <div className="w-11 h-11 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center mb-5">
                 <Shield className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2.5">
-                {t.philosophy.point3Title}
+              <h3 className="text-base font-bold text-slate-900 mb-2">
+                {t.philosophy.point4Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                {t.philosophy.point3Desc}
+                {t.philosophy.point4Desc}
               </p>
             </div>
             <div className="mt-5 pt-3.5 border-t border-slate-200/70 text-[11px] font-semibold text-purple-800">
@@ -86,7 +104,7 @@ export default function PhilosophySection() {
           <p className="text-base sm:text-lg font-light leading-relaxed mb-4 text-slate-100">
             {t.philosophy.morningJoy}
           </p>
-          <div className="text-xs font-semibold tracking-wider text-cyan-400">
+          <div className="text-xs font-semibold tracking-wider text-emerald-400">
             Siniša Zelić • Osnivač & Glavni Inženjer
           </div>
         </div>
