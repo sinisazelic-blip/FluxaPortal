@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { ArrowRight, Sparkles, Volume2, ShieldCheck, CheckCircle2, Activity, Cpu, CreditCard, Layers } from "lucide-react";
+import { ArrowRight, Volume2, ShieldCheck, CreditCard, Boxes, Timer } from "lucide-react";
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -23,14 +23,14 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* Refined Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-700 text-xs font-semibold tracking-wide mb-6 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>{t.hero.badge}</span>
           </div>
 
           {/* Main Headline - Editorial, Artistic & Industrial */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-slate-900 tracking-tight leading-[1.15] mb-6">
             {t.hero.title1}{" "}
-            <span className="font-serif italic font-normal text-cyan-700">
+            <span className="font-serif italic font-normal text-emerald-800">
               {t.hero.titleHighlight}
             </span>{" "}
             <span className="font-semibold text-slate-900 block sm:inline">
@@ -61,9 +61,9 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
             </button>
             <button
               onClick={onOpenLogin}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-cyan-50 hover:bg-cyan-100/80 text-cyan-800 font-semibold text-xs border border-cyan-200 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 text-emerald-900 font-semibold text-xs border border-emerald-200 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-cyan-600" />
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
               <span>{t.hero.ctaPortal}</span>
             </button>
           </div>
@@ -76,11 +76,11 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
                 <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
                 <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
                 <span className="text-[11px] font-mono text-slate-600 ml-2">
-                  ecosystem.fluxa.ba • Unified Architecture
+                  ecosystem.fluxa.ba • HaaS, SaaS & Sound Heritage
                 </span>
               </div>
               <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                ● Live Hardware & Cloud Network
+                ● Model „Ključ u Ruke” (Zero Capex)
               </span>
             </div>
 
@@ -94,7 +94,7 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
                     <Volume2 className="w-4 h-4 text-purple-500" />
                   </div>
                   <div className="text-sm font-bold text-slate-800 mb-1">Studio TAF</div>
-                  <div className="text-xs text-slate-500 mb-3">Broadcast & Speech AI</div>
+                  <div className="text-xs text-slate-500 mb-3">6.000+ Komercijalnih Djela</div>
                 </div>
                 {/* Visual sound bars */}
                 <div className="flex items-end gap-1 h-8 pt-2">
@@ -108,19 +108,19 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
                 </div>
               </div>
 
-              {/* Card 2: Fluxa Cloud ERP */}
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-50/60 to-white border border-cyan-100 flex flex-col justify-between">
+              {/* Card 2: HaaS Turnkey System */}
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/60 to-white border border-emerald-100 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-600">Operations</span>
-                    <Activity className="w-4 h-4 text-cyan-500" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Turnkey HaaS</span>
+                    <Boxes className="w-4 h-4 text-emerald-500" />
                   </div>
-                  <div className="text-sm font-bold text-slate-800 mb-1">Fluxa ERP</div>
-                  <div className="text-xs text-slate-500 mb-3">Finance & Liquidity</div>
+                  <div className="text-sm font-bold text-slate-800 mb-1">Ključ u Ruke</div>
+                  <div className="text-xs text-slate-500 mb-3">Zero Capex Oprema & SLA</div>
                 </div>
-                <div className="bg-white rounded-lg p-2 border border-cyan-100 text-[11px] font-mono text-cyan-700 font-semibold flex items-center justify-between">
-                  <span>Autoreconcile</span>
-                  <span>100% OK</span>
+                <div className="bg-white rounded-lg p-2 border border-emerald-100 text-[11px] font-mono text-emerald-700 font-semibold flex items-center justify-between">
+                  <span>MojRadio & TV</span>
+                  <span>Uključeni</span>
                 </div>
               </div>
 
@@ -128,11 +128,11 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
               <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50/60 to-white border border-blue-100 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">Hardware Access</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">Objekti & Pristup</span>
                     <ShieldCheck className="w-4 h-4 text-blue-500" />
                   </div>
                   <div className="text-sm font-bold text-slate-800 mb-1">ARGUS Master</div>
-                  <div className="text-xs text-slate-500 mb-3">Turnstiles & RFID Hub</div>
+                  <div className="text-xs text-slate-500 mb-3">Tripodi, Bazen & Ormarići</div>
                 </div>
                 <div className="bg-white rounded-lg p-2 border border-blue-100 text-[11px] font-mono text-blue-700 font-semibold flex items-center justify-between">
                   <span>Pool / Gym Pass</span>
@@ -140,18 +140,18 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
                 </div>
               </div>
 
-              {/* Card 4: FluxaPOS */}
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/60 to-white border border-emerald-100 flex flex-col justify-between">
+              {/* Card 4: SwissTiming & Sports Timing */}
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-50/60 to-white border border-amber-100 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Retail & Fiscal</span>
-                    <CreditCard className="w-4 h-4 text-emerald-500" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600">Sportski Tajming</span>
+                    <Timer className="w-4 h-4 text-amber-500" />
                   </div>
-                  <div className="text-sm font-bold text-slate-800 mb-1">FluxaPOS</div>
-                  <div className="text-xs text-slate-500 mb-3">Offline-First Register</div>
+                  <div className="text-sm font-bold text-slate-800 mb-1">SOCCS & SwimVoice</div>
+                  <div className="text-xs text-slate-500 mb-3">15+ God. Omega Ekspertize</div>
                 </div>
-                <div className="bg-white rounded-lg p-2 border border-emerald-100 text-[11px] font-mono text-emerald-700 font-semibold flex items-center justify-between">
-                  <span>Fiscal Sync</span>
+                <div className="bg-white rounded-lg p-2 border border-amber-100 text-[11px] font-mono text-amber-700 font-semibold flex items-center justify-between">
+                  <span>SwissTiming</span>
                   <span>Ready</span>
                 </div>
               </div>

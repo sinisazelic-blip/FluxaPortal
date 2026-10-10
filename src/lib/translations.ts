@@ -49,19 +49,20 @@ export interface Translations {
     storyTitle: string;
     storyP1: string;
     storyP2: string;
-    cortanaBadge: string;
-    cortanaTitle: string;
-    cortanaDesc: string;
-    cortanaStat: string;
-    cortanaStatLabel: string;
+    storyP3: string;
+    musicEraBadge: string;
+    musicEraTitle: string;
+    musicEraDesc: string;
+    musicEraStat: string;
+    musicEraStatLabel: string;
     referencesTitle: string;
     referencesSubtitle: string;
     categories: {
       all: string;
-      global: string;
+      commercial: string;
+      music: string;
       retail: string;
       finance: string;
-      agencies: string;
       institutions: string;
     };
   };
@@ -70,6 +71,12 @@ export interface Translations {
     title: string;
     subtitle: string;
     modules: {
+      haas: {
+        name: string;
+        tagline: string;
+        description: string;
+        features: string[];
+      };
       fluxa: {
         name: string;
         tagline: string;
@@ -88,19 +95,13 @@ export interface Translations {
         description: string;
         features: string[];
       };
-      dokumentart: {
-        name: string;
-        tagline: string;
-        description: string;
-        features: string[];
-      };
       soccs: {
         name: string;
         tagline: string;
         description: string;
         features: string[];
       };
-      hardware: {
+      dokumentart: {
         name: string;
         tagline: string;
         description: string;
@@ -159,86 +160,102 @@ export const translations: Record<Language, Translations> = {
       tenantLogin: "Prijava Klijenta",
     },
     hero: {
-      badge: "Tehnološko & Kreativno Nasljeđe • 2006 – 2026",
+      badge: "Inženjersko & Kreativno Nasljeđe • Od 1982. do Danas",
       title1: "Gdje se susreću",
-      titleHighlight: "dvije decenije zanatstva",
-      title2: "i moderna digitalna arhitektura.",
+      titleHighlight: "preko četiri decenije zanatstva",
+      title2: "i moderna SaaS/HaaS arhitektura.",
       subtitle:
-        "Sinergija visokotehnoloških poslovnih platformi, nativnih hardverskih kontrolera i 20 godina vrhunske audio produkcije. Rješenja krojena po mjeri stvarnog poslovanja, sportskih borilišta i javnih preduzeća.",
-      ctaSolutions: "Istražite Softverska Rješenja",
+        "Sinergija robusnih poslovnih platformi po modelu „ključ u ruke”, ekspertize u sportskim mjerenjima (SwissTiming/Omega) i 20 godina vodeće komercijalne audio produkcije Studio TAF.",
+      ctaSolutions: "Istražite Rješenja (HaaS & SaaS)",
       ctaStudio: "Studio TAF Nasljeđe",
       ctaPortal: "Korisnički Portal",
       stats: {
-        stat1Number: "20+",
-        stat1Label: "Godina Kontinuiteta",
+        stat1Number: "40+",
+        stat1Label: "Godina Zvučnog Zanata",
         stat2Number: "6.000+",
-        stat2Label: "Realizovanih Projekata",
-        stat3Number: "100+",
-        stat3Label: "Brendova & Agencija",
-        stat4Number: "99.9%",
-        stat4Label: "Pouzdanost Sistema",
+        stat2Label: "Komercijalnih Projekata",
+        stat3Number: "15+",
+        stat3Label: "God. SwissTiming / Omega Ekspertize",
+        stat4Number: "100%",
+        stat4Label: "Model „Ključ u Ruke” (Zero Capex)",
       },
     },
     pillars: {
       title: "Tri Stuba Našeg Ekosistema",
-      subtitle: "Spoj decenijskog audio inženjeringa, robusnog softvera i automatizovanog klijentskog servisa.",
+      subtitle: "Autentičan inženjerski rad, rješenja po sistemu „ključ u ruke” i automatizovano upravljanje licencama.",
       p1Title: "Studio TAF (The Audio Factory)",
-      p1Sub: "20 Godina Vrhunskog Zvuka",
+      p1Sub: "20 Godina Komercijalnog Zvuka & 6.000+ Projekata",
       p1Desc:
-        "Audio branding, radio/TV produkcija, mikrofonska i fonetska preciznost. Od 80-ih i pionirskih dana MIDI tehnologije do kompleksnih datasetova za AI govorne asistente.",
-      p2Title: "Poslovna & Hardverska Rješenja",
-      p2Sub: "ERP, POS, Kontrola Prolaza & Sport",
+        "Od muzičkog producenta i studijskog rada 80-ih (Massimo, Dino Dvornik, Đavoli, Denis & Denis) do osnivanja Studio TAF 2006. godine kao lidera komercijalnog audio dizajna (99.9% radijske i TV reklame).",
+      p2Title: "HaaS & SaaS Poslovna Rješenja",
+      p2Sub: "Sistem „Ključ u Ruke” Bez Velikih Investicija",
       p2Desc:
-        "Fluxa Cloud ERP, FluxaPOS maloprodaja, EnterSYS kontrola pristupa i menadžeri objekata, DokumentArt javne nabavke i SOCCS/SwimVoice sportski tajming.",
+        "Kompletan zakup hardvera i softvera (Zero Capex): tripodi, fiskalni POS, menadžeri objekata (ARGUS, PoolManager), MojRadio & MojTV, DokumentArt i profesionalni sportski tajming (SOCCS/SwimVoice).",
       p3Title: "Tenant Samoposlužni Portal",
       p3Sub: "Automatizovano Licenciranje & Podrška",
       p3Desc:
         "Centralno mjesto za klijente: uvid u module, automatsko produženje licenci putem instant uplatnica/QR kodova, preuzimanje zvaničnih update paketa i baza znanja.",
     },
     studioTaf: {
-      badge: "Turtle Audio Factory • 2006 – Danas",
-      title: "Dve Decenije Zvuka Koji Ostavlja Trag",
+      badge: "Studio TAF • 2006 – Danas",
+      title: "Od Zlatnog Doba Muzičke Produkcije do Komercijalnog Lidera",
       subtitle:
-        "Nakon višedecenijskog studijskog i muzičkog rada širom kontinenata, 2006. godine stvoren je Studio TAF — sinonim za beskompromisan audio inženjering, dizajn zvuka i produkciju.",
-      storyTitle: "Od Atari 1040ST i Steinberg 24 do Globalnih Kampanja",
+        "Priča o četiri decenije autentičnog audio zanatstva — od analognih i ranih digitalnih studija 80-ih do preko 6.000 realizovanih komercijalnih projekata u Studio TAF-u.",
+      storyTitle: "Od Studijskog Producenta 1982. do Specijalizovanog Audio Centra",
       storyP1:
-        "Priča počinje 80-ih godina prošlog vijeka, u ranim danima digitalizacije kada su prvi MIDI sekvenceri i 486 platforme otvarali nove horizonte. Kroz rad u najvećim studijima regiona, saradnju sa vrhunskim muzičarima i autorima, stvorena je filozofija rada koja zvuk ne posmatra kao prolazni efekat, već kao preciznu umjetnost.",
+        "Put Siniše Zelića u audio svijetu započeo je davne 1982. godine, još u srednjoškolskim danima i tokom studija mašinstva. Kao aktivni muzičar (bas i gitara), audio tehničar i muzički producent u banjalučkim i regionalnim studijima, provodio je mjesece u kreiranju aranžmana, snimanju živih instrumenata i vokala, te analogno-digitalnom miksu i postprodukciji.",
       storyP2:
-        "Danas, sa preko 6.000 završenih projekata, stalnom bazom od preko 80 spikera i talenata, Studio TAF je pouzdan partner vodećim regionalnim tržnim lancima, bankama, multinacionalnim brendovima i kreativnim agencijama.",
-      cortanaBadge: "Specijalni Inženjerski Projekat",
-      cortanaTitle: "Microsoft Cortana — Fonetska Lokalizacija",
-      cortanaDesc:
-        "Za potrebe razvoja Microsoft Cortana glasovnog asistenta, Studio TAF je realizovao višemjesečni laboratorijski proces snimanja, segmentacije i akustičke kalibracije fonetskog dataseta od 974 niza govornih semplova, osiguravajući besprekoran tonalni kontinuitet i spektralnu čistoću.",
-      cortanaStat: "974",
-      cortanaStatLabel: "Akustički kalibrisana govorna niza",
-      referencesTitle: "Prestižne Reference & Partneri",
-      referencesSubtitle: "Institucije, multinacionalne kompanije i agencije koje nam vjeruju decenijama.",
+        "To zlatno doba obilježile su saradnje na projektima regionalnih muzičkih velikana — Massimo Savić, Đavoli, Dino Dvornik, Denis & Denis, Oliver Mandić, Kovalsky project, BasDans, Revelation (Boris Relja project), banjalučki pop-rock bend Radio, kao i cjelokupna urbana scena regiona. Bili su to pionirski dani digitalizacije kada su Atari 1040ST, Steinberg 24 i prve 486 audio kartice postavljale temelje moderne produkcije.",
+      storyP3:
+        "Preko 20 godina kasnije, 2006. godine, rođen je Studio TAF (Turtle Audio Factory). Studio TAF se u 99.9% svog rada fokusira na vrhunski komercijalni audio — radio i TV reklame, audio brending, voiceover casting sa bazom od 80+ profesionalnih spikera i audio postprodukciju, sa više od 6.000 uspješno isporučenih projekata za vodeće brendove i agencije.",
+      musicEraBadge: "Muzička & Komercijalna Istorija",
+      musicEraTitle: "Autentičan Zanat i Zvuk Bez Kompromisa",
+      musicEraDesc:
+        "Mjesečni studijski rad sa najvećim izvođačima regiona izgradio je disciplinu i osjećaj za akustičku savršenost koji danas garantuje neprikosnovenu dinamiku i kristalnu čistoću svake reklame i zvučnog identiteta.",
+      musicEraStat: "6.000+",
+      musicEraStatLabel: "Realizovanih komercijalnih audio kampanja",
+      referencesTitle: "Referentna Lista Klijenata & Saradnika",
+      referencesSubtitle: "Institucije, multinacionalne kompanije, vodeći tržni lanci, banke i agencije.",
       categories: {
         all: "Sve Reference",
-        global: "Globalni Brendovi",
+        commercial: "Komercijalni Brendovi",
+        music: "Muzički Projekti & Autori",
         retail: "Tržni Lanci",
         finance: "Banke & Finansije",
-        agencies: "Kreativne Agencije",
         institutions: "Institucije & Sport",
       },
     },
     software: {
-      badge: "Softverski & Hardverski Proizvodi",
-      title: "Modularna Rješenja za Stvarni Svijet",
+      badge: "SaaS & HaaS Rješenja („Ključ u Ruke”)",
+      title: "Kompletna Infrastruktura Bez Kapitalnih Troškova",
       subtitle:
-        "Arhitektura izgrađena na realnim operativnim potrebama — stabilna, brza, otporna na prekide interneta i prilagođena specifičnostima svake industrije.",
+        "Mi ne prodajemo skupe kutije. Pružamo kompletan sistem po principu pretplate i zakupa opreme — mi donosimo, montiramo, konfigurišemo i održavamo, a vi vodite svoje poslovanje bez stresa.",
       modules: {
-        fluxa: {
-          name: "Fluxa Cloud & ERP",
-          tagline: "Agencijski & Preduzetnički Menadžment",
+        haas: {
+          name: "HaaS & SaaS „Ključ u Ruke”",
+          tagline: "Hardver kao Servis • Nula Kapitalnih Ulaganja (Zero Capex)",
           description:
-            "Sveobuhvatna platforma za upravljanje projektima, automatsko fakturisanje, bankarsko rasknjižavanje, analitiku troškova saradnika i operativni plan likvidnosti.",
+            "Preduzeće ne mora investirati 100.000 € u nabavku opreme. Kroz naš integrisani model zakupa, klijent po niskoj mjesečnoj tarifi dobija kompletan hardver (tripodi, POS terminali, zvučni sistemi, digitalni ekrani) i softver sa uključenim 24/7 održavanjem.",
           features: [
-            "Project Lifecycle: od ponude i iniciacije do gotove isporuke",
-            "Automatsko bankarsko rasknjižavanje sa tolerancijama",
-            "Modul Operativni Plan: cashflow projekcija, računi i planirane obaveze",
-            "Izdvojeno praćenje troškova domaćinstva (Home Fond)",
-            "Generisanje e-faktura, KUF evidencija i fiskalizacija",
+            "Nula kapitalnih ulaganja (Zero Capex) — niska mjesečna pretplata",
+            "Isporuka „ključ u ruke”: hardver, softver, montaža, mrežni ring i konfiguracija",
+            "Uključeno preventivno i interventno održavanje, zamjena opreme i rezervni dijelovi",
+            "Povezivanje sa MojRadio (interni audio streaming) i MojTV (digital signage ekranima)",
+            "Centralizovano upravljanje kroz novi namjenski pravni i licencni model",
+          ],
+        },
+        entersys: {
+          name: "EnterSYS & ARGUS Master",
+          tagline: "Kontrola Pristupa & Upravljanje Sportsko-Rekreativnim Objektima",
+          description:
+            "Robusni krovni sistem za bazene, stadione, sportske dvorane, teretane i manifestacije. Od upravljanja mrežnim tripodima i RFID narukvicama do pametnih ormarića.",
+          features: [
+            "ARGUS Master: industrijski kontroler za mrežne tripode, barijere i kapije",
+            "PoolManager: specijalizovano upravljanje vodenim parkovima i plivačkim školama",
+            "GymManager, HallManager & FieldManager: rezervacije termina, članarine i tereni",
+            "Locker: pametni elektronski ormarići sinhronizovani sa pristupnim narukvicama",
+            "MojRadio & MojTV: automatizovano emitovanje interne muzike i marketinških poruka",
+            "DoorMan & CCTV: integrisano video praćenje prolaza i sigurnosna telemetrija",
           ],
         },
         pos: {
@@ -249,23 +266,35 @@ export const translations: Record<Language, Translations> = {
           features: [
             "Optimizovan rad za touch ekrane i brzi numerički unos",
             "Direktna komunikacija sa fiskalnim printerima i barkod skenerima",
-            "Offline-first arhitektura: rad bez interneta sa auto-sinhronizacijom",
+            "Offline-first arhitektura: rad bez interneta sa automatskom sinhronizacijom",
             "Povezanost sa zalihama, normativima i centralnim sistemom",
-            "Mogućnost samostalnog rada ili kao dio ARGUS mreže",
+            "Mogućnost samostalnog rada ili kao integrisani dio ARGUS sistema",
           ],
         },
-        entersys: {
-          name: "EnterSYS & ARGUS",
-          tagline: "Kontrola Pristupa & Upravljanje Objektima",
+        fluxa: {
+          name: "Fluxa Cloud & ERP",
+          tagline: "Agencijski & Preduzetnički Menadžment",
           description:
-            "Krovni sistem za sportske dvorane, bazene, fitnes centre, stadione i manifestacije. Od tripoda i RFID narukvica do pametnih ormarića.",
+            "Sveobuhvatna platforma za upravljanje projektima, automatsko fakturisanje, bankarsko rasknjižavanje, analitiku troškova saradnika i operativni plan likvidnosti.",
           features: [
-            "ARGUS Master: centralni hub za hardversku kontrolu i mrežne tripode",
-            "Enter Web: online prodaja karata, članarine, QR i RFID propusnice",
-            "PoolManager: specijalizovano vođenje bazena i plivačkih škola",
-            "GymManager, HallManager & FieldManager: rezervacije termina i borilišta",
-            "Locker: pametni ormarići sinhronizovani sa pristupnim narukvicama",
-            "MojRadio & MojTV: automatizovano emitovanje interne muzike i reklama",
+            "Project Lifecycle: od ponude i inicijacije do gotove isporuke",
+            "Automatsko bankarsko rasknjižavanje sa tolerancijama",
+            "Modul Operativni Plan: cashflow projekcija, računi i planirane obaveze",
+            "Izdvojeno praćenje troškova domaćinstva (Home Fond)",
+            "Generisanje e-faktura, KUF evidencija i fiskalizacija",
+          ],
+        },
+        soccs: {
+          name: "SOCCS & SwimVoice",
+          tagline: "Sportska Mjerenja • 15+ Godina SwissTiming / Omega Ekspertize",
+          description:
+            "Vodeći regionalni inženjerski tim za elektronska mjerenja na Omega i SwissTiming opremi. Zvanični softverski sistemi SOCCS i SwimVoice razvijeni su direktno iz 15 godina rada na međunarodnim plivačkim i atletskim borilištima.",
+          features: [
+            "15+ godina vrhunske terenske ekspertize na Omega / SwissTiming opremi",
+            "Regionalni inženjerski lideri i servisna podrška za rješavanje problema na opremi",
+            "SOCCS: obrada trka, startne liste i rezultati po zvaničnim FINA / Lenex standardima",
+            "SwimVoice: napredni robotski akustički engine za automatizovanu glasovnu najavu",
+            "Direktna sinhronizacija sa LED semaforima, startnim blokovima i video zidovima",
           ],
         },
         dokumentart: {
@@ -280,30 +309,6 @@ export const translations: Record<Language, Translations> = {
             "Centralizovano arhiviranje dokumentacije uz brzu pretragu",
           ],
         },
-        soccs: {
-          name: "SOCCS & SwimVoice",
-          tagline: "Plivačka Takmičenja & Zvučna Najava",
-          description:
-            "Zvanični sistem za plivačke mitinge i sportska borilišta. Obrada trka po svetskim standardima uz automatizovanu glasovnu najavu.",
-          features: [
-            "SOCCS: mjerenje vremena, obrada trka po FINA / Lenex standardima",
-            "Direktna kontrola LED semafora i startnih tabli",
-            "SwimVoice: robotski akustički engine za glasovnu najavu takmičara",
-            "Generisanje zvaničnih zapisnika, startnih i rezultatnih lista",
-          ],
-        },
-        hardware: {
-          name: "BasePCB & Hardverska Laboratorija",
-          tagline: "Namjenska Elektronika & Kontroleri",
-          description:
-            "Sopstveni razvoj i projektovanje štampanih elektronskih ploča, relejnih kontrolera i telemetrijskih modula za besprekornu komunikaciju hardvera i softvera.",
-          features: [
-            "Projektovane BasePCB i Omega ploče za tripode i prolaze",
-            "Opto-izolovani ulazi i robusna zaštita od prenapona",
-            "Nativna RS485, USB i TCP/IP komunikacija",
-            "Razvijeno i testirano u realnim, zahtjevnim terenskim uslovima",
-          ],
-        },
       },
     },
     philosophy: {
@@ -315,7 +320,7 @@ export const translations: Record<Language, Translations> = {
         "Ova platforma nije nastala u sterilnim marketinškim laboratorijama, već iz 62 godine životnog iskustva, rada i učenja.",
       point1Title: "Spoj Mašinstva, Akustike i Ekonomije",
       point1Desc:
-        "Formalno obrazovanje kroz mašinski fakultet, višu muzičku školu i ekonomiju, uz decenijsko rukovodno iskustvo u marketingu novina i upravljanju javnim preduzećima, ugrađeno je u svaku liniju koda i svaki relej.",
+        "Formalno obrazovanje kroz mašinski fakultet, višu muzičku školu i ekonomiju, uz decenijsko rukovodno iskustvo u marketingu novina i upravljanju javnim preduzećima, ugrađeno je u svaku liniju koda i svaki sistem.",
       point2Title: "Mir Završenog Posla",
       point2Desc:
         "Ustajanje u 5 ujutro sa nestrpljenjem da se stvara nešto opipljivo i korisno. Rad koji ne traži prečice, već se bori sa svakim tehničkim problemom do konačnog, besprekornog rješenja.",
@@ -351,7 +356,7 @@ export const translations: Record<Language, Translations> = {
     },
     footer: {
       tagline:
-        "Tehnološko-kreativni ekosistem: 20 godina vrhunske audio produkcije i moderna softverska rješenja za poslovanje, sport i javni sektor.",
+        "Tehnološko-kreativni ekosistem: 20 godina komercijalnog audio inženjeringa i cjelovita HaaS/SaaS rješenja za poslovanje, sport i javni sektor.",
       copyright: "Fluxa.ba & Studio TAF. Sva prava zadržana.",
       location: "Banja Luka, Bosna i Hercegovina",
       allRightsReserved: "Sva prava zadržana.",
@@ -359,7 +364,7 @@ export const translations: Record<Language, Translations> = {
   },
   en: {
     nav: {
-      solutions: "Software Solutions",
+      solutions: "Software & HaaS Solutions",
       studioTaf: "Studio TAF",
       heritage: "About & Heritage",
       portal: "Tenant Portal",
@@ -367,75 +372,117 @@ export const translations: Record<Language, Translations> = {
       tenantLogin: "Client Login",
     },
     hero: {
-      badge: "Engineering & Creative Heritage • 2006 – 2026",
-      title1: "Where two decades of",
-      titleHighlight: "dedicated craftsmanship",
-      title2: "meets modern software architecture.",
+      badge: "Engineering & Creative Heritage • 1982 to Present",
+      title1: "Where four decades of",
+      titleHighlight: "authentic craftsmanship",
+      title2: "meets turnkey SaaS/HaaS architecture.",
       subtitle:
-        "A seamless synergy of enterprise management platforms, native hardware controllers, and 20 years of premier sound engineering. Solutions engineered for real-world enterprise, arenas, and public institutions.",
-      ctaSolutions: "Explore Software Solutions",
+        "A powerhouse synergy of turnkey enterprise infrastructure (Zero Capex), 15+ years of SwissTiming/Omega sports timing mastery, and 20 years of commercial audio leadership at Studio TAF.",
+      ctaSolutions: "Explore Turnkey HaaS & SaaS",
       ctaStudio: "Studio TAF Heritage",
       ctaPortal: "Client Portal",
       stats: {
-        stat1Number: "20+",
-        stat1Label: "Years of Heritage",
+        stat1Number: "40+",
+        stat1Label: "Years in Audio Craft",
         stat2Number: "6,000+",
-        stat2Label: "Completed Projects",
-        stat3Number: "100+",
-        stat3Label: "Brands & Agencies",
-        stat4Number: "99.9%",
-        stat4Label: "System Reliability",
+        stat2Label: "Commercial Audio Works",
+        stat3Number: "15+",
+        stat3Label: "Yrs SwissTiming / Omega Mastery",
+        stat4Number: "100%",
+        stat4Label: "Turnkey Model (Zero Capex)",
       },
     },
     pillars: {
       title: "The Three Pillars of Our Ecosystem",
-      subtitle: "Uniting decades of acoustic mastery, resilient software, and automated client operations.",
+      subtitle: "Uniting decades of sound engineering, turnkey enterprise deployment, and automated client operations.",
       p1Title: "Studio TAF (The Audio Factory)",
-      p1Sub: "20 Years of Sound Excellence",
+      p1Sub: "20 Years of Commercial Sound & 6,000+ Works",
       p1Desc:
-        "Audio branding, broadcast production, acoustic precision. From 1980s MIDI pioneering to comprehensive phonetic speech synthesis datasets for conversational AI.",
-      p2Title: "Enterprise & Hardware Platforms",
-      p2Sub: "ERP, POS, Access Control & Sports",
+        "From 1980s music production & studio session work (Massimo, Dino Dvornik, Đavoli, Denis & Denis) to founding Studio TAF in 2006 as a dedicated commercial audio powerhouse (99.9% radio & TV ads).",
+      p2Title: "Turnkey HaaS & SaaS Solutions",
+      p2Sub: "Complete System Deployment Without Large Capital Expenditure",
       p2Desc:
-        "Fluxa Cloud ERP, FluxaPOS retail, EnterSYS access & facility managers, DokumentArt procurement, and SOCCS/SwimVoice competition timing engines.",
+        "Full hardware and software rental (Zero Capex): turnstiles, POS hardware, facility managers (ARGUS, PoolManager), MojRadio background audio, MojTV signage, and SwissTiming-grade sports timing (SOCCS/SwimVoice).",
       p3Title: "Tenant Self-Service Portal",
       p3Sub: "Automated Licensing & Support",
       p3Desc:
-        "Unified hub for client organizations: real-time module scopes, instant license extension via QR payments, release updates, and interactive knowledge base.",
+        "Unified hub for client organizations: real-time module scopes, instant license extension via QR/Wire payments, release updates, and interactive knowledge base.",
     },
     studioTaf: {
-      badge: "Turtle Audio Factory • 2006 – Present",
-      title: "Two Decades of Sound That Endures",
+      badge: "Studio TAF • 2006 – Present",
+      title: "From the Golden Era of Music Production to Commercial Audio Leadership",
       subtitle:
-        "Built on multi-continental studio performance and pioneering digital audio engineering, Studio TAF was established in 2006 as a benchmark of uncompromising sound design.",
-      storyTitle: "From Atari 1040ST & Steinberg 24 to Global Campaigns",
+        "A journey across four decades of authentic sound craftsmanship — from 1980s analog recording studios to over 6,000 commercial audio productions delivered by Studio TAF.",
+      storyTitle: "From 1982 Studio Producer to Specialized Commercial Audio Hub",
       storyP1:
-        "Our journey began in the 1980s during the early dawn of digital sequencing and DSPs on 486 architectures. Decades of working across major regional recording studios forged a philosophy where sound is not an afterthought, but an exact science and an art form.",
+        "Siniša Zelić's journey in audio engineering began in 1982 while studying mechanical engineering. As an active studio musician (bass and guitar), technician, and music producer in Banja Luka and regional studios, he spent months crafting arrangements, recording live acoustic and electric instruments, tracking vocals, and completing analog-to-digital post-production.",
       storyP2:
-        "Today, with over 6,000 completed audio productions, a permanent voice talent roster exceeding 80 professional artists, Studio TAF remains a trusted partner to retail leaders, financial institutions, global brands, and advertising agencies.",
-      cortanaBadge: "Special Engineering Milestone",
-      cortanaTitle: "Microsoft Cortana — Phonetic Localization",
-      cortanaDesc:
-        "For Microsoft's Cortana AI assistant development, Studio TAF engineered a rigorous 6-month laboratory phonetic recording and acoustic dataset consisting of 974 calibrated speech sample sequences, ensuring flawless tonal uniformity and spectral clarity.",
-      cortanaStat: "974",
-      cortanaStatLabel: "Calibrated phonetic speech sequences",
+        "That golden era featured collaborations with iconic regional music legends — Massimo Savić, Đavoli, Dino Dvornik, Denis & Denis, Oliver Mandić, Kovalsky project, BasDans, Revelation (Boris Relja project), Banja Luka pop-rock band Radio, and the vibrant regional music scene. Those were the pioneering days of digital audio when the Atari 1040ST, Steinberg 24, and early 486 sound cards laid the groundwork for modern audio workstations.",
+      storyP3:
+        "Over 20 years later, in 2006, Studio TAF (Turtle Audio Factory) was established. Studio TAF focuses 99.9% of its work on premier commercial audio — radio and TV commercials, sonic branding, professional voiceover casting with 80+ permanent talents, and audio post-production, delivering over 6,000 successful projects for leading global and regional brands.",
+      musicEraBadge: "Music & Commercial Audio Heritage",
+      musicEraTitle: "Authentic Craftsmanship with Zero Compromise",
+      musicEraDesc:
+        "Decades of studio session discipline with legendary artists forged the acoustic precision and dynamic power that ensures every commercial and sonic identity stands out with unmatched clarity.",
+      musicEraStat: "6,000+",
+      musicEraStatLabel: "Commercial audio campaigns delivered",
       referencesTitle: "Prestigious References & Partners",
-      referencesSubtitle: "Global brands, retail titans, and regional creative agencies that have trusted us for decades.",
+      referencesSubtitle: "Institutions, global brands, retail leaders, and top creative agencies.",
       categories: {
         all: "All References",
-        global: "Global Brands",
+        commercial: "Commercial Brands",
+        music: "Music Productions & Artists",
         retail: "Retail Giants",
         finance: "Banking & Finance",
-        agencies: "Creative Agencies",
         institutions: "Institutions & Sports",
       },
     },
     software: {
-      badge: "Software & Hardware Ecosystem",
-      title: "Modular Solutions Built for the Real World",
+      badge: "SaaS & HaaS Solutions (Turnkey Model)",
+      title: "Complete Enterprise Infrastructure with Zero Capex",
       subtitle:
-        "Architected around real operational demands — highly resilient, offline-first capable, and finely tuned to specific industry workflows.",
+        "We do not sell expensive boxes. We deliver complete systems on a subscription and equipment lease basis — we configure, install, deploy, and maintain 24/7 so you can run your business stress-free.",
       modules: {
+        haas: {
+          name: "HaaS & SaaS Turnkey Solutions",
+          tagline: "Hardware as a Service • Zero Capital Expenditure (Zero Capex)",
+          description:
+            "Enterprises do not need to invest €100,000 upfront in expensive equipment. Through our turnkey HaaS model, clients receive complete hardware (turnstiles, POS terminals, audio systems, digital screens) and software for a low monthly tenant fee, fully maintained by our team.",
+          features: [
+            "Zero Capital Expenditure (Zero Capex) — low monthly subscription",
+            "Complete turnkey delivery: hardware, software, installation, and network rings",
+            "Included preventative and emergency maintenance with on-site equipment replacement",
+            "Integrated with MojRadio (background audio/ads) and MojTV (digital signage screens)",
+            "Centralized governance via our dedicated licensing and operational legal structure",
+          ],
+        },
+        entersys: {
+          name: "EnterSYS & ARGUS Master",
+          tagline: "Access Control & Sports Facility Management",
+          description:
+            "Robust ecosystem for swimming complexes, arenas, fitness centers, stadiums, and events. From network turnstiles and RFID wristbands to smart locker controllers.",
+          features: [
+            "ARGUS Master: industrial controller for network turnstiles, gates, and barriers",
+            "PoolManager: specialized operations for aquatic centers and swim academies",
+            "GymManager, HallManager & FieldManager: court reservations, memberships, and fields",
+            "Locker: electronic smart lockers synchronized with access wristbands",
+            "MojRadio & MojTV: automated in-venue background music and commercial broadcasting",
+            "DoorMan & CCTV: integrated gate visual monitoring and telemetry telemetry",
+          ],
+        },
+        pos: {
+          name: "FluxaPOS",
+          tagline: "Retail & Hospitality POS System",
+          description:
+            "Modern, fast touchscreen and keyboard POS. Direct native hardware control with full fiscal printer support and offline-first reliability.",
+          features: [
+            "Optimized for touchscreen operation and high-speed numeric input",
+            "Direct native interface with fiscal printers and barcode scanners",
+            "Offline-first architecture: uninterrupted operations with auto-sync",
+            "Real-time inventory, recipe tracking, and ERP integration",
+            "Standalone operation or fully integrated with the ARGUS ecosystem",
+          ],
+        },
         fluxa: {
           name: "Fluxa Cloud & ERP",
           tagline: "Enterprise & Agency Operations",
@@ -449,117 +496,79 @@ export const translations: Record<Language, Translations> = {
             "Integrated electronic invoicing and fiscal compliance",
           ],
         },
-        pos: {
-          name: "FluxaPOS",
-          tagline: "Modern Retail & Hospitality POS",
+        soccs: {
+          name: "SOCCS & SwimVoice",
+          tagline: "Sports Timing • 15+ Years SwissTiming / Omega Mastery",
           description:
-            "Lightning-fast touch and keyboard point-of-sale. Native hardware control with full fiscal printer support and offline-first data integrity.",
+            "Leading regional engineering authority for precision electronic timing on Omega and SwissTiming equipment. The SOCCS and SwimVoice systems were engineered directly from 15 years of real-world sports timing on international championship tracks.",
           features: [
-            "Optimized for high-throughput touchscreens and numeric keypads",
-            "Native driver control for fiscal printers and barcode scanners",
-            "Offline-first architecture: uninterrupted selling with auto-sync",
-            "Real-time inventory decrementing and central synchronization",
-            "Operates standalone or integrated within the ARGUS network",
-          ],
-        },
-        entersys: {
-          name: "EnterSYS & ARGUS",
-          tagline: "Access Control & Facility Management",
-          description:
-            "Comprehensive management platform for aquatic centers, sports halls, gyms, arenas, and events. From turnstiles and RFID wristbands to smart locker hubs.",
-          features: [
-            "ARGUS Master: central network hub for turnstiles and gates",
-            "Enter Web: online ticketing, memberships, QR and RFID passes",
-            "PoolManager: specialized aquatic facility and swim school manager",
-            "GymManager, HallManager & FieldManager: automated court bookings",
-            "Locker: electronic smart lockers synchronized with wristbands",
-            "MojRadio & MojTV: automated in-venue background music & commercial scheduling",
+            "15+ years of specialist field expertise on Omega / SwissTiming systems",
+            "Regional engineering leaders for diagnostics, troubleshooting, and repairs",
+            "SOCCS: championship race processing and start lists adhering to FINA / Lenex standards",
+            "SwimVoice: advanced robotic acoustic engine for automated race announcements",
+            "Direct synchronization with LED scoreboards, touchpads, and stadium video walls",
           ],
         },
         dokumentart: {
           name: "DokumentArt",
-          tagline: "Public Procurement & Contract Lifecycle",
+          tagline: "Public Procurement & Contract Management",
           description:
-            "Specialized governance software for public enterprises and institutions requiring strict tender tracking, warranty deadlines, and compliance audits.",
+            "Dedicated compliance software for public institutions and procurement teams requiring strict tracking of legal procedures, tenders, and contracts.",
           features: [
-            "Tender lifecycle tracking, appeal deadlines, and public notices",
+            "Tracking of tender dossiers, appeal deadlines, and official announcements",
             "Bank guarantee tracking, delivery timelines, and performance bonds",
-            "Real-time contract and appendix execution tracking",
-            "Centralized document archival with instant full-text retrieval",
-          ],
-        },
-        soccs: {
-          name: "SOCCS & SwimVoice",
-          tagline: "Sports Meet Timing & Acoustic Engine",
-          description:
-            "Official competition timing and management system for swimming championships, combining FINA/Lenex data processing with automated audio race announcements.",
-          features: [
-            "SOCCS: high-precision timing, touchpad processing, FINA/Lenex standard",
-            "Direct scoreboard, start console, and LED lane matrix control",
-            "SwimVoice: automated acoustic speech synthesis for race calls",
-            "Official meet reports, start lists, and certified result generation",
-          ],
-        },
-        hardware: {
-          name: "BasePCB Hardware Lab",
-          tagline: "Custom Electronics & Controllers",
-          description:
-            "In-house PCB circuit design, relay controller manufacturing, and telemetry boards delivering seamless hardware-to-cloud reliability.",
-          features: [
-            "Custom BasePCB and Omega controller boards for physical access barriers",
-            "Optocoupled inputs and surge-protected industrial components",
-            "Native RS485, USB, and TCP/IP telemetry",
-            "Battle-tested in high-traffic commercial environments",
+            "Real-time contract execution and annex monitoring",
+            "Centralized document archive with instant search",
           ],
         },
       },
     },
     philosophy: {
-      badge: "Craftsmanship & Heritage",
+      badge: "Craftsmanship & Life Philosophy",
       title: "Creation as a Way of Life",
       quote:
-        "Behind us stand no empty buzzwords. Names don't matter — what matters is what remains when the day is done, and the clients who return for decades.",
+        "Behind us stand no empty buzzwords. A name means nothing — what matters is what remains behind us, who recognized our competence, and who returned to us across decades.",
       intro:
-        "This platform was not invented in a corporate think-tank, but born from 62 years of life, relentless work, and multidisciplinary practice.",
-      point1Title: "Mechanical Engineering, Sound & Economics",
+        "This platform was not born in sterile marketing labs, but from 62 years of lived experience, relentless work, and continuous learning.",
+      point1Title: "A Synthesis of Engineering, Acoustics & Economics",
       point1Desc:
-        "A rare polymath foundation: formal engineering education, higher music academy, and business economics, paired with executive leadership in media and public enterprises.",
-      point2Title: "The Peace of Work Well Done",
+        "Formal degrees in mechanical engineering, higher music school, and economics — combined with decades in newspaper marketing and public enterprise leadership — are embedded in every line of code and every system.",
+      point2Title: "The Peace of Finished Work",
       point2Desc:
-        "Waking up before the alarm at 5 AM with the genuine eagerness to build something tangible. Refusing shortcuts and solving complex technical challenges down to the core.",
-      point3Title: "Resilience & Engineering Stamina",
+        "Waking up at 5 AM eager to create something tangible and meaningful. Work that rejects shortcuts, tackling every technical obstacle until reaching an uncompromising solution.",
+      point3Title: "Resilience & Solving the Impossible",
       point3Desc:
-        "From reviving entire devastated network backbones in record time to crafting systems that run uninterrupted for years — trust is forged exclusively through action.",
+        "From reviving destroyed network infrastructures in record time to engineering platforms that run uninterrupted for years — true trust is earned exclusively on the field.",
       morningJoy:
-        "“The sheer joy of creation and the quiet satisfaction of looking back at the end of the day to see a monumental job completed — that is what moves us forward every morning.”",
+        "“The joy of creating and the peace when looking back at the end of the day at massive work completed — that is what drives us every single morning.”",
     },
     portal: {
-      badge: "Client Hub",
+      badge: "Client Zone",
       title: "Tenant Self-Service Portal",
       subtitle:
-        "Complete autonomous control over your organization's software licenses, modules, billing, and updates.",
-      feature1Title: "Active Scope Overview",
+        "Complete visibility and control over your software licenses, active modules, instant renewals, and downloads.",
+      feature1Title: "Active Module Insights",
       feature1Desc:
-        "Instant view of your active profile (ENTERSYS, FLUXAPOS, JAVNENABAVKE, SOCCS) and days remaining.",
-      feature2Title: "Instant Renewal & QR Billing",
+        "Overview of your active license profile (ENTERSYS, FLUXAPOS, JAVNENABAVKE, SOCCS) and remaining subscription days.",
+      feature2Title: "Instant Renewal & QR Payments",
       feature2Desc:
-        "Automated proforma generation with instant bank QR codes. Licenses extend automatically the second payment is verified.",
-      feature3Title: "Official Update Center",
+        "Generate payment slips with instant IPS QR codes for mobile banking. Licenses renew automatically upon payment.",
+      feature3Title: "Official Updates Distribution",
       feature3Desc:
-        "Direct authenticated download of official distribution packages (.zip) without cumbersome manual intervention.",
-      feature4Title: "Knowledge Base & Helpdesk",
+        "Direct access to certified system installations and update packages without complex manual setup.",
+      feature4Title: "Knowledge Base & Support",
       feature4Desc:
-        "Access video walkthroughs, system manuals, and direct engineering support tickets.",
-      loginCardTitle: "Tenant Login",
-      loginCardHint: "Enter your organization's tenant identifier and password.",
+        "Video walkthroughs, operator manuals, and direct contact with our engineering team for instant technical assistance.",
+      loginCardTitle: "Tenant Access",
+      loginCardHint: "Enter your organization identifier and password.",
       usernamePlaceholder: "e.g. aquana, fructatrade, sc_borik",
       passwordPlaceholder: "Your access password",
       loginBtn: "Sign In to Portal",
-      demoNote: "Looking to deploy a new installation or schedule a demo? Get in touch with us.",
+      demoNote: "Looking for a new license or turnkey demo? Contact us.",
     },
     footer: {
       tagline:
-        "Technological & creative ecosystem: 20 years of premier sound engineering paired with modern software systems for enterprise, sports, and public institutions.",
+        "Engineering & creative ecosystem: 20 years of commercial audio production and turnkey HaaS/SaaS enterprise solutions for business, sports, and the public sector.",
       copyright: "Fluxa.ba & Studio TAF. All rights reserved.",
       location: "Banja Luka, Bosnia and Herzegovina",
       allRightsReserved: "All rights reserved.",

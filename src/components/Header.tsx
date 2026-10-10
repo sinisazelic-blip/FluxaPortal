@@ -52,13 +52,13 @@ export default function Header({ onOpenLogin, onOpenContact }: HeaderProps) {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="cursor-pointer flex items-center gap-3 group"
         >
-          <div className="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
-            <span className="text-white font-bold text-base tracking-tighter">FX</span>
+          <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-1 shadow-xs group-hover:scale-105 transition-transform duration-300">
+            <img src="/logos/Fluxa_Icon_blue.png" alt="Fluxa" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <span className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-cyan-600 transition-colors">
-                FLUXA<span className="text-cyan-600 font-light">.ba</span>
+              <span className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
+                FLUXA<span className="text-emerald-600 font-light">.ba</span>
               </span>
               <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200">
                 PRO

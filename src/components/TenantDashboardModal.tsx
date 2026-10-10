@@ -46,8 +46,11 @@ interface SlipData {
     name: string;
     address: string;
     account: string;
+    rawAccount?: string;
     bankName: string;
-    swift: string;
+    swift?: string;
+    iban?: string;
+    jib?: string;
   };
   payer: {
     name: string;
@@ -419,30 +422,52 @@ export default function TenantDashboardModal({
           {/* TAB 2: RENEWAL & QR SLIP */}
           {activeTab === "renew" && (
             <div className="space-y-6">
-              {/* Period selection */}
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
-                <label className="block text-xs font-bold text-slate-800 mb-2">
-                  Izaberite Period Produženja Licence:
-                </label>
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { m: 6, label: "6 Mjeseci", desc: "Standardna polugodišnja tarifa" },
-                    { m: 12, label: "12 Mjeseci (Preporučeno)", desc: "15% popusta na godišnji paket" },
-                    { m: 24, label: "24 Mjeseca", desc: "25% maksimalni popust" },
-                  ].map((p) => (
+              {/* Payment Type and Period selection */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                  <label className="text-xs font-bold text-slate-800">
+                    Način Plaćanja:
+                  </label>
+                  <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
                     <button
-                      key={p.m}
-                      onClick={() => handleMonthChange(p.m)}
-                      className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
-                        selectedMonths === p.m
-                          ? "bg-emerald-50 border-emerald-500 shadow-xs"
-                          : "bg-white border-slate-200 hover:bg-slate-50"
-                      }`}
+                      onClick={() => handleMonthChange(selectedMonths)}
+                      className="px-3 py-1 rounded-lg text-xs font-semibold bg-white text-slate-900 shadow-xs cursor-pointer"
                     >
-                      <div className="text-xs font-bold text-slate-900">{p.label}</div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">{p.desc}</div>
+                      Domaće Plaćanje (BAM • Uplatnica / IPS QR)
                     </button>
-                  ))}
+                    <button
+                      onClick={() => handleMonthChange(selectedMonths)}
+                      className="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer"
+                    >
+                      Inostrani Prenos (EUR • IBAN & SWIFT)
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 mb-2">
+                    Izaberite Period Produženja Licence:
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {[
+                      { m: 6, label: "6 Mjeseci", desc: "Standardna polugodišnja tarifa" },
+                      { m: 12, label: "12 Mjeseci (Preporučeno)", desc: "15% popusta na godišnji paket" },
+                      { m: 24, label: "24 Mjeseca", desc: "25% maksimalni popust" },
+                    ].map((p) => (
+                      <button
+                        key={p.m}
+                        onClick={() => handleMonthChange(p.m)}
+                        className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
+                          selectedMonths === p.m
+                            ? "bg-emerald-50 border-emerald-500 shadow-xs"
+                            : "bg-white border-slate-200 hover:bg-slate-50"
+                        }`}
+                      >
+                        <div className="text-xs font-bold text-slate-900">{p.label}</div>
+                        <div className="text-[11px] text-slate-500 mt-0.5">{p.desc}</div>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -462,6 +487,9 @@ export default function TenantDashboardModal({
                       <div className="text-xs text-slate-500">Iznos za uplatu</div>
                       <div className="text-2xl font-black text-slate-900">
                         {slip.amount},00 {slip.currency}
+                        <span className="text-xs font-normal text-slate-500 ml-2">
+                          (~{(slip.amount / 1.95583).toFixed(2)} EUR)
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -470,15 +498,16 @@ export default function TenantDashboardModal({
                     {/* Left: Slip Details */}
                     <div className="md:col-span-7 space-y-3 text-xs">
                       <div>
-                        <span className="text-slate-400 block text-[10px] uppercase font-bold">Primalac</span>
+                        <span className="text-slate-400 block text-[10px] uppercase font-bold">Primalac / Beneficiary</span>
                         <span className="font-bold text-slate-900 text-sm">{slip.receiver.name}</span>
                         <div className="text-slate-500 text-xs">{slip.receiver.address}</div>
                       </div>
 
+                      {/* Primary Domestic Account (Unicredit) */}
                       <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
                         <div>
                           <span className="text-slate-400 block text-[10px] uppercase font-bold">
-                            Žiro Račun Primaoca ({slip.receiver.bankName})
+                            Domaći Žiro Račun ({slip.receiver.bankName})
                           </span>
                           <span className="font-mono font-bold text-slate-900 text-sm">
                             {slip.receiver.account}
@@ -493,9 +522,31 @@ export default function TenantDashboardModal({
                         </button>
                       </div>
 
+                      {/* INO Wire Transfer Box */}
+                      <div className="p-3 bg-emerald-50/50 rounded-xl border border-emerald-200/80 flex items-center justify-between">
+                        <div>
+                          <span className="text-emerald-800 block text-[10px] uppercase font-bold">
+                            Inostrano Plaćanje (IBAN & SWIFT)
+                          </span>
+                          <div className="font-mono text-slate-900 text-xs font-bold mt-0.5">
+                            IBAN: {slip.receiver.iban || "BA39 3383 5048 5748 1313"}
+                          </div>
+                          <div className="font-mono text-slate-700 text-[11px]">
+                            SWIFT / BIC: <span className="font-bold">{slip.receiver.swift || "UNCRBA22"}</span> • Bank: {slip.receiver.bankName}
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => copyToClipboard(slip.receiver.iban || "BA393383504857481313")}
+                          className="p-2 rounded-lg hover:bg-emerald-100 text-emerald-700 transition-colors cursor-pointer"
+                          title="Kopiraj IBAN"
+                        >
+                          <Copy className="w-4 h-4" />
+                        </button>
+                      </div>
+
                       {copiedAccount && (
                         <div className="text-[11px] text-emerald-600 font-semibold">
-                          ✓ Broj računa uspješno kopiran!
+                          ✓ Podatak uspješno kopiran u clipboard!
                         </div>
                       )}
 

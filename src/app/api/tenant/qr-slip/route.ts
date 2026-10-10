@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import QRCode from "qrcode";
+import { query } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,58 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Determine estimated amount based on profile and period
+    // 1. Fetch dynamic active firm profile & primary bank account from Fluxa database
+    let firmData = {
+      name: "Studio TAF sp - Banja Luka",
+      address: "Veljka Mlađenovića bb (bazen), 78000 Banja Luka",
+      jib: "4509750610000",
+      bankName: "Unicredit bank dd",
+      account: "3383502257480994",
+      accountFormatted: "338-350-22574809-94",
+      iban: "BA39 3383 5048 5748 1313",
+      swift: "UNCRBA22",
+    };
+
+    try {
+      const firmRows = await query<any>(
+        `SELECT * FROM firma_profile WHERE is_active = 1 ORDER BY firma_id DESC LIMIT 1`
+      );
+      if (firmRows && firmRows.length > 0) {
+        const f = firmRows[0];
+        const bankRows = await query<any>(
+          `SELECT * FROM firma_bank_accounts WHERE firma_id = ? ORDER BY COALESCE(primary_rank, 99) ASC, bank_account_id ASC`,
+          [f.firma_id]
+        );
+        // Find primary or invoice-shown bank (defaulting to Unicredit)
+        const primaryBank =
+          bankRows.find((b: any) => Number(b.primary_rank) === 1 || Number(b.show_on_invoice) === 1) ||
+          bankRows.find((b: any) => String(b.bank_naziv || "").toLowerCase().includes("unicredit")) ||
+          bankRows[0];
+
+        if (primaryBank) {
+          const rawAcc = String(primaryBank.bank_racun || "").replace(/[^0-9]/g, "");
+          const fmtAcc =
+            rawAcc.length === 16
+              ? `${rawAcc.slice(0, 3)}-${rawAcc.slice(3, 6)}-${rawAcc.slice(6, 14)}-${rawAcc.slice(14)}`
+              : primaryBank.bank_racun;
+
+          firmData = {
+            name: f.pravni_naziv || f.naziv || firmData.name,
+            address: `${f.adresa || "Veljka Mlađenovića bb"}, ${f.postanski_broj || "78000"} ${f.grad || "Banja Luka"}`,
+            jib: f.jib || firmData.jib,
+            bankName: primaryBank.bank_naziv || firmData.bankName,
+            account: rawAcc || firmData.account,
+            accountFormatted: fmtAcc || firmData.accountFormatted,
+            iban: primaryBank.iban || firmData.iban,
+            swift: primaryBank.swift || firmData.swift,
+          };
+        }
+      }
+    } catch (dbErr) {
+      console.warn("Could not query firma_profile, using UniCredit fallback:", dbErr);
+    }
+
+    // 2. Determine estimated amount based on profile and period
     let basePricePerMonth = 50; // BAM
     if (profile === "ENTERSYS") basePricePerMonth = 80;
     else if (profile === "FLUXAPOS") basePricePerMonth = 40;
@@ -38,15 +90,6 @@ export async function POST(req: NextRequest) {
     const safeNameSlug = tenantName.replace(/[^a-zA-Z0-9]/g, "").slice(0, 8).toUpperCase();
     const referenceNumber = `TAF-${dateStr}-${safeNameSlug}`;
 
-    // Payment Receiver Info (Studio TAF / EnterSYS)
-    const receiver = {
-      name: "Studio TAF - Siniša Zelić s.p.",
-      address: "Banja Luka, Bosna i Hercegovina",
-      account: "555-007-00223344-55", // Nova Banka a.d. Banja Luka
-      bankName: "Nova Banka a.d. Banja Luka",
-      swift: "NOBABA22",
-    };
-
     const purpose = `Obnova softverske licence: ${tenantName} (${months} mj)`;
 
     // EPC / IPS QR Code Payload string
@@ -55,8 +98,8 @@ export async function POST(req: NextRequest) {
       `K:PR`,
       `V:01`,
       `C:1`,
-      `R:${receiver.account.replace(/-/g, "")}`,
-      `N:${receiver.name}`,
+      `R:${firmData.account}`,
+      `N:${firmData.name}`,
       `I:${currency}${totalAmount},00`,
       `SF:221`,
       `S:${purpose}`,
@@ -77,7 +120,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       ok: true,
       slip: {
-        receiver,
+        receiver: {
+          name: firmData.name,
+          address: firmData.address,
+          account: firmData.accountFormatted,
+          rawAccount: firmData.account,
+          bankName: firmData.bankName,
+          iban: firmData.iban,
+          swift: firmData.swift,
+          jib: firmData.jib,
+        },
         payer: {
           name: tenantName,
           token: token || "N/A",
