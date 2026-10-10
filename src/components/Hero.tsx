@@ -18,7 +18,7 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-dot-pattern subtle-gradient-bg">
+    <section className="section-window section-raster relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* Refined Badge */}

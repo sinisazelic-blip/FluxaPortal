@@ -22,12 +22,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-100">
           {/* Brand & Mission */}
           <div className="md:col-span-5 space-y-3.5">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-sm">
-                FX
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-1 shadow-xs">
+                <img src="/logos/Fluxa_Icon_blue.png" alt="Fluxa" className="w-full h-full object-contain" />
               </div>
               <span className="text-lg font-bold text-slate-900 tracking-tight">
-                FLUXA<span className="text-cyan-600 font-light">.ba</span>
+                FLUXA<span className="text-emerald-600 font-light">.ba</span>
               </span>
             </div>
             <p className="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-sm font-normal">

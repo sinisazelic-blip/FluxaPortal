@@ -13,8 +13,8 @@ export default function PillarsSection() {
   };
 
   return (
-    <section className="py-20 bg-white border-y border-slate-200/80 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-window section-raster py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 tracking-tight mb-3">
             {t.pillars.title}
