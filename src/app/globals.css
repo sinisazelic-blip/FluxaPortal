@@ -5,13 +5,11 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --card-border: rgba(226, 232, 240, 0.9);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -22,52 +20,44 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Discrete section window with top-to-bottom raster gradient */
+/* Discrete full section window with visible top-to-bottom raster gradient */
 .section-window {
   scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  scroll-margin-top: 4.5rem;
-  background: linear-gradient(180deg, #ffffff 0%, #fcfdfe 40%, #f1f5f9 100%);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  scroll-snap-stop: always;
+  scroll-margin-top: 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
+  /* Top is pure white #ffffff, bottom is visible soft gray #e2e8f0, with visible dot raster */
+  background: 
+    radial-gradient(circle, rgba(15, 23, 42, 0.10) 1.2px, transparent 1.2px),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 45%, #e2e8f0 100%);
+  background-size: 20px 20px, 100% 100%;
+  border-bottom: 2px solid rgba(203, 213, 225, 0.85);
 }
 
-.section-raster {
-  background-image: radial-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Light luxury glassmorphism & soft shadows */
+/* Light luxury cards & soft shadows */
 .glass-light {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 4px 25px -4px rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  box-shadow: 0 4px 25px -4px rgba(15, 23, 42, 0.06), 0 1px 3px 0 rgba(15, 23, 42, 0.03);
 }
 
 .glass-light-card {
   background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-light-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
-}
-
-.bg-dot-pattern {
-  background-size: 24px 24px;
-  background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-}
-
-.subtle-gradient-bg {
-  background: radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.06), transparent 60%),
-              radial-gradient(circle at 90% 20%, rgba(168, 85, 247, 0.05), transparent 50%),
-              radial-gradient(circle at 10% 80%, rgba(14, 165, 233, 0.05), transparent 50%);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
 /* Elegant custom scrollbar */
@@ -75,12 +65,12 @@ body {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #94a3b8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #64748b;
 }

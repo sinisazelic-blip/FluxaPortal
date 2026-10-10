@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { referencesData } from "@/data/references";
-import { Volume2, Mic, Music2, Sparkles, Disc, Radio, CheckCircle, Building2 } from "lucide-react";
+import BrandLogo from "@/components/BrandLogo";
+import { Volume2, Mic, Music2, Sparkles, Disc, Radio, CheckCircle } from "lucide-react";
 
 export default function StudioTafSection() {
   const { t } = useLanguage();
@@ -15,7 +16,7 @@ export default function StudioTafSection() {
       : referencesData.filter((r) => r.category === activeCategory);
 
   return (
-    <section id="studio-taf" className="section-window section-raster py-24 relative overflow-hidden">
+    <section id="studio-taf" className="section-window py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -36,13 +37,13 @@ export default function StudioTafSection() {
           {/* Left: Studio & Personal Audio Heritage */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-soft-xl flex flex-col justify-between">
             <div>
-              {/* Full Logo Display Header - Uncropped, High Resolution */}
+              {/* Studio TAF Original Logo - Clean on White Background, No Outer Outline */}
               <div className="flex flex-col sm:flex-row sm:items-center gap-5 mb-6 pb-6 border-b border-slate-100">
-                <div className="bg-slate-900 p-2.5 rounded-2xl border border-slate-800 shadow-md inline-flex items-center justify-center shrink-0">
+                <div className="inline-flex items-center justify-start shrink-0">
                   <img
                     src="/logos/taf-logo.jpg"
                     alt="Studio TAF Logo"
-                    className="h-14 sm:h-16 w-auto max-w-[220px] object-contain rounded-lg"
+                    className="h-14 sm:h-16 w-auto object-contain"
                   />
                 </div>
                 <div>
@@ -198,31 +199,9 @@ export default function StudioTafSection() {
                 className="bg-white rounded-2xl p-5 border border-slate-200/90 hover:border-slate-300 hover:shadow-soft-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Dominant Visual Logo or Artist Emblem */}
+                  {/* Dominant Visual Logo Component */}
                   <div className="mb-4">
-                    {ref.isLegalEntity ? (
-                      <div
-                        className={`w-full h-14 rounded-xl flex items-center justify-center px-3 shadow-xs ${
-                          ref.logoBg || "bg-slate-100"
-                        }`}
-                      >
-                        <span className={ref.logoColor || "text-slate-900 font-bold"}>
-                          {ref.logoText || ref.name}
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="w-full h-14 rounded-xl bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 flex items-center justify-between px-3.5">
-                        <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-lg bg-purple-200/70 text-purple-900 flex items-center justify-center font-black text-xs">
-                            {ref.logoText || "♪"}
-                          </div>
-                          <span className="text-xs font-bold text-purple-950 truncate max-w-[130px]">
-                            {ref.name}
-                          </span>
-                        </div>
-                        <Music2 className="w-4 h-4 text-purple-600 shrink-0" />
-                      </div>
-                    )}
+                    <BrandLogo id={ref.id} name={ref.name} />
                   </div>
 
                   {/* Badges & Description */}

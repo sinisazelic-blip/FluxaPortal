@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
 import LoginModal from "@/components/LoginModal";
 import TenantDashboardModal from "@/components/TenantDashboardModal";
+import SectionNavigator from "@/components/SectionNavigator";
 
 export default function Home() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
@@ -55,6 +56,9 @@ export default function Home() {
 
       {/* Founder's Philosophy & Heritage Story */}
       <PhilosophySection />
+
+      {/* Floating Section Navigator */}
+      <SectionNavigator />
 
       {/* Footer */}
       <Footer />
