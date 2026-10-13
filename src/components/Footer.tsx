@@ -24,10 +24,10 @@ export default function Footer() {
           <div className="md:col-span-5 space-y-3.5">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center p-1 shadow-xs">
-                <img src="/logos/Fluxa_Icon_green.png" alt="Fluxa" className="w-full h-full object-contain" />
+                <img src="/logos/Fluxa_Icon_blue.png" alt="Fluxa" className="w-full h-full object-contain" />
               </div>
               <span className="text-lg font-bold text-white tracking-tight">
-                FLUXA<span className="text-emerald-400 font-light">.ba</span>
+                FLUXA<span className="text-sky-400 font-light">.ba</span>
               </span>
             </div>
             <p className="text-sky-200/80 text-xs sm:text-sm leading-relaxed max-w-sm font-normal">

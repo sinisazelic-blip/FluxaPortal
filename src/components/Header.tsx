@@ -61,7 +61,7 @@ export default function Header({ onOpenLogin, onOpenContact }: HeaderProps) {
           title="FLUXA.ba"
         >
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-1 shadow-xs group-hover:scale-105 transition-transform duration-300 shrink-0">
-            <img src="/logos/Fluxa_Icon_green.png" alt="Fluxa" className="w-full h-full object-contain" />
+            <img src="/logos/Fluxa_Icon_blue.png" alt="Fluxa" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
