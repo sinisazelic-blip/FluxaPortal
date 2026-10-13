@@ -113,7 +113,7 @@ export default function TenantDashboardModal({
       const res = await fetch("/api/tenant/lookup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: nameOrToken }),
+        body: JSON.stringify({ identifier: nameOrToken, password: "Aquana01+" }),
       });
       const data = await res.json();
       if (data.ok && data.tenant) {

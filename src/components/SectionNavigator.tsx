@@ -1,19 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
-const sections = [
-  { id: "hero", label: "Početna" },
-  { id: "pillars", label: "Tri Stuba" },
-  { id: "solutions", label: "Softver & HaaS" },
-  { id: "studio-taf", label: "Studio TAF" },
-  { id: "tenant-portal", label: "Tenant Portal" },
-  { id: "philosophy", label: "Filozofija" },
-];
-
 export default function SectionNavigator() {
+  const { t } = useLanguage();
   const [activeSection, setActiveSection] = useState("hero");
+
+  const sections = [
+    { id: "hero", label: t.sectionNav.hero },
+    { id: "pillars", label: t.sectionNav.pillars },
+    { id: "solutions", label: t.sectionNav.solutions },
+    { id: "studio-taf", label: t.sectionNav.studioTaf },
+    { id: "tenant-portal", label: t.sectionNav.portal },
+    { id: "philosophy", label: t.sectionNav.philosophy },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,12 +55,12 @@ export default function SectionNavigator() {
   };
 
   return (
-    <aside aria-label="Navigacija po sekcijama" className="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-2 bg-white/80 backdrop-blur-md p-2 rounded-full border border-slate-300 shadow-md">
+    <aside aria-label={t.sectionNav.ariaLabel} className="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-2 bg-white/80 backdrop-blur-md p-2 rounded-full border border-slate-300 shadow-md">
       <button
         onClick={goPrev}
         disabled={currentIndex === 0}
         className="p-1 rounded-full text-slate-500 hover:text-slate-900 disabled:opacity-30 cursor-pointer"
-        title="Prethodni prozor"
+        title={t.sectionNav.prev}
       >
         <ChevronUp className="w-4 h-4" />
       </button>
@@ -92,7 +94,7 @@ export default function SectionNavigator() {
         onClick={goNext}
         disabled={currentIndex === sections.length - 1}
         className="p-1 rounded-full text-slate-500 hover:text-slate-900 disabled:opacity-30 cursor-pointer"
-        title="Naredni prozor"
+        title={t.sectionNav.next}
       >
         <ChevronDown className="w-4 h-4" />
       </button>

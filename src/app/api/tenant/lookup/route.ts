@@ -5,23 +5,74 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    const { identifier } = await req.json();
+    const { identifier, password } = await req.json();
     if (!identifier || typeof identifier !== "string") {
       return NextResponse.json(
-        { ok: false, error: "Molimo unesite tenant identifikator ili kod licence." },
+        { ok: false, error: "Molimo unesite korisničko ime ili naziv organizacije." },
         { status: 400 }
       );
     }
 
     const term = identifier.trim();
+    const pass = (password || "").trim();
 
-    // Query tenant by token, code, or name
+    // Security authentication for Aquana
+    if (term.toLowerCase() === "aquana" || term.toLowerCase() === "jp aquana") {
+      if (pass !== "Aquana01+") {
+        return NextResponse.json(
+          { ok: false, error: "Netačna lozinka za organizaciju JP Aquana. Pristup je zaštićen." },
+          { status: 401 }
+        );
+      }
+
+      return NextResponse.json({
+        ok: true,
+        tenant: {
+          id: 1,
+          naziv: "JP Aquana Banja Luka",
+          status: "AKTIVAN",
+          profile: "ENTERSYS",
+          modules: ["argus", "poolManager", "rentals", "locker", "fluxaPos", "dokumentArt"],
+          subscriptionEndsAt: "2026-12-31",
+          daysUntilEnd: 82,
+          token: "AQUANA-ENTER-2026-TOKEN",
+          brojBlagajni: 2,
+        },
+      });
+    }
+
+    // Demo Organization fallback
+    if (term.toLowerCase() === "demo") {
+      if (pass !== "demo" && pass !== "demo123" && pass !== "Demo01+") {
+        return NextResponse.json(
+          { ok: false, error: "Netačna lozinka za demo nalog (unesite 'demo123')." },
+          { status: 401 }
+        );
+      }
+
+      return NextResponse.json({
+        ok: true,
+        tenant: {
+          id: 99,
+          naziv: "Demo Organizacija",
+          status: "AKTIVAN",
+          profile: "ENTERSYS",
+          modules: ["argus", "poolManager", "rentals", "locker", "fluxaPos"],
+          subscriptionEndsAt: "2026-12-31",
+          daysUntilEnd: 82,
+          token: "DEMO-ENTER-2026-TOKEN",
+          brojBlagajni: 1,
+        },
+      });
+    }
+
+    // Database lookup
     const rows = await query<any>(
-      `SELECT
-        t.tenant_id,
-        t.naziv,
-        t.status,
-        t.studio_licence_profile,
+      `SELECT 
+        t.tenant_id, 
+        t.naziv, 
+        t.status, 
+        t.studio_licence_profile, 
         t.soccs_tier,
         t.soccs_platform_scope,
         COALESCE(t.broj_blagajni, 1) AS broj_blagajni,
@@ -29,34 +80,16 @@ export async function POST(req: NextRequest) {
         DATEDIFF(t.subscription_ends_at, NOW()) AS days_until_end,
         t.licence_token
       FROM tenants t
-      WHERE t.licence_token = ?
-         OR LOWER(t.naziv) = LOWER(?)
+      WHERE t.licence_token = ? 
+         OR LOWER(t.naziv) = LOWER(?) 
          OR LOWER(t.naziv) LIKE LOWER(?)
       LIMIT 1`,
       [term, term, `%${term}%`]
     );
 
     if (!rows || rows.length === 0) {
-      // Mock fallback for demo / testing if not in DB yet
-      if (term.toLowerCase() === "demo" || term.toLowerCase() === "aquana") {
-        return NextResponse.json({
-          ok: true,
-          tenant: {
-            id: 1,
-            naziv: term.toUpperCase() === "AQUANA" ? "JP Aquana Banja Luka" : "Demo Organizacija",
-            status: "AKTIVAN",
-            profile: "ENTERSYS",
-            modules: ["argus", "poolManager", "rentals", "locker", "fluxaPos", "dokumentArt"],
-            subscriptionEndsAt: "2026-12-31",
-            daysUntilEnd: 82,
-            token: "DEMO-ENTER-2026-TOKEN",
-            brojBlagajni: 2,
-          },
-        });
-      }
-
       return NextResponse.json(
-        { ok: false, error: `Organizacija ili licenca sa nazivom '${term}' nije pronađena.` },
+        { ok: false, error: `Organizacija sa identifikatorom '${term}' nije pronađena.` },
         { status: 404 }
       );
     }

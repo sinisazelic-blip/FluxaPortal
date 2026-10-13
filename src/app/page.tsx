@@ -13,37 +13,44 @@ import ContactModal from "@/components/ContactModal";
 import LoginModal from "@/components/LoginModal";
 import TenantDashboardModal from "@/components/TenantDashboardModal";
 import SectionNavigator from "@/components/SectionNavigator";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("fluxa");
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [dashboardModalOpen, setDashboardModalOpen] = useState(false);
-  const [activeTenantIdentifier, setActiveTenantIdentifier] = useState("aquana");
+  const [activeTenantIdentifier, setActiveTenantIdentifier] = useState("");
 
-  const handleOpenTenantDashboard = (identifier?: string) => {
-    if (identifier) setActiveTenantIdentifier(identifier);
+  const handleOpenContact = (service?: string) => {
+    if (service) setSelectedService(service);
+    setContactModalOpen(true);
+  };
+
+  const handleOpenTenantDashboard = (identifier: string) => {
+    setActiveTenantIdentifier(identifier);
     setDashboardModalOpen(true);
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between selection:bg-cyan-600 selection:text-white">
+    <main className="min-h-screen bg-white text-slate-900 flex flex-col justify-between selection:bg-sky-500 selection:text-white">
       {/* Fixed Header */}
       <Header
-        onOpenLogin={() => handleOpenTenantDashboard("aquana")}
-        onOpenContact={() => setContactModalOpen(true)}
+        onOpenLogin={() => setLoginModalOpen(true)}
+        onOpenContact={() => handleOpenContact("fluxa")}
       />
 
       {/* Hero Section */}
       <Hero
-        onOpenContact={() => setContactModalOpen(true)}
-        onOpenLogin={() => handleOpenTenantDashboard("aquana")}
+        onOpenContact={handleOpenContact}
+        onOpenLogin={() => setLoginModalOpen(true)}
       />
 
       {/* 3 Pillars Overview */}
       <PillarsSection />
 
       {/* Pillar 2: Software & Hardware Solutions */}
-      <SoftwareSection />
+      <SoftwareSection onOpenContact={handleOpenContact} />
 
       {/* Pillar 1: Studio TAF Heritage & References */}
       <StudioTafSection />
@@ -51,7 +58,7 @@ export default function Home() {
       {/* Pillar 3: Tenant Self-Service Portal */}
       <TenantPortalSection
         onOpenLogin={(identifier) => handleOpenTenantDashboard(identifier || "aquana")}
-        onOpenContact={() => setContactModalOpen(true)}
+        onOpenContact={() => handleOpenContact("portal")}
       />
 
       {/* Founder's Philosophy & Heritage Story */}
@@ -60,6 +67,9 @@ export default function Home() {
       {/* Floating Section Navigator */}
       <SectionNavigator />
 
+      {/* Floating Back to Top Button (activates after Hero) */}
+      <ScrollToTop />
+
       {/* Footer */}
       <Footer />
 
@@ -67,13 +77,14 @@ export default function Home() {
       <ContactModal
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
+        initialService={selectedService}
       />
       <LoginModal
         isOpen={loginModalOpen}
         onClose={() => setLoginModalOpen(false)}
         onOpenContact={() => {
           setLoginModalOpen(false);
-          setContactModalOpen(true);
+          handleOpenContact("support");
         }}
         onSuccessLogin={(identifier) => {
           setLoginModalOpen(false);

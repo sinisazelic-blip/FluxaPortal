@@ -221,6 +221,21 @@ export default function BrandLogo({ id, name, className = "h-9 w-auto" }: BrandL
         </div>
       );
 
+    case "sanja-colic-zelic":
+      return (
+        <div className="flex items-center justify-between h-10 px-4 bg-gradient-to-r from-purple-900 to-slate-900 rounded-xl text-purple-100 shadow-xs border border-purple-800/60">
+          <div className="flex items-center gap-2">
+            <span className="text-amber-400 font-serif text-sm">🎹</span>
+            <span className="font-serif italic font-bold text-xs text-white tracking-wide">
+              Sanja Čolić Zelić
+            </span>
+          </div>
+          <span className="text-[9px] font-mono text-purple-300 uppercase tracking-widest font-semibold">
+            Pijanista
+          </span>
+        </div>
+      );
+
     case "big-bang":
       return (
         <div className="flex items-center justify-center h-10 px-4 bg-slate-950 rounded-xl text-amber-400 shadow-xs border border-amber-900/40">
