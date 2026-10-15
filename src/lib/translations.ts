@@ -543,7 +543,12 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxa: [
           {
-            title: "Centralna Finansijska & Projektna Konzola (FLUXA Engine)",
+            title: "Novi Dinamički Radni Stolovi & Kalendar Dospijeća (FLUXA Core)",
+            note: "Interaktivni operativni centar: živi radni sto sa kalendarom takmičenja i dospijeća, te 3 fokusirana administrativna stola za fakturisanje, banku i PDV analitiku.",
+            image: "/photo/Fluxa/fluxa-newui.png",
+          },
+          {
+            title: "Centralna Finansijska & Projektna Konzola (FLUXA Pult)",
             note: "Jedinstvena kontrolna tabla: operativne finansije (fakturisanje, KIF/KUF, izvodi, PDV), analitika profita po klijentu i praćenje projekata.",
             image: "/photo/Fluxa/fluxa.png",
           },
@@ -1071,7 +1076,12 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxa: [
           {
-            title: "Central Financial & Project Console (FLUXA Engine)",
+            title: "Modern Dynamic Work Desks & Due Date Calendar (FLUXA Core)",
+            note: "Interactive operations cockpit: living dynamic desk with competition and due date calendar, plus 3 focused administrative desks for invoicing, banking, and VAT analytics.",
+            image: "/photo/Fluxa/fluxa-newui.png",
+          },
+          {
+            title: "Central Financial & Project Console (FLUXA Classic Pult)",
             note: "Unified management cockpit: operational finances (invoicing, KIF/KUF, bank feeds, VAT), client profit analytics, and project lifecycles.",
             image: "/photo/Fluxa/fluxa.png",
           },
