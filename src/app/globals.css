@@ -9,15 +9,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* Soft, gentle snap with high tolerance - never aggressive */
-  scroll-snap-type: y proximity;
-}
-
-/* On mobile/tablets, disable scroll snap completely for 100% natural, smooth touch momentum */
-@media (max-width: 1024px) {
-  html {
-    scroll-snap-type: none !important;
-  }
 }
 
 body {
@@ -30,8 +21,6 @@ body {
 
 /* Discrete section window with visible top-to-bottom raster gradient */
 .section-window {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
   scroll-margin-top: 5rem;
   min-height: fit-content;
   display: flex;

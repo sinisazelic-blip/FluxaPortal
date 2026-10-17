@@ -12,7 +12,6 @@ export default function PhilosophySection() {
     <section
       id="philosophy"
       className="py-20 md:py-32 relative overflow-hidden bg-slate-50 text-slate-900 border-t border-slate-200/80"
-      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
     >
       <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10">
         {/* Header with Badge */}

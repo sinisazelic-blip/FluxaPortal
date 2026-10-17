@@ -110,12 +110,28 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
 
   const current = modules.find((m) => m.id === activeTab) || modules[0];
   const totalSlides = current.slides?.length || 1;
+  const sectionRef = useRef<HTMLElement | null>(null);
   const tabsScrollRef = useRef<HTMLDivElement | null>(null);
   const activeTabBtnRef = useRef<HTMLButtonElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Auto-advance modules every 10 seconds smoothly (pauses on hover, press or lightbox)
+  // Detect when Software section is visible in viewport so timers only run when user is looking at this section
   useEffect(() => {
-    if (isPaused || isLightboxOpen) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting && entry.intersectionRatio > 0.1);
+      },
+      { threshold: [0, 0.1, 0.5] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-advance modules every 10 seconds ONLY when visible on screen (pauses on hover or lightbox)
+  useEffect(() => {
+    if (!isVisible || isPaused || isLightboxOpen) return;
     const moduleTimer = setInterval(() => {
       setActiveTab((prev) => {
         const curIdx = modules.findIndex((m) => m.id === prev);
@@ -125,27 +141,26 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
       setActiveSlide(0);
     }, 10000);
     return () => clearInterval(moduleTimer);
-  }, [modules.length, isPaused, isLightboxOpen]);
+  }, [isVisible, modules.length, isPaused, isLightboxOpen]);
 
-  // Keep active tab smoothly scrolled into center view
+  // Keep active tab smoothly scrolled inside horizontal bar ONLY (NEVER causes vertical window jumps!)
   useEffect(() => {
     if (activeTabBtnRef.current && tabsScrollRef.current) {
-      activeTabBtnRef.current.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+      const container = tabsScrollRef.current;
+      const btn = activeTabBtnRef.current;
+      const targetScroll = btn.offsetLeft - container.offsetLeft - (container.clientWidth - btn.clientWidth) / 2;
+      container.scrollTo({ left: Math.max(0, targetScroll), behavior: "smooth" });
     }
   }, [activeTab]);
 
-  // Auto-scroll slides within current module every 3.5 seconds
+  // Auto-scroll slides within current module every 3.5 seconds ONLY when visible
   useEffect(() => {
-    if (totalSlides <= 1 || isPaused || isLightboxOpen) return;
+    if (!isVisible || totalSlides <= 1 || isPaused || isLightboxOpen) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % totalSlides);
     }, 3500);
     return () => clearInterval(timer);
-  }, [activeTab, totalSlides, isPaused, isLightboxOpen]);
+  }, [isVisible, activeTab, totalSlides, isPaused, isLightboxOpen]);
 
   // Lightbox keyboard controls (Escape to close, Left/Right arrows to navigate)
   useEffect(() => {
@@ -180,11 +195,9 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
 
   return (
     <section
+      ref={sectionRef}
       id="solutions"
       className="py-20 md:py-32 bg-white text-slate-900 relative overflow-hidden border-t border-slate-200/80"
-      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Full-width Container (Edge to Edge breadth) */}
       <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10">
@@ -376,23 +389,33 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                   </div>
                 </div>
 
-                {/* Screenshot Display or Fallback Box */}
-                {activeSlideData?.image ? (
-                  <div
-                    onClick={() => setIsLightboxOpen(true)}
-                    className="relative group cursor-zoom-in bg-slate-950 overflow-hidden aspect-[16/10] flex items-center justify-center border-b border-slate-800"
-                  >
-                    <img
-                      src={activeSlideData.image}
-                      alt={activeSlideData.title}
-                      className="w-full h-full object-contain sm:object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-slate-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                      <span className="px-3.5 py-1.5 rounded-full bg-slate-900/90 text-white text-xs font-semibold backdrop-blur border border-slate-700 shadow-lg flex items-center gap-1.5">
-                        <Maximize2 className="w-3.5 h-3.5 text-sky-400" />
-                        {t.software.zoomScreenshot}
-                      </span>
+                {/* Screenshot Display with Smooth Horizontal Slide Effect or Fallback Box */}
+                {current.slides?.length > 0 && current.slides[0]?.image ? (
+                  <div className="relative overflow-hidden aspect-[16/10] bg-slate-950 border-b border-slate-800">
+                    <div
+                      className="flex h-full w-full transition-transform duration-500 ease-out"
+                      style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+                    >
+                      {current.slides.map((s, idx) => (
+                        <div
+                          key={idx}
+                          onClick={() => setIsLightboxOpen(true)}
+                          className="min-w-full h-full relative group cursor-zoom-in flex items-center justify-center bg-slate-950 shrink-0"
+                        >
+                          <img
+                            src={s.image}
+                            alt={s.title}
+                            className="w-full h-full object-contain sm:object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-slate-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                            <span className="px-3.5 py-1.5 rounded-full bg-slate-900/90 text-white text-xs font-semibold backdrop-blur border border-slate-700 shadow-lg flex items-center gap-1.5">
+                              <Maximize2 className="w-3.5 h-3.5 text-sky-400" />
+                              {t.software.zoomScreenshot}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ) : (

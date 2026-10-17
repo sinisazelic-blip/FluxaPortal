@@ -33,7 +33,6 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
     <section
       id="hero"
       className="relative min-h-[92vh] flex flex-col justify-between pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden bg-slate-50 text-slate-900"
-      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
     >
       {/* Real, Solid, Crisp Architectural Photography Foundation */}
       <div 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { referenceCategories, ReferenceCategory, ReferenceItem } from "@/data/references";
 import {
@@ -21,6 +21,8 @@ export default function StudioTafSection() {
   const [liveProjects, setLiveProjects] = useState<number | null>(6004);
   const [activeCard, setActiveCard] = useState<0 | 1>(0);
   const [isTafPaused, setIsTafPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     fetch("/api/stats/projects")
@@ -33,14 +35,28 @@ export default function StudioTafSection() {
       .catch(() => {});
   }, []);
 
-  // Izmjenjivanje 2 kontejnera svakih 15s (pauzirano kada je miš iznad kontejnera)
+  // Detect when Studio TAF section is in viewport
   useEffect(() => {
-    if (isTafPaused || activeCategoryModal) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting && entry.intersectionRatio > 0.1);
+      },
+      { threshold: [0, 0.1, 0.5] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Izmjenjivanje 2 kontejnera svakih 15s (samo kad je sekcija vidljiva, i pauzirano kada je miš iznad kartice)
+  useEffect(() => {
+    if (!isVisible || isTafPaused || activeCategoryModal) return;
     const timer = setInterval(() => {
       setActiveCard((prev) => (prev === 0 ? 1 : 0));
     }, 15000);
     return () => clearInterval(timer);
-  }, [isTafPaused, activeCategoryModal]);
+  }, [isVisible, isTafPaused, activeCategoryModal]);
 
   const getCategoryIcon = (id: string) => {
     switch (id) {
@@ -68,11 +84,9 @@ export default function StudioTafSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="studio-taf"
       className="py-20 md:py-32 relative overflow-hidden bg-slate-50 text-slate-900 border-t border-slate-200/80"
-      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
-      onMouseEnter={() => setIsTafPaused(true)}
-      onMouseLeave={() => setIsTafPaused(false)}
     >
       {/* Real, Solid, Relaxed Studio Photography Foundation ("Drugi Homepage") */}
       <div 
@@ -143,7 +157,11 @@ export default function StudioTafSection() {
         </div>
 
         {/* Single Centered Airy Container (Allows guitar photography on sides to breathe) */}
-        <div className="max-w-3xl lg:max-w-4xl mx-auto mb-16 sm:mb-20">
+        <div
+          onMouseEnter={() => setIsTafPaused(true)}
+          onMouseLeave={() => setIsTafPaused(false)}
+          className="max-w-3xl lg:max-w-4xl mx-auto mb-16 sm:mb-20"
+        >
           {activeCard === 0 ? (
             /* Container 1: Studio & Personal Audio Heritage */
             <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
