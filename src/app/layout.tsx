@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "FLUXA & Studio TAF",
     title: "FLUXA.ba • Enterprise Software & Studio TAF Heritage",
     description:
-      "20 godina audio inženjeringa i robusnih softverskih sistema. Studio TAF, Fluxa ERP, EnterSYS ARGUS kontrola pristupa i fiskalni sistemi.",
+      "20 godina audio inženjeringa i robusnih softverskih sistema. Studio TAF, Fluxa Core, EnterSYS ARGUS kontrola pristupa i fiskalni sistemi.",
     images: [
       {
         url: "/og-image.png",

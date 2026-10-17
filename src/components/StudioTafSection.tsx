@@ -19,6 +19,8 @@ export default function StudioTafSection() {
   const { t } = useLanguage();
   const [activeCategoryModal, setActiveCategoryModal] = useState<ReferenceCategory | null>(null);
   const [liveProjects, setLiveProjects] = useState<number | null>(6004);
+  const [activeCard, setActiveCard] = useState<0 | 1>(0);
+  const [isTafPaused, setIsTafPaused] = useState(false);
 
   useEffect(() => {
     fetch("/api/stats/projects")
@@ -30,6 +32,15 @@ export default function StudioTafSection() {
       })
       .catch(() => {});
   }, []);
+
+  // Izmjenjivanje 2 kontejnera svakih 15s (pauzirano kada je miš iznad kontejnera)
+  useEffect(() => {
+    if (isTafPaused || activeCategoryModal) return;
+    const timer = setInterval(() => {
+      setActiveCard((prev) => (prev === 0 ? 1 : 0));
+    }, 15000);
+    return () => clearInterval(timer);
+  }, [isTafPaused, activeCategoryModal]);
 
   const getCategoryIcon = (id: string) => {
     switch (id) {
@@ -56,7 +67,13 @@ export default function StudioTafSection() {
   };
 
   return (
-    <section id="studio-taf" className="py-20 md:py-32 relative overflow-hidden bg-slate-50 text-slate-900 border-t border-slate-200/80">
+    <section
+      id="studio-taf"
+      className="py-20 md:py-32 relative overflow-hidden bg-slate-50 text-slate-900 border-t border-slate-200/80"
+      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
+      onMouseEnter={() => setIsTafPaused(true)}
+      onMouseLeave={() => setIsTafPaused(false)}
+    >
       {/* Real, Solid, Relaxed Studio Photography Foundation ("Drugi Homepage") */}
       <div 
         className="absolute inset-0 bg-cover bg-right lg:bg-center pointer-events-none filter saturate-[1.05] contrast-[1.02]"
@@ -74,7 +91,7 @@ export default function StudioTafSection() {
       {/* Full-width Container */}
       <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100/80 border border-purple-200 text-purple-800 text-xs font-semibold tracking-wide mb-4 shadow-xs">
             <Volume2 className="w-3.5 h-3.5 text-purple-600" />
             <span>{t.studioTaf.badgeHeader}</span>
@@ -87,137 +104,177 @@ export default function StudioTafSection() {
           </p>
         </div>
 
-        {/* 2-Column Story & Heritage Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-16 sm:mb-20 items-stretch">
-          {/* Left: Studio & Personal Audio Heritage */}
-          <div className="lg:col-span-7 bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-md flex flex-col justify-between">
-            <div>
-              {/* Studio TAF Original Logo */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 mb-6 pb-6 border-b border-slate-100">
-                <div className="inline-flex items-center justify-start shrink-0 bg-white p-2 rounded-2xl shadow-xs border border-slate-200 w-fit">
-                  <img
-                    src="/logos/taf-logo.jpg"
-                    alt="Studio TAF Logo"
-                    className="h-12 sm:h-16 w-auto object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                    {t.studioTaf.storyTitle}
-                  </h3>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[11px] sm:text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
-                      {t.studioTaf.storySubBadge}
-                    </span>
-                  </div>
-                </div>
-              </div>
+        {/* 2-Pill Switcher & Auto-Rotate Indicator */}
+        <div className="max-w-2xl mx-auto mb-8 flex flex-col items-center gap-2.5">
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm">
+            <button
+              onClick={() => setActiveCard(0)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+                activeCard === 0
+                  ? "bg-purple-700 text-white shadow-md scale-[1.02]"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+              }`}
+            >
+              <span>🎙️</span>
+              <span>1. Audio Centar & Istorijat</span>
+            </button>
 
-              {/* Story Paragraphs */}
-              <div className="space-y-4 text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal mb-8">
-                <p>{t.studioTaf.storyP1}</p>
-                <p>{t.studioTaf.storyP2}</p>
-                <p className="text-slate-800 font-medium bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
-                  {t.studioTaf.storyP3}
-                </p>
-              </div>
-            </div>
-
-            {/* Metric Pills */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-6 border-t border-slate-100">
-              <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
-                <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricStart}</div>
-                <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricStartVal}</div>
-              </div>
-              <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
-                <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricTaf}</div>
-                <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricTafVal}</div>
-              </div>
-              <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
-                <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricComm}</div>
-                <div className="text-xs sm:text-sm font-bold text-purple-700 flex items-center gap-1.5">
-                  <span>{liveProjects ? liveProjects.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "6.004"}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                </div>
-              </div>
-              <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
-                <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricRoster}</div>
-                <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricRosterVal}</div>
-              </div>
-            </div>
+            <button
+              onClick={() => setActiveCard(1)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+                activeCard === 1
+                  ? "bg-purple-700 text-white shadow-md scale-[1.02]"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+              }`}
+            >
+              <span>🎸</span>
+              <span>2. Muzička Era & Zanat</span>
+            </button>
           </div>
 
-          {/* Right: Music Era & Studio Discipline */}
-          <div className="lg:col-span-5 bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-md flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold mb-5">
-                <Music2 className="w-3.5 h-3.5" />
-                <span>{t.studioTaf.musicEraBadge}</span>
-              </div>
+          <div className="text-[11px] text-slate-500 font-medium flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+            <span>
+              {isTafPaused
+                ? "Pauzirano (čitanje u toku)"
+                : "Automatska izmjena svakih 15s • prelazak mišem pauzira"}
+            </span>
+          </div>
+        </div>
 
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3">
-                {t.studioTaf.musicEraTitle}
-              </h3>
+        {/* Single Centered Airy Container (Allows guitar photography on sides to breathe) */}
+        <div className="max-w-3xl lg:max-w-4xl mx-auto mb-16 sm:mb-20">
+          {activeCard === 0 ? (
+            /* Container 1: Studio & Personal Audio Heritage */
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
+              <div>
+                {/* Studio TAF Original Logo */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 mb-6 pb-6 border-b border-slate-100">
+                  <div className="inline-flex items-center justify-start shrink-0 bg-white p-2 rounded-2xl shadow-xs border border-slate-200 w-fit">
+                    <img
+                      src="/logos/taf-logo.jpg"
+                      alt="Studio TAF Logo"
+                      className="h-12 sm:h-16 w-auto object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900">
+                      {t.studioTaf.storyTitle}
+                    </h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-[11px] sm:text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
+                        {t.studioTaf.storySubBadge}
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                {t.studioTaf.musicEraDesc}
-              </p>
-
-              {/* Iconic Artists Roster Showcase */}
-              <div className="space-y-2.5 mb-6">
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
-                  {t.studioTaf.artistsTitle}
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Sanja Čolić Zelić",
-                    "Narodno & Dječije Pozorište",
-                    "Filmski Sound Design",
-                    "Klasična & Simfonijska Muzika",
-                    "Big Bang",
-                    "Massimo Savić",
-                    "Đavoli (Neno Belan)",
-                    "Dino Dvornik",
-                    "Denis & Denis",
-                    "Oliver Mandić",
-                    "Sportske Himne",
-                    "Revelation (Boris Relja)",
-                    "Radio (Pop-Rock BL)",
-                    "Kovalsky Project",
-                    "BasDans",
-                  ].map((artist) => (
-                    <span
-                      key={artist}
-                      className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-semibold shadow-2xs hover:border-purple-300 transition-colors"
-                    >
-                      {artist}
-                    </span>
-                  ))}
+                {/* Story Paragraphs */}
+                <div className="space-y-4 text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal mb-8">
+                  <p>{t.studioTaf.storyP1}</p>
+                  <p>{t.studioTaf.storyP2}</p>
+                  <p className="text-slate-800 font-medium bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+                    {t.studioTaf.storyP3}
+                  </p>
                 </div>
               </div>
-            </div>
 
-            {/* Stat Pill */}
-            <div className="bg-gradient-to-br from-purple-50 to-slate-50 rounded-2xl p-4 sm:p-5 border border-purple-100 mt-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2">
+              {/* Metric Pills */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-6 border-t border-slate-100">
+                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricStart}</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricStartVal}</div>
+                </div>
+                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricTaf}</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricTafVal}</div>
+                </div>
+                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricComm}</div>
+                  <div className="text-xs sm:text-sm font-bold text-purple-700 flex items-center gap-1.5">
                     <span>{liveProjects ? liveProjects.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "6.004"}</span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  </div>
-                  <div className="text-xs text-purple-700 font-semibold mt-0.5">
-                    {t.studioTaf.musicEraStatLabel}
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                 </div>
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white text-purple-700 flex items-center justify-center border border-purple-200 shadow-xs">
-                  <Disc className="w-5 h-5 sm:w-6 sm:h-6 animate-[spin_8s_linear_infinite]" />
+                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricRoster}</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricRosterVal}</div>
                 </div>
-              </div>
-              <div className="mt-3 text-[11px] text-slate-500">
-                {t.studioTaf.statNote}
               </div>
             </div>
-          </div>
+          ) : (
+            /* Container 2: Music Era & Studio Discipline */
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold mb-4">
+                  <Music2 className="w-3.5 h-3.5" />
+                  <span>{t.studioTaf.musicEraBadge}</span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3">
+                  {t.studioTaf.musicEraTitle}
+                </h3>
+
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                  {t.studioTaf.musicEraDesc}
+                </p>
+
+                {/* Iconic Artists Roster Showcase */}
+                <div className="space-y-2.5 mb-6">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                    {t.studioTaf.artistsTitle}
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Sanja Čolić Zelić",
+                      "Narodno & Dječije Pozorište",
+                      "Filmski Sound Design",
+                      "Klasična & Simfonijska Muzika",
+                      "Big Bang",
+                      "Massimo Savić",
+                      "Đavoli (Neno Belan)",
+                      "Dino Dvornik",
+                      "Denis & Denis",
+                      "Oliver Mandić",
+                      "Sportske Himne",
+                      "Revelation (Boris Relja)",
+                      "Radio (Pop-Rock BL)",
+                      "Kovalsky Project",
+                      "BasDans",
+                    ].map((artist) => (
+                      <span
+                        key={artist}
+                        className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-semibold shadow-2xs hover:border-purple-300 transition-colors"
+                      >
+                        {artist}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Stat Pill */}
+              <div className="bg-gradient-to-br from-purple-50 to-slate-50 rounded-2xl p-4 sm:p-5 border border-purple-100 mt-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2">
+                      <span>{liveProjects ? liveProjects.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "6.004"}</span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <div className="text-xs text-purple-700 font-semibold mt-0.5">
+                      {t.studioTaf.musicEraStatLabel}
+                    </div>
+                  </div>
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white text-purple-700 flex items-center justify-center border border-purple-200 shadow-xs">
+                    <Disc className="w-5 h-5 sm:w-6 sm:h-6 animate-[spin_8s_linear_infinite]" />
+                  </div>
+                </div>
+                <div className="mt-3 text-[11px] text-slate-500">
+                  {t.studioTaf.statNote}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* References Browser Section */}

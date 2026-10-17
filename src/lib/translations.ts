@@ -635,7 +635,7 @@ export const translations: Record<Language, Translations> = {
           ],
         },
         fluxa: {
-          name: "Fluxa Core (Cloud ERP)",
+          name: "Fluxa Core (Poslovni & Finansijski Engine)",
           tagline: "Krovni Poslovni i Operativni Menadžment",
           problem: "Podaci rasuti po tabelama, nepregledan cashflow i kašnjenje faktura.",
           solution: "Centralizovan sistem za praćenje projekata, fakturisanje, izvode i planiranje likvidnosti.",
@@ -1168,7 +1168,7 @@ export const translations: Record<Language, Translations> = {
           ],
         },
         fluxa: {
-          name: "Fluxa Core (Cloud ERP)",
+          name: "Fluxa Core (Operations & Finance Engine)",
           tagline: "Enterprise & Operations Platform",
           problem: "Scattered data across spreadsheets, unclear liquidity projections, and delayed billing.",
           solution: "Integrated platform for project lifecycles, automated invoicing, bank statement matching, and cashflow planning.",

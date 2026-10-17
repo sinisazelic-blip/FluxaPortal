@@ -25,7 +25,11 @@ export default function PillarsSection() {
   };
 
   return (
-    <section id="pillars" className="py-20 md:py-32 bg-slate-50 text-slate-900 relative overflow-hidden border-t border-slate-200/60">
+    <section
+      id="pillars"
+      className="py-20 md:py-32 bg-slate-50 text-slate-900 relative overflow-hidden border-t border-slate-200/60"
+      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
+    >
       {/* Full-width Container (Lanaco Breadth - Edge to Edge) */}
       <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10">
         {/* Authoritative Centered Headline */}

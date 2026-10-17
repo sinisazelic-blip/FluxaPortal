@@ -30,7 +30,11 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-40 md:pb-24 overflow-hidden bg-slate-50 text-slate-900">
+    <section
+      id="hero"
+      className="relative min-h-[92vh] flex flex-col justify-between pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden bg-slate-50 text-slate-900"
+      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
+    >
       {/* Real, Solid, Crisp Architectural Photography Foundation */}
       <div 
         className="absolute inset-0 bg-cover bg-right lg:bg-center pointer-events-none filter saturate-[1.05] contrast-[1.03]"
@@ -46,13 +50,17 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[350px] bg-sky-200/30 rounded-full blur-[130px] pointer-events-none" />
 
       {/* FULL-WIDTH CONTAINER (Lanaco Style - Edge to Edge with Generous Margins) */}
-      <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10">
-        <div className="max-w-4xl text-left">
-          {/* Subtle Continuity Tag */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-700 text-xs font-semibold tracking-wide mb-6 sm:mb-8 shadow-xs max-w-full">
+      <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10 flex-1 flex flex-col justify-between">
+        {/* Top: Continuity Badge positioned high to frame the hero space */}
+        <div className="pt-2 sm:pt-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200/90 text-slate-700 text-xs font-semibold tracking-wide shadow-xs max-w-full">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             <span className="truncate">{t.hero.continuityBadge}</span>
           </div>
+        </div>
+
+        {/* Bottom: Main Text, Action Buttons and Metrics pushed lower */}
+        <div className="max-w-4xl text-left pt-12 sm:pt-16 pb-2 sm:pb-6">
 
           {/* Headline - Elegant 3-line shape that stays strictly inside the daylight zone */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-slate-900 tracking-tight leading-[1.14] sm:leading-[1.12] mb-5 sm:mb-6 max-w-2xl">

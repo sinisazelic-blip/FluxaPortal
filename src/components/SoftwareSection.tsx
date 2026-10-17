@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   Boxes,
@@ -79,7 +79,7 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
     {
       id: "fluxa" as const,
       icon: Database,
-      shortName: "Fluxa ERP",
+      shortName: "Fluxa Core",
       name: t.software.modules.fluxa.name,
       tagline: t.software.modules.fluxa.tagline,
       data: t.software.modules.fluxa,
@@ -110,13 +110,40 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
 
   const current = modules.find((m) => m.id === activeTab) || modules[0];
   const totalSlides = current.slides?.length || 1;
+  const tabsScrollRef = useRef<HTMLDivElement | null>(null);
+  const activeTabBtnRef = useRef<HTMLButtonElement | null>(null);
 
-  // Auto-scroll slides smoothly every 5 seconds (pauses on hover, press or lightbox)
+  // Auto-advance modules every 10 seconds smoothly (pauses on hover, press or lightbox)
+  useEffect(() => {
+    if (isPaused || isLightboxOpen) return;
+    const moduleTimer = setInterval(() => {
+      setActiveTab((prev) => {
+        const curIdx = modules.findIndex((m) => m.id === prev);
+        const nextIdx = (curIdx + 1) % modules.length;
+        return modules[nextIdx].id;
+      });
+      setActiveSlide(0);
+    }, 10000);
+    return () => clearInterval(moduleTimer);
+  }, [modules.length, isPaused, isLightboxOpen]);
+
+  // Keep active tab smoothly scrolled into center view
+  useEffect(() => {
+    if (activeTabBtnRef.current && tabsScrollRef.current) {
+      activeTabBtnRef.current.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [activeTab]);
+
+  // Auto-scroll slides within current module every 3.5 seconds
   useEffect(() => {
     if (totalSlides <= 1 || isPaused || isLightboxOpen) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % totalSlides);
-    }, 5000);
+    }, 3500);
     return () => clearInterval(timer);
   }, [activeTab, totalSlides, isPaused, isLightboxOpen]);
 
@@ -152,11 +179,17 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
   const activeSlideData = current.slides[activeSlide] || current.slides[0];
 
   return (
-    <section id="solutions" className="py-20 md:py-32 bg-white text-slate-900 relative overflow-hidden border-t border-slate-200/80">
+    <section
+      id="solutions"
+      className="py-20 md:py-32 bg-white text-slate-900 relative overflow-hidden border-t border-slate-200/80"
+      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Full-width Container (Edge to Edge breadth) */}
       <div className="w-full px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold tracking-wide mb-4 shadow-xs">
             <Boxes className="w-3.5 h-3.5 text-sky-600" />
             <span>{t.software.badge}</span>
@@ -169,26 +202,50 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
           </p>
         </div>
 
-        {/* Clean, Elegant Pills Menu */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-10 sm:mb-14">
-          {modules.map((m) => {
-            const Icon = m.icon;
-            const isActive = activeTab === m.id;
-            return (
-              <button
-                key={m.id}
-                onClick={() => handleTabChange(m.id)}
-                className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? "bg-sky-600 text-white shadow-sm border border-sky-600"
-                    : "bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/90 shadow-2xs"
-                }`}
-              >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-slate-500"}`} />
-                <span>{m.shortName}</span>
-              </button>
-            );
-          })}
+        {/* Clear Interactive Indicator & Tabs Bar */}
+        <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
+          {/* Subtle Prompt Hint to show user these are interactive clickable products */}
+          <div className="flex items-center justify-between gap-3 px-2 mb-3 text-slate-500 text-xs">
+            <div className="inline-flex items-center gap-2 font-semibold tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
+              <span>
+                {lang === "sr"
+                  ? "Kliknite na proizvod za pregled modula (automatska rotacija 10s):"
+                  : "Click any product to explore features (auto-cycles every 10s):"}
+              </span>
+            </div>
+            <span className="text-[11px] font-mono text-slate-400 font-bold shrink-0">
+              {modules.findIndex((m) => m.id === activeTab) + 1} / {modules.length}
+            </span>
+          </div>
+
+          {/* Smooth Horizontal Scrollable Pills Menu */}
+          <div
+            ref={tabsScrollRef}
+            className="flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 pt-1 px-1 no-scrollbar select-none"
+          >
+            {modules.map((m) => {
+              const Icon = m.icon;
+              const isActive = activeTab === m.id;
+              return (
+                <button
+                  key={m.id}
+                  ref={isActive ? activeTabBtnRef : null}
+                  onClick={() => handleTabChange(m.id)}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-300 shrink-0 cursor-pointer ${
+                    isActive
+                      ? "bg-sky-600 text-white shadow-md border border-sky-500 ring-2 ring-sky-300/40 scale-[1.03]"
+                      : "bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-300/90 shadow-2xs hover:border-sky-300"
+                  }`}
+                  title={m.name}
+                >
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-slate-500"}`} />
+                  <span>{m.shortName}</span>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse ml-0.5" />}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Active Module Showcase Card */}

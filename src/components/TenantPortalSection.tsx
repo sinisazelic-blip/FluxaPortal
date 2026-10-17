@@ -43,7 +43,11 @@ export default function TenantPortalSection({ onOpenLogin, onOpenContact }: Tena
   };
 
   return (
-    <section id="tenant-portal" className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-slate-900 via-sky-950 to-slate-900 text-white border-t border-sky-900/60">
+    <section
+      id="tenant-portal"
+      className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-slate-900 via-sky-950 to-slate-900 text-white border-t border-sky-900/60"
+      style={{ scrollSnapAlign: "start", scrollSnapStop: "normal", scrollMarginTop: "5rem" }}
+    >
       {/* Subtle Technical Radial Grid Glows */}
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[400px] bg-sky-500/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[350px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
