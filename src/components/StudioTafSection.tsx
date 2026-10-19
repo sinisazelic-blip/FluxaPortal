@@ -163,7 +163,7 @@ export default function StudioTafSection() {
         >
           {activeCard === 0 ? (
             /* Container 1: Studio & Personal Audio Heritage */
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/80 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
+            <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-white/60 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
               <div>
                 {/* Studio TAF Original Logo */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 mb-6 pb-6 border-b border-slate-100/80">
@@ -221,7 +221,7 @@ export default function StudioTafSection() {
             </div>
           ) : (
             /* Container 2: Music Era & Studio Discipline */
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/80 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
+            <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-white/60 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold mb-4">
                   <Music2 className="w-3.5 h-3.5" />
@@ -310,7 +310,7 @@ export default function StudioTafSection() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategoryModal(cat)}
-                className="p-4 sm:p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-slate-200/90 hover:border-purple-300 hover:shadow-md transition-all text-left flex flex-col justify-between group cursor-pointer shadow-2xs"
+                className="p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-white/60 hover:border-purple-300 hover:shadow-md transition-all text-left flex flex-col justify-between group cursor-pointer shadow-2xs"
               >
                 <div>
                   <div className="mb-2.5 sm:mb-3">{getCategoryIcon(cat.id)}</div>

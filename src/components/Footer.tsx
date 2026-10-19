@@ -137,8 +137,16 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3.5 text-xs text-sky-300/80">
-          <div className="text-center sm:text-left">
-            © 2006 – {new Date().getFullYear()} <span className="font-semibold text-white">Fluxa.ba & Studio TAF</span>. {t.footer.allRightsReserved}
+          <div className="text-center sm:text-left flex items-center gap-2.5 flex-wrap justify-center sm:justify-start">
+            <span>
+              © 2006 – {new Date().getFullYear()} <span className="font-semibold text-white">Fluxa.ba & Studio TAF</span>. {t.footer.allRightsReserved}
+            </span>
+            <span
+              className="text-[10px] font-mono text-sky-300/60 hover:text-sky-200 transition-colors select-none tracking-wider px-1.5 py-0.5 rounded bg-sky-950/40 border border-sky-800/40"
+              title="FLUXA WebPortal Release Build"
+            >
+              v1.0.17
+            </span>
           </div>
           <div className="flex items-center gap-4 sm:gap-5">
             <span className="text-[11px] sm:text-xs">{t.footer.craftsmanship}</span>

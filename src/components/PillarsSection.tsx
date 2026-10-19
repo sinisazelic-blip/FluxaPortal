@@ -74,7 +74,7 @@ export default function PillarsSection() {
             </div>
 
             {/* Solid Frosted Glass Card Body at Bottom for 100% Crisp Legibility */}
-            <div className="relative z-10 m-3 sm:m-4 p-5 sm:p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md">
+            <div className="relative z-10 m-3 sm:m-4 p-5 sm:p-6 rounded-2xl bg-white/70 backdrop-blur-md border border-white/60 shadow-lg">
               <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-sky-600 font-mono mb-1">
                 {t.pillars.card1.tag}
               </div>
@@ -108,7 +108,7 @@ export default function PillarsSection() {
                 />
 
                 {/* Oblak sa tekstom GORE na stropu, tako da tripodi DOLJE iskaču u prvi plan */}
-                <div className="relative z-10 m-3 p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md">
+                <div className="relative z-10 m-3 p-4 rounded-2xl bg-white/70 backdrop-blur-md border border-white/60 shadow-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-100">
                       <ShieldCheck className="w-3.5 h-3.5" />
@@ -152,7 +152,7 @@ export default function PillarsSection() {
                   </div>
                 </div>
 
-                <div className="relative z-10 m-3 p-4 sm:p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md">
+                <div className="relative z-10 m-3 p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-white/60 shadow-lg">
                   <h3 className="text-base font-bold text-slate-900 group-hover:text-amber-600 transition-colors mb-1">
                     {t.pillars.card3.title}
                   </h3>
@@ -181,15 +181,15 @@ export default function PillarsSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/30 pointer-events-none sm:hidden" />
 
-              {/* Diskretan Omega / Swiss Timing logotip koji opravdava SOCCS */}
-              <div className="absolute top-4 left-4 z-10 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/65 backdrop-blur-md border border-white/20 text-white/90 shadow-sm pointer-events-none">
-                <span className="text-red-500 font-serif font-black text-xs leading-none">Ω</span>
-                <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-slate-100">OMEGA</span>
-                <span className="text-[9px] text-slate-400 font-medium tracking-tight">• Swiss Timing</span>
+              {/* Diskretan svijetli Omega / Swiss Timing partner bedž */}
+              <div className="absolute top-4 left-4 z-10 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm pointer-events-none">
+                <span className="text-[#C4001A] font-serif font-black text-xs leading-none">Ω</span>
+                <span className="text-[11px] font-mono tracking-widest uppercase font-bold text-slate-900">OMEGA</span>
+                <span className="text-[10px] text-slate-600 font-semibold tracking-tight">• Swiss Timing partner</span>
               </div>
 
               {/* Kompaktni PORTRETNI tekstualni oblak sa desne strane */}
-              <div className="relative z-10 m-3 sm:m-4 p-5 sm:p-7 rounded-2xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md flex flex-col justify-between w-full sm:w-[420px] lg:w-[460px] shrink-0">
+              <div className="relative z-10 m-3 sm:m-4 p-5 sm:p-7 rounded-2xl bg-white/70 backdrop-blur-md border border-white/60 shadow-lg flex flex-col justify-between w-full sm:w-[420px] lg:w-[460px] shrink-0">
                 <div className="space-y-3">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-100 text-[11px] font-mono font-bold w-fit">
                     <Volume2 className="w-3.5 h-3.5" />
