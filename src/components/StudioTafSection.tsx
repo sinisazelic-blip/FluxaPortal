@@ -96,8 +96,7 @@ export default function StudioTafSection() {
         }}
       />
       
-      {/* Asymmetric Left Daylight Cushion & Seamless Section Transitions */}
-      <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-slate-50 via-slate-50/92 to-transparent pointer-events-none" />
+      {/* Seamless Section Transitions (Soft white fade only at top and bottom) */}
       <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-slate-50 to-transparent pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[350px] bg-purple-200/25 rounded-full blur-[130px] pointer-events-none" />
@@ -164,11 +163,11 @@ export default function StudioTafSection() {
         >
           {activeCard === 0 ? (
             /* Container 1: Studio & Personal Audio Heritage */
-            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/80 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
               <div>
                 {/* Studio TAF Original Logo */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 mb-6 pb-6 border-b border-slate-100">
-                  <div className="inline-flex items-center justify-start shrink-0 bg-white p-2 rounded-2xl shadow-xs border border-slate-200 w-fit">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 mb-6 pb-6 border-b border-slate-100/80">
+                  <div className="inline-flex items-center justify-start shrink-0 bg-white/90 backdrop-blur-xs p-2 rounded-2xl shadow-xs border border-slate-200 w-fit">
                     <img
                       src="/logos/taf-logo.jpg"
                       alt="Studio TAF Logo"
@@ -191,30 +190,30 @@ export default function StudioTafSection() {
                 <div className="space-y-4 text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal mb-8">
                   <p>{t.studioTaf.storyP1}</p>
                   <p>{t.studioTaf.storyP2}</p>
-                  <p className="text-slate-800 font-medium bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+                  <p className="text-slate-800 font-medium bg-white/70 backdrop-blur-xs p-4 rounded-2xl border border-slate-200/80">
                     {t.studioTaf.storyP3}
                   </p>
                 </div>
               </div>
 
               {/* Metric Pills */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-6 border-t border-slate-100">
-                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-6 border-t border-slate-100/80">
+                <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
                   <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricStart}</div>
                   <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricStartVal}</div>
                 </div>
-                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
                   <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricTaf}</div>
                   <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricTafVal}</div>
                 </div>
-                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
                   <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricComm}</div>
                   <div className="text-xs sm:text-sm font-bold text-purple-700 flex items-center gap-1.5">
                     <span>{liveProjects ? liveProjects.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "6.004"}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                 </div>
-                <div className="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
                   <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricRoster}</div>
                   <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricRosterVal}</div>
                 </div>
@@ -222,7 +221,7 @@ export default function StudioTafSection() {
             </div>
           ) : (
             /* Container 2: Music Era & Studio Discipline */
-            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/90 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/80 shadow-xl flex flex-col justify-between transition-all duration-500 animate-fadeIn">
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold mb-4">
                   <Music2 className="w-3.5 h-3.5" />
@@ -272,7 +271,7 @@ export default function StudioTafSection() {
               </div>
 
               {/* Stat Pill */}
-              <div className="bg-gradient-to-br from-purple-50 to-slate-50 rounded-2xl p-4 sm:p-5 border border-purple-100 mt-6">
+              <div className="bg-white/75 backdrop-blur-xs rounded-2xl p-4 sm:p-5 border border-purple-100/80 mt-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2">
@@ -311,7 +310,7 @@ export default function StudioTafSection() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategoryModal(cat)}
-                className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-purple-300 hover:shadow-md transition-all text-left flex flex-col justify-between group cursor-pointer shadow-2xs"
+                className="p-4 sm:p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-slate-200/90 hover:border-purple-300 hover:shadow-md transition-all text-left flex flex-col justify-between group cursor-pointer shadow-2xs"
               >
                 <div>
                   <div className="mb-2.5 sm:mb-3">{getCategoryIcon(cat.id)}</div>
@@ -353,7 +352,7 @@ export default function StudioTafSection() {
                 </h3>
                 <span className="text-xs text-slate-500">
                   {activeCategoryModal.id === "music"
-                    ? "Reprezentativni izvod iz stotina projekata (1982 – 2026)"
+                    ? `Reprezentativni izvod iz stotina projekata (1982 – ${new Date().getFullYear()})`
                     : `${activeCategoryModal.allItems.length} ${t.studioTaf.referencesInArchive}`}
                 </span>
               </div>
@@ -387,7 +386,7 @@ export default function StudioTafSection() {
                 <strong className="font-semibold block mb-1">
                   Napomena o obuhvatu autorskog i studijskog rada:
                 </strong>
-                Prikazani spisak je samo mali reprezentativni fragment iz četiri decenije rada (1982 – 2026) koji obuhvata stotine muzičara, bendova, nagrađivanih kompozitora klasične muzike, pozorišnih predstava (Narodno i Dječije pozorište RS), filmova i TV serija. U FLUXA ekosistemu, Studio TAF služi kao inženjerski i zanatski temelj i garant posvećenosti i dugovječnosti svakog softverskog rješenja.
+                Prikazani spisak je samo mali reprezentativni fragment iz četiri decenije rada (1982 – {new Date().getFullYear()}) koji obuhvata stotine muzičara, bendova, nagrađivanih kompozitora klasične muzike, pozorišnih predstava (Narodno i Dječije pozorište RS), filmova i TV serija. U FLUXA ekosistemu, Studio TAF služi kao inženjerski i zanatski temelj i garant posvećenosti i dugovječnosti svakog softverskog rješenja.
               </div>
             )}
 

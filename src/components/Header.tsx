@@ -68,9 +68,6 @@ export default function Header({ onOpenLogin, onOpenContact }: HeaderProps) {
               <span className="text-base sm:text-lg font-bold tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">
                 FLUXA<span className="text-sky-600 font-light">.ba</span>
               </span>
-              <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-sky-50 text-sky-700 border border-sky-200">
-                PRO
-              </span>
             </div>
             <span className="text-[9px] sm:text-[10px] text-slate-500 tracking-wider font-medium truncate max-w-[140px] sm:max-w-none">
               Enterprise & Sound Heritage

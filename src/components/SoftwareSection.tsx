@@ -353,7 +353,7 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                 </div>
               </div>
 
-              {/* Framed Application Window Slot with Horizontal Slide Effect (freezes on hover / hold) */}
+              {/* Framed Application Window Slot with Clean Neutral Finish & Single Slide View */}
               <div
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
@@ -361,15 +361,15 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                 onMouseUp={() => setIsPaused(false)}
                 onTouchStart={() => setIsPaused(true)}
                 onTouchEnd={() => setIsPaused(false)}
-                className="rounded-2xl bg-slate-900 text-slate-100 border border-slate-800 shadow-inner overflow-hidden select-none transition-all"
+                className="rounded-2xl bg-slate-50 text-slate-800 border border-slate-300/90 shadow-md overflow-hidden select-none transition-all"
               >
                 {/* Window Title Bar */}
-                <div className="flex items-center justify-between px-3.5 py-2.5 bg-slate-950 border-b border-slate-800 text-[11px] font-mono text-slate-400">
+                <div className="flex items-center justify-between px-3.5 py-2.5 bg-slate-200/80 border-b border-slate-300/80 text-[11px] font-mono text-slate-600">
                   <div className="flex items-center gap-1.5 overflow-hidden">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 shrink-0" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 shrink-0" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 shrink-0" />
-                    <span className="ml-2 font-medium text-slate-300 truncate">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span className="ml-2 font-semibold text-slate-800 truncate">
                       {current.shortName} • {activeSlideData?.title}
                     </span>
                   </div>
@@ -377,84 +377,83 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                     {activeSlideData?.image && (
                       <button
                         onClick={() => setIsLightboxOpen(true)}
-                        className="text-slate-400 hover:text-sky-300 transition-colors p-1 rounded hover:bg-slate-800 cursor-pointer"
+                        className="text-slate-600 hover:text-sky-700 transition-colors p-1 rounded hover:bg-slate-300/70 cursor-pointer"
                         title={t.software.zoomScreenshot}
                       >
-                        <Maximize2 className="w-3 h-3" />
+                        <Maximize2 className="w-3.5 h-3.5" />
                       </button>
                     )}
-                    <span className="text-[10px] text-sky-400 font-bold bg-sky-950 px-2 py-0.5 rounded border border-sky-800">
+                    <span className="text-[10px] text-sky-800 font-bold bg-sky-100 px-2 py-0.5 rounded border border-sky-300">
                       SLIDE {activeSlide + 1}
                     </span>
                   </div>
                 </div>
 
-                {/* Screenshot Display with Smooth Horizontal Slide Effect or Fallback Box */}
+                {/* Screenshot Display: Exactly ONE slide at a time (absolute stacking), neutral slate-100 background */}
                 {current.slides?.length > 0 && current.slides[0]?.image ? (
-                  <div className="relative overflow-hidden aspect-[16/10] bg-slate-950 border-b border-slate-800">
-                    <div
-                      className="flex h-full w-full transition-transform duration-500 ease-out"
-                      style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-                    >
-                      {current.slides.map((s, idx) => (
-                        <div
-                          key={idx}
-                          onClick={() => setIsLightboxOpen(true)}
-                          className="min-w-full h-full relative group cursor-zoom-in flex items-center justify-center bg-slate-950 shrink-0"
-                        >
-                          <img
-                            src={s.image}
-                            alt={s.title}
-                            className="w-full h-full object-contain sm:object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-slate-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                            <span className="px-3.5 py-1.5 rounded-full bg-slate-900/90 text-white text-xs font-semibold backdrop-blur border border-slate-700 shadow-lg flex items-center gap-1.5">
-                              <Maximize2 className="w-3.5 h-3.5 text-sky-400" />
-                              {t.software.zoomScreenshot}
-                            </span>
-                          </div>
+                  <div className="relative overflow-hidden aspect-[16/10] bg-slate-100/90 border-b border-slate-300/80">
+                    {current.slides.map((s, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => setIsLightboxOpen(true)}
+                        className={`absolute inset-0 transition-opacity duration-300 ${
+                          activeSlide === idx
+                            ? "opacity-100 z-10 pointer-events-auto"
+                            : "opacity-0 z-0 pointer-events-none"
+                        } group cursor-zoom-in flex items-center justify-center p-2 sm:p-2.5`}
+                      >
+                        <img
+                          src={s.image}
+                          alt={s.title}
+                          className="max-h-full max-w-full object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                          <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-slate-800 text-xs font-semibold backdrop-blur border border-slate-300 shadow-md flex items-center gap-1.5">
+                            <Maximize2 className="w-3.5 h-3.5 text-sky-600" />
+                            {t.software.zoomScreenshot}
+                          </span>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 ) : (
-                  <div className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden aspect-[16/10] flex flex-col justify-between border-b border-slate-800 p-5 sm:p-6 text-slate-100">
+                  <div className="relative bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 overflow-hidden aspect-[16/10] flex flex-col justify-between border-b border-slate-300/80 p-5 sm:p-6 text-slate-800">
                     <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-800 text-emerald-400 text-[10px] font-bold font-mono uppercase tracking-wider">
+                      <span className="px-2.5 py-1 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 text-[10px] font-bold font-mono uppercase tracking-wider">
                         Hardware as a Service
                       </span>
-                      <span className="text-[10px] font-mono text-slate-400">
+                      <span className="text-[10px] font-mono text-slate-500 font-semibold">
                         OPEX MODEL
                       </span>
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 my-auto py-2">
-                      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-center">
-                        <div className="text-base sm:text-lg font-bold text-emerald-400 font-mono">0 KM</div>
-                        <div className="text-[10px] text-slate-400 leading-tight mt-0.5">
+                      <div className="bg-white border border-slate-200/90 rounded-xl p-2.5 text-center shadow-xs">
+                        <div className="text-base sm:text-lg font-bold text-emerald-700 font-mono">0 KM</div>
+                        <div className="text-[10px] text-slate-500 leading-tight mt-0.5">
                           {lang === "sr" ? "Početno ulaganje" : "Zero Capex"}
                         </div>
                       </div>
-                      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-center">
-                        <div className="text-base sm:text-lg font-bold text-sky-400 font-mono">24/7</div>
-                        <div className="text-[10px] text-slate-400 leading-tight mt-0.5">
+                      <div className="bg-white border border-slate-200/90 rounded-xl p-2.5 text-center shadow-xs">
+                        <div className="text-base sm:text-lg font-bold text-sky-700 font-mono">24/7</div>
+                        <div className="text-[10px] text-slate-500 leading-tight mt-0.5">
                           {lang === "sr" ? "SLA zamjena" : "SLA On-Site"}
                         </div>
                       </div>
-                      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-center">
-                        <div className="text-base sm:text-lg font-bold text-purple-400 font-mono">100%</div>
-                        <div className="text-[10px] text-slate-400 leading-tight mt-0.5">
+                      <div className="bg-white border border-slate-200/90 rounded-xl p-2.5 text-center shadow-xs">
+                        <div className="text-base sm:text-lg font-bold text-purple-700 font-mono">100%</div>
+                        <div className="text-[10px] text-slate-500 leading-tight mt-0.5">
                           {lang === "sr" ? "Priznat trošak" : "Tax Deductible"}
                         </div>
                       </div>
                     </div>
 
-                    <div className="text-[11px] font-mono text-slate-400 flex items-center justify-between border-t border-slate-800/80 pt-2">
-                      <span className="text-slate-300 font-medium truncate pr-2">
+                    <div className="text-[11px] font-mono text-slate-600 flex items-center justify-between border-t border-slate-200 pt-2">
+                      <span className="text-slate-800 font-medium truncate pr-2">
                         {activeSlideData?.title}
                       </span>
-                      <span className="text-emerald-400 text-[10px] font-semibold shrink-0">
+                      <span className="text-emerald-700 text-[10px] font-semibold shrink-0">
                         ● {lang === "sr" ? "Aktivan" : "Active"}
                       </span>
                     </div>
@@ -462,24 +461,24 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                 )}
 
                 {/* Horizontal Slide Info Details */}
-                <div className="p-4 sm:p-5 font-mono text-xs space-y-3 min-h-[140px] flex flex-col justify-between transition-all duration-300">
+                <div className="p-4 sm:p-5 font-mono text-xs space-y-3 min-h-[140px] flex flex-col justify-between transition-all duration-300 bg-slate-50">
                   <div>
-                    <div className="text-sm font-bold text-white mb-1">
+                    <div className="text-sm font-bold text-slate-900 mb-1">
                       {activeSlideData?.title}
                     </div>
-                    <div className="text-xs text-slate-400 leading-relaxed font-sans font-normal">
+                    <div className="text-xs text-slate-600 leading-relaxed font-sans font-normal">
                       {activeSlideData?.note}
                     </div>
                   </div>
 
-                  <div className="pt-2.5 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 bg-slate-950/70 p-2.5 rounded-xl">
+                  <div className="pt-2.5 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-600 bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
                     <span className="flex items-center gap-2">
                       {activeSlideData?.image ? (
-                        <ImageIcon className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                        <ImageIcon className="w-3.5 h-3.5 text-sky-600 shrink-0" />
                       ) : (
-                        <Boxes className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <Boxes className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                       )}
-                      <span className="text-slate-300 font-sans font-medium">
+                      <span className="text-slate-700 font-sans font-medium">
                         {current.id === "haas"
                           ? lang === "sr"
                             ? `Stub Modela #${activeSlide + 1}`
@@ -488,13 +487,13 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                       </span>
                     </span>
                     {isPaused ? (
-                      <span className="text-[10px] text-amber-400 font-mono font-semibold flex items-center gap-1.5 animate-pulse">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                      <span className="text-[10px] text-amber-700 font-mono font-semibold flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                         {lang === "sr" ? "Pauzirano za pregled" : "Paused for inspection"}
                       </span>
                     ) : (
-                      <span className="text-[10px] text-emerald-400 font-mono font-semibold flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span className="text-[10px] text-emerald-700 font-mono font-semibold flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                         {t.software.autoScroll}
                       </span>
                     )}
@@ -503,15 +502,15 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
 
                 {/* Dynamic Bottom Slide Progress Bars */}
                 <div
-                  className="grid gap-1 p-2 bg-slate-950/90 border-t border-slate-800"
+                  className="grid gap-1 p-2 bg-slate-100 border-t border-slate-200"
                   style={{ gridTemplateColumns: `repeat(${totalSlides}, minmax(0, 1fr))` }}
                 >
                   {Array.from({ length: totalSlides }).map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveSlide(idx)}
-                      className={`h-1 rounded-full transition-all cursor-pointer ${
-                        activeSlide === idx ? "bg-sky-400" : "bg-slate-700 hover:bg-slate-600"
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                        activeSlide === idx ? "bg-sky-600" : "bg-slate-300 hover:bg-slate-400"
                       }`}
                       title={`Slide ${idx + 1}`}
                     />
@@ -562,30 +561,30 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
         </div>
       </div>
 
-      {/* Lightbox Modal for Full-Resolution Screenshot Zoom */}
+      {/* Lightbox Modal for Full-Resolution Screenshot Zoom with Neutral Glass Finish */}
       {isLightboxOpen && activeSlideData?.image && (
         <div
-          className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 md:p-8 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 md:p-8 animate-fadeIn"
           onClick={(e) => {
             if (e.target === e.currentTarget) setIsLightboxOpen(false);
           }}
         >
           {/* Modal Header */}
-          <div className="flex items-center justify-between text-white max-w-7xl w-full mx-auto pb-3 border-b border-slate-800">
+          <div className="flex items-center justify-between text-slate-800 bg-white/95 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3 border border-slate-200/90 shadow-lg max-w-7xl w-full mx-auto">
             <div className="flex items-center gap-2 sm:gap-3">
               <span className="px-2.5 py-1 rounded-lg bg-sky-600 text-white text-xs font-bold font-mono">
                 {current.shortName}
               </span>
-              <h4 className="text-sm sm:text-base font-semibold truncate text-slate-200">
+              <h4 className="text-sm sm:text-base font-bold truncate text-slate-900">
                 {activeSlideData?.title}
               </h4>
-              <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+              <span className="text-xs text-slate-500 font-mono hidden sm:inline">
                 ({activeSlide + 1} / {totalSlides})
               </span>
             </div>
             <button
               onClick={() => setIsLightboxOpen(false)}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
+              className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-bold"
               title={t.software.closeZoom}
             >
               <span className="hidden sm:inline">{t.software.closeZoom}</span>
@@ -598,7 +597,7 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
             {totalSlides > 1 && (
               <button
                 onClick={prevSlide}
-                className="absolute left-2 sm:left-4 z-10 p-2.5 sm:p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white backdrop-blur border border-slate-700 shadow-xl transition-all cursor-pointer hover:scale-105"
+                className="absolute left-2 sm:left-4 z-10 p-2.5 sm:p-3 rounded-full bg-white/95 hover:bg-white text-slate-800 backdrop-blur border border-slate-200 shadow-xl transition-all cursor-pointer hover:scale-105"
                 title={t.software.prevSlide}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -608,13 +607,13 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
             <img
               src={activeSlideData.image}
               alt={activeSlideData.title}
-              className="max-h-[78vh] max-w-full object-contain rounded-xl shadow-2xl border border-slate-800"
+              className="max-h-[78vh] max-w-full object-contain rounded-2xl shadow-2xl border border-slate-200 bg-white p-1"
             />
 
             {totalSlides > 1 && (
               <button
                 onClick={nextSlide}
-                className="absolute right-2 sm:right-4 z-10 p-2.5 sm:p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white backdrop-blur border border-slate-700 shadow-xl transition-all cursor-pointer hover:scale-105"
+                className="absolute right-2 sm:right-4 z-10 p-2.5 sm:p-3 rounded-full bg-white/95 hover:bg-white text-slate-800 backdrop-blur border border-slate-200 shadow-xl transition-all cursor-pointer hover:scale-105"
                 title={t.software.nextSlide}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -624,7 +623,7 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
 
           {/* Modal Bottom Description & Indicators */}
           <div className="max-w-4xl w-full mx-auto text-center space-y-2">
-            <p className="text-xs sm:text-sm text-slate-300 bg-slate-900/80 px-4 py-2 rounded-xl border border-slate-800 inline-block">
+            <p className="text-xs sm:text-sm text-slate-800 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-slate-200/90 shadow-lg inline-block font-medium">
               {activeSlideData?.note}
             </p>
             {totalSlides > 1 && (
@@ -634,7 +633,7 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
                     key={idx}
                     onClick={() => setActiveSlide(idx)}
                     className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                      activeSlide === idx ? "w-6 bg-sky-400" : "w-2 bg-slate-700 hover:bg-slate-500"
+                      activeSlide === idx ? "w-6 bg-sky-600" : "w-2 bg-white/70 hover:bg-white shadow-xs"
                     }`}
                   />
                 ))}

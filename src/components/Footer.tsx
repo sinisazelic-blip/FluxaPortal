@@ -2,14 +2,11 @@
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { MapPin, Mail, ArrowUp } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 
 export default function Footer() {
   const { t } = useLanguage();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const scrollTo = (id: string) => {
     const elem = document.getElementById(id);
@@ -141,17 +138,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3.5 text-xs text-sky-300/80">
           <div className="text-center sm:text-left">
-            © 2006 – 2026 <span className="font-semibold text-white">Fluxa.ba & Studio TAF</span>. {t.footer.allRightsReserved}
+            © 2006 – {new Date().getFullYear()} <span className="font-semibold text-white">Fluxa.ba & Studio TAF</span>. {t.footer.allRightsReserved}
           </div>
           <div className="flex items-center gap-4 sm:gap-5">
             <span className="text-[11px] sm:text-xs">{t.footer.craftsmanship}</span>
-            <button
-              onClick={scrollToTop}
-              className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors cursor-pointer"
-              title={t.footer.backToTop}
-            >
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
       </div>

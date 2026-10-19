@@ -1,5 +1,7 @@
 export type Language = "sr" | "en";
 
+export const CURRENT_YEAR = new Date().getFullYear();
+
 export interface SlideItem {
   title: string;
   note: string;
@@ -342,8 +344,8 @@ export const translations: Record<Language, Translations> = {
       tenantLogin: "Prijava Klijenta",
     },
     hero: {
-      continuityBadge: "Četiri decenije inženjeringa i kontinuiteta • 1982 – 2026",
-      title1: "Inženjerska rješenja i",
+      continuityBadge: `Četiri decenije kontinuiteta • 1982 – ${CURRENT_YEAR}`,
+      title1: "Poslovna rješenja i",
       titleHighlight: "tehnologija iza Vašeg",
       title2: "poslovanja.",
       subtitle:
@@ -384,7 +386,7 @@ export const translations: Record<Language, Translations> = {
       },
       card4: {
         badge: "04 • Četiri decenije zvuka & borilišta",
-        title: "Studio TAF & SOCCS Mjerenja",
+        title: "Audio produkcija & SOCCS",
         desc: "Preko 6.000 realizovanih komercijalnih audio projekata, 20 godina kontinuiteta Studio TAF-a i 15+ godina specijalizovanog vođenja SwissTiming borilišta na međunarodnim takmičenjima.",
         numberLabel: "komercijalna projekta",
       },
@@ -861,7 +863,7 @@ export const translations: Record<Language, Translations> = {
         renewal: "Instant QR Produženje",
         updates: "Update Centar",
       },
-      craftsmanship: "Zanatstvo • Inženjering • Zvuk",
+      craftsmanship: "Poslovna rješenja • Zvuk",
       backToTop: "Nazad na vrh",
     },
   },
@@ -875,8 +877,8 @@ export const translations: Record<Language, Translations> = {
       tenantLogin: "Client Login",
     },
     hero: {
-      continuityBadge: "Four decades of engineering and continuity • 1982 – 2026",
-      title1: "Engineering solutions and",
+      continuityBadge: `Four decades of continuity • 1982 – ${CURRENT_YEAR}`,
+      title1: "Business solutions and",
       titleHighlight: "technology powering your",
       title2: "business operations.",
       subtitle:
@@ -917,7 +919,7 @@ export const translations: Record<Language, Translations> = {
       },
       card4: {
         badge: "04 • Four decades of sound & arena timing",
-        title: "Studio TAF & SOCCS Timing",
+        title: "Audio Production & SOCCS",
         desc: "Over 6,000 completed commercial audio projects, 20 years of Studio TAF continuity, and 15+ years of specialized SwissTiming arena operations at international championships.",
         numberLabel: "commercial projects",
       },
@@ -1394,7 +1396,7 @@ export const translations: Record<Language, Translations> = {
         renewal: "Instant QR Renewal",
         updates: "Update Center",
       },
-      craftsmanship: "Craftsmanship • Engineering • Sound",
+      craftsmanship: "Business Solutions • Sound",
       backToTop: "Back to top",
     },
   },
