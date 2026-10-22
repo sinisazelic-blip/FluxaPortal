@@ -20,16 +20,18 @@ import {
   Image as ImageIcon,
   Maximize2,
   X,
+  Radio,
 } from "lucide-react";
 
 interface SoftwareSectionProps {
   onOpenContact?: (service?: string) => void;
+  onOpenFluxaxShowcase?: () => void;
 }
 
-export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps) {
+export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }: SoftwareSectionProps) {
   const { t, lang } = useLanguage();
   const [activeTab, setActiveTab] = useState<
-    "pos" | "fluxar" | "dokumentart" | "entersys" | "fluxa" | "soccs" | "haas"
+    "pos" | "fluxar" | "dokumentart" | "entersys" | "fluxa" | "soccs" | "haas" | "fluxax"
   >("pos");
   const [activeSlide, setActiveSlide] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -45,6 +47,16 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
       data: t.software.modules.pos,
       accent: "text-sky-600",
       slides: t.software.moduleSlides.pos,
+    },
+    {
+      id: "fluxax" as const,
+      icon: Radio,
+      shortName: "FluxaX Audio",
+      name: t.software.modules.fluxax.name,
+      tagline: t.software.modules.fluxax.tagline,
+      data: t.software.modules.fluxax,
+      accent: "text-amber-500",
+      slides: t.software.moduleSlides.fluxax,
     },
     {
       id: "fluxar" as const,
@@ -541,6 +553,17 @@ export default function SoftwareSection({ onOpenContact }: SoftwareSectionProps)
 
             {/* Action Buttons */}
             <div className="mt-5 pt-4 border-t border-slate-100 space-y-2">
+              {current.id === "fluxax" && (
+                <button
+                  onClick={() => onOpenFluxaxShowcase && onOpenFluxaxShowcase()}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 hover:from-amber-400 hover:to-amber-600 text-slate-950 font-extrabold text-xs shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition-all cursor-pointer mb-2"
+                >
+                  <Radio className="w-4 h-4 text-slate-950 animate-pulse" />
+                  <span>{lang === "sr" ? "Otvori Poseban FluxaX Prikaz (Studio & Klijent)" : "Open Dedicated FluxaX Showcase"}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
+
               <button
                 onClick={() => onOpenContact && onOpenContact(current.id)}
                 className="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer"

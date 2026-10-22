@@ -14,12 +14,14 @@ import LoginModal from "@/components/LoginModal";
 import TenantDashboardModal from "@/components/TenantDashboardModal";
 import SectionNavigator from "@/components/SectionNavigator";
 import ScrollToTop from "@/components/ScrollToTop";
+import FluxaxShowcaseModal from "@/components/FluxaxShowcaseModal";
 
 export default function Home() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("fluxa");
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [dashboardModalOpen, setDashboardModalOpen] = useState(false);
+  const [fluxaxModalOpen, setFluxaxModalOpen] = useState(false);
   const [activeTenantIdentifier, setActiveTenantIdentifier] = useState("");
 
   const handleOpenContact = (service?: string) => {
@@ -50,7 +52,10 @@ export default function Home() {
       <PillarsSection />
 
       {/* Pillar 2: Software & Hardware Solutions */}
-      <SoftwareSection onOpenContact={handleOpenContact} />
+      <SoftwareSection
+        onOpenContact={handleOpenContact}
+        onOpenFluxaxShowcase={() => setFluxaxModalOpen(true)}
+      />
 
       {/* Pillar 1: Studio TAF Heritage & References */}
       <StudioTafSection />
@@ -74,6 +79,11 @@ export default function Home() {
       <Footer />
 
       {/* Interactive Modals */}
+      <FluxaxShowcaseModal
+        isOpen={fluxaxModalOpen}
+        onClose={() => setFluxaxModalOpen(false)}
+        onOpenContact={() => handleOpenContact("fluxax")}
+      />
       <ContactModal
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}

@@ -88,6 +88,7 @@ export interface Translations {
       dokumentart: string;
       entersys: string;
       fluxa: string;
+      fluxax: string;
     };
     modelTexts: {
       haas: string;
@@ -97,6 +98,7 @@ export interface Translations {
       dokumentart: string;
       entersys: string;
       fluxa: string;
+      fluxax: string;
     };
     moduleSlides: {
       pos: SlideItem[];
@@ -106,6 +108,7 @@ export interface Translations {
       fluxa: SlideItem[];
       soccs: SlideItem[];
       haas: SlideItem[];
+      fluxax: SlideItem[];
     };
     modules: {
       haas: {
@@ -163,6 +166,15 @@ export interface Translations {
         features: string[];
       };
       dokumentart: {
+        name: string;
+        tagline: string;
+        problem: string;
+        solution: string;
+        benefit: string;
+        description: string;
+        features: string[];
+      };
+      fluxax: {
         name: string;
         tagline: string;
         problem: string;
@@ -417,6 +429,7 @@ export const translations: Record<Language, Translations> = {
         dokumentart: "DMS & Kripto Potpis:",
         entersys: "Kontrola Objekata:",
         fluxa: "Pouzdanost Sistema:",
+        fluxax: "Ultra-Low Latency Audio:",
       },
       modelTexts: {
         haas: "Ne kupujete opremu niti brinete o kvarovima. Isporučujemo hardver, montiramo i održavamo uz mjesečni zakup.",
@@ -426,6 +439,7 @@ export const translations: Record<Language, Translations> = {
         entersys: "Povezivanje mrežnih tripoda, bazena, dvorana i ormarića u jedan pregledan menadžerski centar.",
         dokumentart: "Objedinjeni dokument centar, sjednice NO/Skupštine, javne nabavke i dvofaktorski kripto potpis sa pravom opoziva.",
         fluxa: "Pregledno finansijsko upravljanje, cashflow likvidnost i automatsko rasknjižavanje.",
+        fluxax: "Profesionalni broadcast audio sistem i P2P WebRTC pult za daljinsko vođenje i režiju spikera sa 18ms latencije.",
       },
       moduleSlides: {
         pos: [
@@ -569,6 +583,18 @@ export const translations: Record<Language, Translations> = {
             note: "Jedinstvena mjesečna naknada koja objedinjuje opremu, softverske licence, podršku i nadogradnje — 100% poreski priznat trošak.",
           },
         ],
+        fluxax: [
+          {
+            title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
+            note: "Vintage analogni režijski procesor sa nativnom RME TotalMix OSC integracijom, Zero-Bleed DSP matricom i digitalnim internim busom.",
+            image: "/photo/FluxaX/fluxax-bridge.png",
+          },
+          {
+            title: "FluxaX Client HUB (Chris Lord-Alge Rack Konzola)",
+            note: "Autentični retro pult za agencije i klijente sa stereo LED VU metrima, dvosmjernim Talkback mikrofonom i biranjem tejkova uživo.",
+            image: "/photo/FluxaX/fluxax-clienthub.png",
+          },
+        ],
       },
       modules: {
         haas: {
@@ -683,6 +709,24 @@ export const translations: Record<Language, Translations> = {
             "Dvofaktorski digitalni potpis: mobilna push notifikacija i autorizacija biometrijom ili PIN-om",
             "Kriptografski SHA-256 heš i QR verifikacioni kod za trenutnu provjeru autentičnosti",
             "Pravo opoziva i uvid: ovlašćeno lice u realnom vremenu prati i po potrebi opoziva potpis",
+          ],
+        },
+        fluxax: {
+          name: "FluxaX StudioBridge & Client HUB",
+          tagline: "Ultra-Low Latency Broadcast Audio & P2P WebRTC Remote Studio HUB",
+          problem: "Naručioci i agencije gube sate na putovanje u studio ili koriste video-konferencijske pozive koji nepovratno degradiraju zvuk i unose kašnjenje.",
+          solution: "Namjenska broadcast platforma: StudioBridge u režiji (RME TotalMix OSC) i Client HUB u pretraživaču klijenta sa 18ms latencije i 48kHz 24-bit Opus audiom.",
+          benefit: "Klijent sa bilo koje lokacije u svijetu sluša sirov studio zvuk u punom kvalitetu, direktno komunicira sa spikerom i režijom i bira tejkove.",
+          description:
+            "Profesionalni broadcast ekosistem koji spaja legendarni CLA analogni osjećaj sa P2P WebRTC tehnologijom ultra-niske latencije bez potrebe za instalacijom programa kod klijenta.",
+          features: [
+            "StudioBridge: nativna RME TotalMix FX kontrola preko OSC protokola (UDP 7001)",
+            "Client HUB: CLA vintage analogni pult sa stereo LED VU metrima i slušalicama",
+            "Ultra-niska latencija (18ms) i 48.000 Hz 24-bit nekomprimovani stereo Opus stream",
+            "Zero-Bleed DSP matrica: nema mikrofonije niti povratnog odjeka sopstvenog glasa",
+            "Nezavisni Talkback kanali za režiju i klijenta sa automatskim Auto-Duck stišavanjem matrice",
+            "Interaktivni scenario: praćenje teksta i glasanje za najbolje tejkove (★) u realnom vremenu",
+            "Direktna distribucija i arhiviranje master fajlova kroz licencirani Fluxa Cloud portal",
           ],
         },
       },
@@ -950,6 +994,7 @@ export const translations: Record<Language, Translations> = {
         dokumentart: "DMS & Crypto Signature:",
         entersys: "Facility Control:",
         fluxa: "System Reliability:",
+        fluxax: "Ultra-Low Latency Audio:",
       },
       modelTexts: {
         haas: "No upfront equipment purchases or repair worries. We supply hardware, install it, and provide ongoing maintenance on a monthly lease.",
@@ -959,6 +1004,7 @@ export const translations: Record<Language, Translations> = {
         entersys: "Unified management connecting network turnstiles, pools, arenas, and RFID smart lockers into one center.",
         dokumentart: "Unified document registry, Board/Assembly governance, public tenders, and 2FA digital signing with revocation rights.",
         fluxa: "Clear financial management, predictive cashflow liquidity, and automated ledger matching.",
+        fluxax: "Enterprise broadcast audio engine and P2P WebRTC portal for remote talent recording and voiceover direction with 18ms latency.",
       },
       moduleSlides: {
         pos: [
@@ -1102,6 +1148,18 @@ export const translations: Record<Language, Translations> = {
             note: "A single monthly operational fee covering hardware, software licenses, updates, and engineering support — 100% tax deductible.",
           },
         ],
+        fluxax: [
+          {
+            title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
+            note: "Vintage analog director audio processor featuring native RME TotalMix OSC integration, Zero-Bleed DSP summing matrix, and lossless 48kHz audio streaming.",
+            image: "/photo/FluxaX/fluxax-bridge.png",
+          },
+          {
+            title: "FluxaX Client HUB (Chris Lord-Alge Rack Console)",
+            note: "Authentic retro studio console for agencies and clients with dual stereo LED VU meters, two-way Talkback microphone, and live take voting.",
+            image: "/photo/FluxaX/fluxax-clienthub.png",
+          },
+        ],
       },
       modules: {
         haas: {
@@ -1216,6 +1274,24 @@ export const translations: Record<Language, Translations> = {
             "Two-factor digital signature: instant mobile push notification and biometric/PIN authorization",
             "SHA-256 cryptographic hash and QR code for instant authenticity verification anywhere",
             "Delegated signing control: executive leadership monitors delegate signatures in real-time with revocation rights",
+          ],
+        },
+        fluxax: {
+          name: "FluxaX StudioBridge & Client HUB",
+          tagline: "Ultra-Low Latency Broadcast Audio & P2P WebRTC Remote Studio HUB",
+          problem: "Agencies and production teams waste hours commuting to studios or rely on consumer meeting tools (Zoom/Meet) that compress audio, introduce severe lag, and cause echo.",
+          solution: "Dedicated studio broadcast architecture: StudioBridge in the control room (RME TotalMix OSC) and Client HUB in the client's browser running 18ms ultra-low latency 48kHz 24-bit Opus audio.",
+          benefit: "Clients and producers anywhere in the world listen to raw studio audio in full fidelity, direct voice actors in real-time, and star final takes effortlessly.",
+          description:
+            "A professional remote broadcast studio ecosystem bridging legendary CLA analog hardware ergonomics with ultra-low-latency P2P WebRTC zero-install web streaming.",
+          features: [
+            "StudioBridge: native RME TotalMix FX hardware control via OSC protocol (UDP 7001)",
+            "Client HUB: CLA vintage analog rack console with precision LED VU meters and headphone controls",
+            "Ultra-low latency (18ms) with uncompressed 48,000 Hz 24-bit stereo Opus audio streaming",
+            "Zero-Bleed DSP architecture: complete feedback isolation so clients never hear delayed echoes of themselves",
+            "Independent Talkback channels for director, agency, and talent with intelligent Auto-Duck music attenuation",
+            "Live scenario workspace: synchronized script view with real-time take rating (★)",
+            "Seamless asset delivery and archival through the integrated Fluxa Cloud tenant portal",
           ],
         },
       },
