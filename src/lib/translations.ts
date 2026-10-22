@@ -587,12 +587,27 @@ export const translations: Record<Language, Translations> = {
           {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
             note: "Vintage analogni režijski procesor sa nativnom RME TotalMix OSC integracijom, Zero-Bleed DSP matricom i digitalnim internim busom.",
-            image: "/photo/FluxaX/fluxax-bridge.png",
+            image: "/photo/StudioBridge/StudioBridge UI.png",
           },
           {
             title: "FluxaX Client HUB (Chris Lord-Alge Rack Konzola)",
             note: "Autentični retro pult za agencije i klijente sa stereo LED VU metrima, dvosmjernim Talkback mikrofonom i biranjem tejkova uživo.",
-            image: "/photo/FluxaX/fluxax-clienthub.png",
+            image: "/photo/ClientHUB/ClientHUB guest.png",
+          },
+          {
+            title: "FluxaX Client HUB (Studio Režijska Kontrola)",
+            note: "Puni režijski pult za praćenje sesije, komunikaciju sa glumačkom sobom, zvučnicima i klijentima.",
+            image: "/photo/ClientHUB/ClientHUB studio.png",
+          },
+          {
+            title: "StudioBridge Hardverski Ruter & Dijagnostika",
+            note: "Hardverski skener zvučnih kartica, automatsko prepoznavanje RME uređaja i mapiranje ulazno/izlaznih kanala.",
+            image: "/photo/StudioBridge/StudioBridge HW scaner.png",
+          },
+          {
+            title: "StudioBridge Napredna Podešavanja & Cloud Sinkronizacija",
+            note: "Konfiguracija osc UDP portova, IP adresa, auto-start servisa i automatska sinhronizacija sesija sa klijentima.",
+            image: "/photo/StudioBridge/StudioBridge settings.png",
           },
         ],
       },
@@ -1152,12 +1167,27 @@ export const translations: Record<Language, Translations> = {
           {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
             note: "Vintage analog director audio processor featuring native RME TotalMix OSC integration, Zero-Bleed DSP summing matrix, and lossless 48kHz audio streaming.",
-            image: "/photo/FluxaX/fluxax-bridge.png",
+            image: "/photo/StudioBridge/StudioBridge UI.png",
           },
           {
             title: "FluxaX Client HUB (Chris Lord-Alge Rack Console)",
             note: "Authentic retro studio console for agencies and clients with dual stereo LED VU meters, two-way Talkback microphone, and live take voting.",
-            image: "/photo/FluxaX/fluxax-clienthub.png",
+            image: "/photo/ClientHUB/ClientHUB guest.png",
+          },
+          {
+            title: "FluxaX Client HUB (Director Studio Console)",
+            note: "Master control deck for monitoring sessions, communication with voiceover talent booth, and client coordination.",
+            image: "/photo/ClientHUB/ClientHUB studio.png",
+          },
+          {
+            title: "StudioBridge Hardware Router & Diagnostics",
+            note: "Hardware sound card scanner, automatic RME hardware detection, and input/output routing channel matrix.",
+            image: "/photo/StudioBridge/StudioBridge HW scaner.png",
+          },
+          {
+            title: "StudioBridge Advanced Settings & Cloud Sync",
+            note: "OSC UDP ports, IP network configuration, auto-start services, and automated session synchronization with clients.",
+            image: "/photo/StudioBridge/StudioBridge settings.png",
           },
         ],
       },

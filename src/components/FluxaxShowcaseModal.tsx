@@ -221,15 +221,22 @@ export default function FluxaxShowcaseModal({
                   Za razliku od amaterskih streaming rješenja, <strong>StudioBridge</strong> ne koristi virtuelne drajvere niti Windows mikser. Povezan je direktno na RME TotalMix digitalni mikser putem <strong>OSC (Open Sound Control)</strong> protokola preko internog UDP socketa. 
                 </p>
 
-                {/* Screenshot Placeholder Slot */}
-                <div className="rounded-xl overflow-hidden border border-slate-800 bg-[#090b0e] p-8 text-center relative">
-                  <div className="text-amber-400/80 mb-2 font-mono text-xs font-bold flex items-center justify-center gap-2">
-                    <Radio className="w-4 h-4 animate-pulse" />
-                    <span>FOTOGRAFIJA APLIKACIJE: STUDIOBRIDGE CONSOLE</span>
+                {/* Screenshot Display */}
+                <div className="rounded-2xl overflow-hidden border border-slate-700/80 bg-[#090b0e] p-2 sm:p-4 shadow-xl">
+                  <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800 text-[11px] font-mono text-amber-400 font-bold mb-3">
+                    <span className="flex items-center gap-2">
+                      <Radio className="w-3.5 h-3.5 animate-pulse" />
+                      <span>STUDIOBRIDGE CONSOLE (VINTAGE ANALOG RACK)</span>
+                    </span>
+                    <span className="text-slate-400">TotalMix OSC Control</span>
                   </div>
-                  <p className="text-xs text-slate-400 max-w-md mx-auto">
-                    Kompaktni fiksni 620px prozor sa CLA zakrivljenim tamno-crvenim krovom, Fender kromiranim logotipom, matrix audio ruterom i OSC statusom.
-                  </p>
+                  <div className="rounded-xl overflow-hidden bg-black/60 flex items-center justify-center">
+                    <img
+                      src="/photo/StudioBridge/StudioBridge UI.png"
+                      alt="FluxaX StudioBridge Console"
+                      className="w-full max-h-[380px] object-contain rounded-lg"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
@@ -271,15 +278,22 @@ export default function FluxaxShowcaseModal({
                   Klijent ne mora instalirati nikakve programe niti podešavati audio drajvere. Dobija enkriptovani link za svoju sesiju, stavlja slušalice i ima potpunu kontrolu nad slušanjem spikera i matrice.
                 </p>
 
-                {/* Screenshot Placeholder Slot */}
-                <div className="rounded-xl overflow-hidden border border-slate-800 bg-[#090b0e] p-8 text-center relative">
-                  <div className="text-teal-400/80 mb-2 font-mono text-xs font-bold flex items-center justify-center gap-2">
-                    <Radio className="w-4 h-4 animate-pulse" />
-                    <span>FOTOGRAFIJA APLIKACIJE: CLIENT HUB CLA CONSOLE</span>
+                {/* Screenshot Display */}
+                <div className="rounded-2xl overflow-hidden border border-slate-700/80 bg-[#090b0e] p-2 sm:p-4 shadow-xl">
+                  <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800 text-[11px] font-mono text-teal-400 font-bold mb-3">
+                    <span className="flex items-center gap-2">
+                      <Radio className="w-3.5 h-3.5 animate-pulse" />
+                      <span>CLIENT HUB (CHRIS LORD-ALGE ANALOG RACK)</span>
+                    </span>
+                    <span className="text-slate-400">Zero-Install Web</span>
                   </div>
-                  <p className="text-xs text-slate-400 max-w-md mx-auto">
-                    Dvostruki stereo LED VU metri vezani na stvarni audio signal iz režije, klizač za slušalice, osjetljivost mikrofona i tasteri za Talkback i Auto-Duck.
-                  </p>
+                  <div className="rounded-xl overflow-hidden bg-black/60 flex items-center justify-center">
+                    <img
+                      src="/photo/ClientHUB/ClientHUB guest.png"
+                      alt="FluxaX Client HUB Console"
+                      className="w-full max-h-[380px] object-contain rounded-lg"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
