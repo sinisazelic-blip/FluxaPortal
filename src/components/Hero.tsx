@@ -115,25 +115,6 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
                   godina SwissTiming
                 </div>
               </div>
-
-              <div className="shrink-0">
-                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-1.5 whitespace-nowrap">
-                  <span>99.98%</span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                </div>
-                <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
-                  SLA dostupnost
-                </div>
-              </div>
-
-              <div className="shrink-0">
-                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
-                  5
-                </div>
-                <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
-                  ključnih platformi
-                </div>
-              </div>
             </div>
           </div>
         </div>

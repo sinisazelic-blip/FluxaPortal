@@ -15,6 +15,7 @@ import TenantDashboardModal from "@/components/TenantDashboardModal";
 import SectionNavigator from "@/components/SectionNavigator";
 import ScrollToTop from "@/components/ScrollToTop";
 import FluxaxShowcaseModal from "@/components/FluxaxShowcaseModal";
+import ProductDetailModal, { ProductType } from "@/components/ProductDetailModal";
 
 export default function Home() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function Home() {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [dashboardModalOpen, setDashboardModalOpen] = useState(false);
   const [fluxaxModalOpen, setFluxaxModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
   const [activeTenantIdentifier, setActiveTenantIdentifier] = useState("");
 
   const handleOpenContact = (service?: string) => {
@@ -49,7 +51,7 @@ export default function Home() {
       />
 
       {/* 3 Pillars Overview */}
-      <PillarsSection />
+      <PillarsSection onSelectProduct={(p) => setSelectedProduct(p)} />
 
       {/* Pillar 2: Software & Hardware Solutions */}
       <SoftwareSection
@@ -79,6 +81,12 @@ export default function Home() {
       <Footer />
 
       {/* Interactive Modals */}
+      <ProductDetailModal
+        product={selectedProduct}
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        onOpenContact={(svc) => handleOpenContact(svc)}
+      />
       <FluxaxShowcaseModal
         isOpen={fluxaxModalOpen}
         onClose={() => setFluxaxModalOpen(false)}

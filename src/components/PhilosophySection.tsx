@@ -103,73 +103,18 @@ export default function PhilosophySection() {
           </div>
         </div>
 
-        {/* Read More Button */}
-        <div className="flex justify-center mb-10 sm:mb-12">
-          <button
-            onClick={() => setModalOpen(true)}
-            className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-800 font-semibold text-xs border border-slate-300 shadow-xs flex items-center gap-2 transition-all cursor-pointer"
-          >
-            <BookOpen className="w-4 h-4 text-emerald-700" />
-            <span>{t.philosophy.readMoreBtn}</span>
-          </button>
-        </div>
-
-        {/* Founder Wisdom Card */}
+        {/* Founder Wisdom Card - Moto Grupacije */}
         <div className="max-w-3xl mx-auto rounded-3xl bg-gradient-to-br from-white via-slate-50 to-sky-50/70 text-slate-900 p-6 sm:p-8 md:p-11 text-center border border-slate-200/90 shadow-lg relative overflow-hidden">
           <Quote className="w-7 h-7 sm:w-8 sm:h-8 mx-auto text-sky-500/40 mb-3 sm:mb-4" />
           <p className="text-sm sm:text-base md:text-xl font-light leading-relaxed mb-5 sm:mb-6 text-slate-800 italic">
-            {t.philosophy.morningJoy}
+            „Najveći mir i zadovoljstvo donosi pošteno završen posao i svijest da smo napravili alat koji nekome olakšava svaki radni dan.”
           </p>
-          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>{t.philosophy.founderTitle}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-sky-600" />
+            <span>Fluxa Group</span>
           </div>
         </div>
       </div>
-
-      {/* Full Story Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-2xl rounded-3xl p-6 sm:p-8 bg-white border border-slate-200 shadow-2xl relative max-h-[85vh] overflow-y-auto text-slate-900">
-            <button
-              onClick={() => setModalOpen(false)}
-              className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 cursor-pointer transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center border border-emerald-100">
-                <BookOpen className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900">
-                  {t.philosophy.modalTitle}
-                </h3>
-                <span className="text-xs text-slate-500">{t.philosophy.modalSubtitle}</span>
-              </div>
-            </div>
-
-            <div className="space-y-4 text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed">
-              <p>{t.philosophy.fullStoryP1}</p>
-              <p>{t.philosophy.fullStoryP2}</p>
-              <p>{t.philosophy.fullStoryP3}</p>
-              <p className="font-medium text-slate-900 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                {t.philosophy.fullStoryP4}
-              </p>
-            </div>
-
-            <div className="mt-6 sm:mt-8 pt-4 border-t border-slate-100 flex justify-end">
-              <button
-                onClick={() => setModalOpen(false)}
-                className="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs cursor-pointer hover:bg-slate-800 transition-colors"
-              >
-                {t.philosophy.closeBtn}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
