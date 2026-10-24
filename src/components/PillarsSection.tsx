@@ -142,13 +142,13 @@ export default function PillarsSection() {
 
               <div className="relative z-10 m-3 p-4 sm:p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-white/70 shadow-lg">
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors mb-1">
-                  DokumentArt DMS & 2FA
+                  DokumentArt DMS
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-normal mb-3">
-                  Elektronski djelovodnik, vođenje sjednica odbora, ugovori, javne nabavke i zakonsko arhiviranje uz dvofaktorski kripto potpis sa QR pečatom.
+                  Cjelovit dokumentacioni centar: sjednice Skupštine, Nadzornog odbora i Revizije, djelovodnik sa praćenjem fizičke lokacije akata, registar ugovora i pravilnika, javne nabavke, kripto potpis i arhiv.
                 </p>
                 <div className="flex items-center justify-between text-xs font-bold text-amber-700 pt-2 border-t border-slate-200/60">
-                  <span>DMS & Kripto Potpis</span>
+                  <span>DMS & Upravljanje</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -176,13 +176,13 @@ export default function PillarsSection() {
 
               <div className="relative z-10 m-3 p-4 sm:p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-white/70 shadow-lg">
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-1">
-                  EnterSYS / ARGUS Master
+                  EnterSYS & Argus
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-normal mb-3">
-                  Kompleksno upravljanje objektima i sportskim centrima (bazeni, dvorane, pametni ormarići) uz Argus operativni nadzorni centar u realnom vremenu.
+                  Sveobuhvatna platforma sa 13 kompleksnih modula za upravljanje kompleksima (bazeni, dvorane, ormarići, zakupi) uz Argus dinamički operativni panel za live nadzor radnih mjesta.
                 </p>
                 <div className="flex items-center justify-between text-xs font-bold text-blue-700 pt-2 border-t border-slate-200/60">
-                  <span>Mrežni prsten & prolazi</span>
+                  <span>13 modula & Argus panel</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

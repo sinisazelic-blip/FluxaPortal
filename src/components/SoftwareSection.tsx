@@ -217,8 +217,8 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
           </p>
         </div>
 
-        {/* Clear Interactive Indicator & Tabs Bar */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
+        {/* Full-width Product Tabs Bar - No Ugly Narrow Scroll Box */}
+        <div className="w-full max-w-7xl mx-auto mb-8 sm:mb-12">
           {/* Subtle Prompt Hint to show user these are interactive clickable products */}
           <div className="flex items-center justify-between gap-3 px-2 mb-3 text-slate-500 text-xs">
             <div className="inline-flex items-center gap-2 font-semibold tracking-wide">
@@ -234,10 +234,10 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
             </span>
           </div>
 
-          {/* Smooth Horizontal Scrollable Pills Menu */}
+          {/* Smooth Wide Pills Menu */}
           <div
             ref={tabsScrollRef}
-            className="flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 pt-1 px-1 no-scrollbar select-none"
+            className="flex items-center justify-start lg:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 pt-1 px-1 no-scrollbar select-none"
           >
             {modules.map((m) => {
               const Icon = m.icon;
