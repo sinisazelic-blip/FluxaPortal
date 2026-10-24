@@ -794,7 +794,7 @@ export const translations: Record<Language, Translations> = {
       title: "Rješenja Nastala u Prašini Realnog Posla",
       quote:
         "Svaki sistem koji smo napravili nastao je tamo gdje se posao stvarno obavlja — u gužvi ulaza, na blagajni, u studijskoj sobi, na sportskoj stazi. Zato naša rješenja ne komplikuju život onima koji rade, a rukovodiocima daju mir i tačan uvid.",
-      founderTitle: "Siniša Zelić • Osnivač & Glavni Inženjer",
+      founderTitle: "Fluxa Group • Inženjerski tim & Siniša Zelić (Osnivač)",
       card1Tag: "Operativna jednostavnost • Tačan uvid",
       card2Tag: "Mašinstvo • Akustika • Ekonomija",
       card3Tag: "Posvećenost bez prečica",
@@ -1374,7 +1374,7 @@ export const translations: Record<Language, Translations> = {
       title: "Solutions Born in the Dust of Real Operations",
       quote:
         "Every system we built was created where real work happens — in the bustle of venue gates, at checkout counters, in recording studios, and on sports tracks. That is why our tools deliver effortless operation on the ground and crystal-clear visibility for management.",
-      founderTitle: "Siniša Zelić • Founder & Lead Engineer",
+      founderTitle: "Fluxa Group • Engineering Team & Siniša Zelić (Founder)",
       card1Tag: "Operational simplicity • Precise insight",
       card2Tag: "Engineering • Acoustics • Economics",
       card3Tag: "Dedication without shortcuts",

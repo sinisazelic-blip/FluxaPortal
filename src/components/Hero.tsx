@@ -96,33 +96,14 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
               </button>
             </div>
 
-            {/* Metrics Flex Row - Explicit whitespace between 6.004 and 20 */}
+            {/* Metrics Flex Row - Credibility Pillars */}
             <div className="flex flex-wrap sm:flex-nowrap items-start gap-6 sm:gap-7 md:gap-8 lg:border-l lg:border-slate-300/80 lg:pl-6 xl:pl-8">
               <div className="shrink-0">
                 <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
-                  40+
+                  20+
                 </div>
                 <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
-                  {t.hero.metrics.continuity}
-                </div>
-              </div>
-
-              <div className="shrink-0">
-                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-1.5 whitespace-nowrap">
-                  <span>{projectCount ? projectCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "6.004"}</span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                </div>
-                <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
-                  {t.hero.metrics.projects}
-                </div>
-              </div>
-
-              <div className="shrink-0">
-                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
-                  20
-                </div>
-                <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
-                  {t.hero.metrics.studioTaf}
+                  godina Studio TAF
                 </div>
               </div>
 
@@ -131,7 +112,26 @@ export default function Hero({ onOpenContact, onOpenLogin }: HeroProps) {
                   15+
                 </div>
                 <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
-                  {t.hero.metrics.swissTiming}
+                  godina SwissTiming
+                </div>
+              </div>
+
+              <div className="shrink-0">
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-1.5 whitespace-nowrap">
+                  <span>99.98%</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                </div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
+                  SLA dostupnost
+                </div>
+              </div>
+
+              <div className="shrink-0">
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
+                  5
+                </div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-medium mt-1 leading-tight">
+                  ključnih platformi
                 </div>
               </div>
             </div>

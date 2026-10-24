@@ -31,7 +31,7 @@ interface SoftwareSectionProps {
 export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }: SoftwareSectionProps) {
   const { t, lang } = useLanguage();
   const [activeTab, setActiveTab] = useState<
-    "pos" | "fluxar" | "dokumentart" | "entersys" | "fluxa" | "soccs" | "haas" | "fluxax"
+    "pos" | "fluxar" | "dokumentart" | "entersys" | "soccs" | "haas" | "fluxax"
   >("pos");
   const [activeSlide, setActiveSlide] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -87,16 +87,6 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
       data: t.software.modules.entersys,
       accent: "text-blue-600",
       slides: t.software.moduleSlides.entersys,
-    },
-    {
-      id: "fluxa" as const,
-      icon: Database,
-      shortName: "Fluxa Core",
-      name: t.software.modules.fluxa.name,
-      tagline: t.software.modules.fluxa.tagline,
-      data: t.software.modules.fluxa,
-      accent: "text-indigo-600",
-      slides: t.software.moduleSlides.fluxa,
     },
     {
       id: "soccs" as const,

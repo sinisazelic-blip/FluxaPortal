@@ -196,26 +196,26 @@ export default function StudioTafSection() {
                 </div>
               </div>
 
-              {/* Metric Pills */}
+              {/* Metric Pills - Continuity & Heritage */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-6 border-t border-slate-100/80">
                 <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricStart}</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricStartVal}</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Početak Rada</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">1982. godina</div>
                 </div>
                 <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricTaf}</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricTafVal}</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Studio TAF</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">20+ godina</div>
                 </div>
                 <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricComm}</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Inženjerski Standard</div>
                   <div className="text-xs sm:text-sm font-bold text-purple-700 flex items-center gap-1.5">
-                    <span>{liveProjects ? liveProjects.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "6.004"}</span>
+                    <span>100% autorski</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                 </div>
                 <div className="bg-white/75 backdrop-blur-xs rounded-xl p-3 border border-slate-200/70">
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">{t.studioTaf.metricRoster}</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900">{t.studioTaf.metricRosterVal}</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Swiss Timing Partner</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">15+ godina</div>
                 </div>
               </div>
             </div>
