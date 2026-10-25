@@ -585,6 +585,16 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxax: [
           {
+            title: "FluxaX Audio Suite (Kompletna Arhitektura Ekosistema)",
+            note: "Povezuje StudioBridge hardverski rack procesor, klijentske hubove i daljinske režije u jedinstven zero-bleed ekosistem.",
+            image: "/branding/graphics%20of%20all.jpg",
+          },
+          {
+            title: "FluxaX Studio Audio Tehnologija (Broadcast Standard)",
+            note: "Vrhunski broadcast kvalitet 48kHz / 24-bit uz 18ms latencije, nativnu RME TotalMix integraciju i potpunu hardversku kontrolu.",
+            image: "/branding/FluxaX%20new%20graphics.jpg",
+          },
+          {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
             note: "Vintage analogni režijski procesor sa nativnom RME TotalMix OSC integracijom, Zero-Bleed DSP matricom i digitalnim internim busom.",
             image: "/photo/StudioBridge/StudioBridge%20UI.png",
@@ -1164,6 +1174,16 @@ export const translations: Record<Language, Translations> = {
           },
         ],
         fluxax: [
+          {
+            title: "FluxaX Audio Suite (Kompletna Arhitektura Ekosistema)",
+            note: "Povezuje StudioBridge hardverski rack procesor, klijentske hubove i daljinske režije u jedinstven zero-bleed ekosistem.",
+            image: "/branding/graphics%20of%20all.jpg",
+          },
+          {
+            title: "FluxaX Studio Audio Tehnologija (Broadcast Standard)",
+            note: "Vrhunski broadcast kvalitet 48kHz / 24-bit uz 18ms latencije, nativnu RME TotalMix integraciju i potpunu hardversku kontrolu.",
+            image: "/branding/FluxaX%20new%20graphics.jpg",
+          },
           {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
             note: "Vintage analog director audio processor featuring native RME TotalMix OSC integration, Zero-Bleed DSP summing matrix, and lossless 48kHz audio streaming.",
