@@ -10,11 +10,9 @@ echo.
 
 cd /d "%~dp0"
 
-echo [1/2] Provjera produkcijskog build-a...
-if not exist ".next" (
-    echo [.next folder ne postoji] Pokrecem kompajliranje...
-    call npm run build
-)
+echo [1/2] Priprema i kompajliranje produkcijskog build-a...
+set NEXT_IGNORE_INSECURE_DIRECT_IMPORT=1
+call npm run build
 
 echo.
 echo [2/2] Pokrecem Next.js server na portu 3000...

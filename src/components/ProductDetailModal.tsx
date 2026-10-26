@@ -43,16 +43,16 @@ interface ProductInfo {
 const productsData: Record<ProductType, ProductInfo> = {
   fluxapos: {
     id: "fluxapos",
-    badge: "100% Autonomna Maloprodaja & Ulaznice",
+    badge: "Autonomna maloprodaja robe, usluga i ulaznica",
     title: "FluxaPOS & FluxaR",
     subtitle: "Univerzalni Retail Shell & Automatski KIF Most",
     themeColor: "text-emerald-700",
     bgGradient: "from-emerald-50 via-teal-50/40 to-white",
     badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
-    tagline: "Jedan sistem za prodaju ulaznica, butike, servise, trgovine i uslužne djelatnosti.",
+    tagline: "Univerzalna, autonomna kasa i sistem prodaje robe, usluga i ulaznica koji u istom shell-u pokriva sve djelatnosti.",
     description: [
-      "FluxaPOS je robusna maloprodajna kasa napravljena za nesmetan rad u stvarnom svijetu. Aplikacija funkcioniše potpuno nezavisno od stabilnosti interneta (100% offline autonomija), garantujući da prodaja i izdavanje računa nikada ne staju.",
-      "Pored klasične maloprodaje, sistem je optimizovan za prodaju ulaznica i karata: pozorišta, koncertne dvorane, radionice, kulturne manifestacije i sportski centri. U kombinaciji sa FluxaR mostom, svi podaci se automatski pretvaraju u propisane KIF evidencije za knjigovodstvo.",
+      "Univerzalna, autonomna kasa i sistem prodaje robe, usluga i ulaznica koji u istom shell-u pokriva sve djelatnosti — ugostiteljstvo, trgovinu, pozorišta, koncerte, radionice, sportske centre, butike, pekare i servise. 100% offline rad bez zastoja uz automatski most prema vašem računovodstvu.",
+      "FluxaPOS funkcioniše potpuno nezavisno od stabilnosti interneta (100% offline autonomija), garantujući da prodaja i izdavanje računa nikada ne staju, uz trenutnu fiskalizaciju i sinhronizaciju sa FluxaR mostom.",
     ],
     keyFeatures: [
       {
@@ -222,7 +222,7 @@ const productsData: Record<ProductType, ProductInfo> = {
     tagline: "Elektronsko mjerenje stotinki, integracija sa Quantum Timer-om i automatske zvučne najave.",
     description: [
       "Swiss Timing SOCCS je vodeće softversko rješenje na Balkanu za obradu rezultata i vođenje međunarodnih plivačkih takmičenja. Povezan je direktno sa Swiss Timing Quantum Timerom, dodirnim tablama (touchpads) i startnim blokovima.",
-      "Platforma omogućava automatski dvosmjerni uvoz i izvoz Lenex datoteka za SwimRankings i World Aquatics, live semafor u realnom vremenu, te SwimVoice zvučni sistem za automatsku najavu plivača i plasmana.",
+      "Platforma omogućava automatski dvosmjerni uvoz i izvoz Lenex datoteka za World Aquatics, live semafor u realnom vremenu, te SwimVoice zvučni sistem za automatsku najavu plivača i plasmana.",
     ],
     keyFeatures: [
       {
@@ -230,7 +230,7 @@ const productsData: Record<ProductType, ProductInfo> = {
         desc: "Direktno binarno očitavanje hiljaditinki sekunde i automatska verifikacija rekorda.",
       },
       {
-        title: "Meet Manager & SwimRankings",
+        title: "Meet Manager",
         desc: "Besprijekorna Lenex razmjena sa bazama evropskih i svjetskih plivačkih federacija.",
       },
       {
@@ -398,7 +398,9 @@ export default function ProductDetailModal({
         {/* MODAL FOOTER */}
         <div className="px-6 sm:px-8 py-4 border-t border-slate-200 bg-white flex flex-wrap items-center justify-between gap-3">
           <div className="text-xs text-slate-500">
-            Imate specifične zahtjeve za implementaciju u vašem preduzeću?
+            {product === "swisstiming"
+              ? "Zvanični mjerni sistem za plivačka prvenstva, mitinge i automatsku obradu rezultata."
+              : "Imate specifične zahtjeve za implementaciju u vašem preduzeću?"}
           </div>
 
           <div className="flex items-center gap-3">
@@ -409,7 +411,7 @@ export default function ProductDetailModal({
               Zatvori
             </button>
 
-            {onOpenContact && (
+            {onOpenContact && product !== "swisstiming" && (
               <button
                 onClick={() => {
                   onClose();

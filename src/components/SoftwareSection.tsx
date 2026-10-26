@@ -376,7 +376,7 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                     </span>
                   </div>
                   <div className="flex items-center gap-2 shrink-0 ml-2">
-                    {activeSlideData?.image && (
+                    {(activeSlideData?.image || activeSlideData?.video) && (
                       <button
                         onClick={() => setIsLightboxOpen(true)}
                         className="text-slate-600 hover:text-sky-700 transition-colors p-1 rounded hover:bg-slate-300/70 cursor-pointer"
@@ -391,8 +391,8 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                   </div>
                 </div>
 
-                {/* Screenshot Display: Exactly ONE slide at a time (absolute stacking), neutral slate-100 background */}
-                {current.slides?.length > 0 && current.slides[0]?.image ? (
+                {/* Screenshot / Video Display: Exactly ONE slide at a time (absolute stacking), neutral slate-100 background */}
+                {current.slides?.length > 0 && (current.slides[0]?.image || current.slides[0]?.video) ? (
                   <div className="relative overflow-hidden aspect-[16/10] bg-slate-100/90 border-b border-slate-300/80">
                     {current.slides.map((s, idx) => (
                       <div
@@ -404,12 +404,23 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                             : "opacity-0 z-0 pointer-events-none"
                         } group cursor-zoom-in flex items-center justify-center p-2 sm:p-2.5`}
                       >
-                        <img
-                          src={s.image}
-                          alt={s.title}
-                          className="max-h-full max-w-full object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
-                          loading="lazy"
-                        />
+                        {s.video || s.image?.toLowerCase().endsWith(".mp4") ? (
+                          <video
+                            src={s.video || s.image}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="max-h-full max-w-full object-contain rounded-lg shadow-sm"
+                          />
+                        ) : (
+                          <img
+                            src={s.image}
+                            alt={s.title}
+                            className="max-h-full max-w-full object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
+                            loading="lazy"
+                          />
+                        )}
                         <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                           <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-slate-800 text-xs font-semibold backdrop-blur border border-slate-300 shadow-md flex items-center gap-1.5">
                             <Maximize2 className="w-3.5 h-3.5 text-sky-600" />
@@ -574,8 +585,8 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
         </div>
       </div>
 
-      {/* Lightbox Modal for Full-Resolution Screenshot Zoom with Neutral Glass Finish */}
-      {isLightboxOpen && activeSlideData?.image && (
+      {/* Lightbox Modal for Full-Resolution Screenshot / Video Zoom with Neutral Glass Finish */}
+      {isLightboxOpen && (activeSlideData?.image || activeSlideData?.video) && (
         <div
           className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 md:p-8 animate-fadeIn"
           onClick={(e) => {
@@ -617,11 +628,23 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
               </button>
             )}
 
-            <img
-              src={activeSlideData.image}
-              alt={activeSlideData.title}
-              className="max-h-[78vh] max-w-full object-contain rounded-2xl shadow-2xl border border-slate-200 bg-white p-1"
-            />
+            {activeSlideData.video || activeSlideData.image?.toLowerCase().endsWith(".mp4") ? (
+              <video
+                src={activeSlideData.video || activeSlideData.image}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                className="max-h-[78vh] max-w-full object-contain rounded-2xl shadow-2xl border border-slate-200 bg-slate-950 p-1"
+              />
+            ) : (
+              <img
+                src={activeSlideData.image}
+                alt={activeSlideData.title}
+                className="max-h-[78vh] max-w-full object-contain rounded-2xl shadow-2xl border border-slate-200 bg-white p-1"
+              />
+            )}
 
             {totalSlides > 1 && (
               <button

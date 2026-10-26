@@ -50,11 +50,11 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
             onClick={() => handleCardClick("fluxapos")}
             className="md:col-span-4 rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[520px] sm:min-h-[620px] lg:min-h-[680px]"
           >
-            {/* Visokokvalitetna fotografija maloprodaje i modernog prodajnog mjesta */}
+            {/* Visokokvalitetna optimistična fotografija modernog cafe-a/restorana i checkout terminala */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 filter saturate-[1.05] contrast-[1.05]"
+              className="absolute inset-0 bg-cover bg-[center_top] transition-transform duration-700 group-hover:scale-105 filter saturate-[1.05] contrast-[1.05]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85')`,
+                backgroundImage: `url('/photo/girl-cafe-optimistic.jpg')`,
               }}
             />
             <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
@@ -63,7 +63,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
             <div className="relative z-10 p-5 sm:p-7">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-sm">
                 <CreditCard className="w-4 h-4 text-emerald-600" />
-                <span>100% Autonomna Maloprodaja & Ulaznice</span>
+                <span>Autonomna maloprodaja robe, usluga i ulaznica</span>
               </div>
             </div>
 
@@ -76,7 +76,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
                 FluxaPOS & FluxaR
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-4">
-                Univerzalna kasa i sistem prodaje ulaznica koji u istom shell-u pokriva sve djelatnosti — pozorišta, koncerte, radionice, sportske centre, butike, pekare, autoservise i trgovine. 100% offline rad bez zastoja uz automatski KIF knjigovodstveni most.
+                Univerzalna, autonomna kasa i sistem prodaje robe, usluga i ulaznica koji u istom shell-u pokriva sve djelatnosti — ugostiteljstvo, trgovinu, pozorišta, koncerte, radionice, sportske centre, butike, pekare i servise. 100% offline rad bez zastoja uz automatski most prema vašem računovodstvu.
               </p>
               <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 pt-3 border-t border-slate-200/60">
                 <span>Istražite mogućnosti kase</span>
@@ -93,26 +93,26 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
             {/* STUB 2 (GORE LIJEVO): FluxaX Net - Slika 2 tačka 2 (AV Session, mikrofon, vertikalni tekst desno) */}
             <div
               onClick={() => handleCardClick("fluxax")}
-              className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px] flex flex-col justify-between"
+              className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px]"
             >
               <div
                 className="absolute inset-0 bg-cover bg-left sm:bg-center transition-transform duration-700 group-hover:scale-105 filter saturate-[1.1] contrast-[1.05]"
                 style={{
-                  backgroundImage: `url('/photo/studio-vocal-recording.jpg')`,
+                  backgroundImage: `url('/photo/studio-heritage-warm.jpg')`,
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/60 pointer-events-none" />
 
-              {/* Badge na vrhu */}
-              <div className="relative z-10 p-3.5 sm:p-4">
+              {/* Badge na vrhu (GORNJI DESNI UGAO) */}
+              <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
                   <Radio className="w-3.5 h-3.5 text-purple-600" />
                   <span>02 • Live AV Session</span>
                 </div>
               </div>
 
-              {/* Vertikalni tekst boks orjentisan na DESNU stranu (po žutoj skici korisnika) */}
-              <div className="relative z-10 m-3 sm:m-3.5 ml-auto max-w-[260px] sm:max-w-[280px] p-3.5 sm:p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/80 shadow-lg">
+              {/* Vertikalni tekst boks u DONJEM DESNOM UGLU */}
+              <div className="absolute bottom-3.5 right-3.5 sm:bottom-4 sm:right-4 z-10 max-w-[260px] sm:max-w-[280px] p-3.5 sm:p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/80 shadow-lg">
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-purple-700 transition-colors mb-1">
                   FluxaX Net
                 </h3>
@@ -160,7 +160,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               </div>
             </div>
 
-            {/* STUB 4 (DOLE LIJEVO): EnterSYS & Argus - Slika 2 tačka 3 (Elektronska kontrola, vertikalni boks LIJEVO da se vide tripodi) */}
+            {/* STUB 4 (DOLE LIJEVO): EnterSYS & Argus - Tekst boks GORE LIJEVO, a Pill naslov DOLE LIJEVO */}
             <div
               onClick={() => handleCardClick("entersys")}
               className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px] flex flex-col justify-between"
@@ -174,15 +174,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none" />
 
-              {/* Badge sa traženim nazivom "Elektronska kontrola" */}
-              <div className="relative z-10 p-3.5 sm:p-4">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
-                  <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-                  <span>04 • Elektronska kontrola</span>
-                </div>
-              </div>
-
-              {/* Vertikalni tekst boks orjentisan na LIJEVU stranu (tako da se vide tripodi desno) */}
+              {/* Vertikalni tekst boks GORE LIJEVO */}
               <div className="relative z-10 m-3 sm:m-3.5 mr-auto max-w-[260px] sm:max-w-[280px] p-3.5 sm:p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/80 shadow-lg">
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-1">
                   EnterSYS & Argus
@@ -193,6 +185,14 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
                 <div className="flex items-center justify-between text-xs font-bold text-blue-700 pt-2 border-t border-slate-200/60">
                   <span>Kontrola pristupa & 13 modula</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+
+              {/* Badge sa traženim nazivom "Elektronska kontrola" DOLE LIJEVO */}
+              <div className="relative z-10 p-3.5 sm:p-4 mr-auto">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
+                  <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                  <span>04 • Elektronska kontrola</span>
                 </div>
               </div>
             </div>

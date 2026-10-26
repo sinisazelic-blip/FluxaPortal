@@ -6,6 +6,7 @@ export interface SlideItem {
   title: string;
   note: string;
   image?: string;
+  video?: string;
 }
 
 export interface Translations {
@@ -378,11 +379,11 @@ export const translations: Record<Language, Translations> = {
       subtitle:
         "Sveobuhvatna i dokazana rješenja prilagođena terenskim uslovima. Svaki modul radi pouzdano i samostalno, bez zastoja.",
       card1: {
-        badge: "100% Autonomna Maloprodaja",
-        tag: "Fiskalni POS & KIF Most",
+        badge: "Autonomna maloprodaja robe, usluga i ulaznica",
+        tag: "Univerzalni Retail & Ticketing Shell",
         title: "FluxaPOS & FluxaR",
-        desc: "Offline fiskalna kasa koja nikada ne staje čak i pri nestanku interneta, uz automatski knjigovodstveni most bez ručnog prekucavanja računa.",
-        link: "Istražite kasu i most",
+        desc: "Univerzalna, autonomna kasa i sistem prodaje robe, usluga i ulaznica koji u istom shell-u pokriva sve djelatnosti — ugostiteljstvo, trgovinu, pozorišta, koncerte, radionice, sportske centre, butike, pekare i servise. 100% offline rad bez zastoja uz automatski most prema vašem računovodstvu.",
+        link: "Istražite mogućnosti kase",
       },
       card2: {
         badge: "02 • Kontrola Pristupa & Tripodi",
@@ -585,39 +586,69 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxax: [
           {
-            title: "FluxaX Audio Suite (Kompletna Arhitektura Ekosistema)",
-            note: "Povezuje StudioBridge hardverski rack procesor, klijentske hubove i daljinske režije u jedinstven zero-bleed ekosistem.",
-            image: "/branding/graphics%20of%20all.jpg",
+            title: "FluxaX Magic Animation & Vizuelni Identitet",
+            note: "Dinamički prikaz novog FluxaX sistema, legendarnog audio pulta i sinhronizovanog video screening-a u realnom vremenu.",
+            video: "/branding/FluxaX animation red.mp4",
           },
           {
-            title: "FluxaX Studio Audio Tehnologija (Broadcast Standard)",
-            note: "Vrhunski broadcast kvalitet 48kHz / 24-bit uz 18ms latencije, nativnu RME TotalMix integraciju i potpunu hardversku kontrolu.",
-            image: "/branding/FluxaX%20new%20graphics.jpg",
+            title: "Client HUB Dinamička Režijska Animacija",
+            note: "Interaktivni pult za klijente i naručioce sa analognim CLA mjeračima nivoa, zero-bleed komunikacijom i instant monitoringom.",
+            video: "/branding/ClientHUB animation.mp4",
+          },
+          {
+            title: "StudioBridge Hardverski Most & DSP Animacija",
+            note: "Prikaz rada režijskog procesora, automatskog ASIO skeniranja i RME TotalMix OSC integracije.",
+            video: "/branding/StudioBridge animation.mp4",
+          },
+          {
+            title: "FluxaX Cjelokupni Ekosistem u Pokretu",
+            note: "Potpuna sinhronizacija između studija, daljinskih klijenata, montaže (DaVinci/Premiere) i cloud arhitekture.",
+            video: "/branding/animation of all.mp4",
+          },
+          {
+            title: "FluxaX Magic Broadcast Session",
+            note: "Ultra-niska latencija od 18ms sa kristalno čistim 48kHz / 24-bit Opus audiom i video preview screening-om.",
+            video: "/branding/FluxaX magic.mp4",
+          },
+          {
+            title: "FluxaX Tehnološka Arhitektura & Shema",
+            note: "Vrhunski broadcast standard: hardverski rack procesor, klijentski pultovi, P2P WebRTC komunikacija i cloud serveri.",
+            image: "/branding/FluxaX new graphics.jpg",
+          },
+          {
+            title: "FluxaX Ekosistem (Kompletna Arhitektura)",
+            note: "Povezuje StudioBridge hardverski procesor, klijentske hubove i daljinske režije u jedinstven sistem.",
+            image: "/branding/graphics of all.jpg",
           },
           {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
-            note: "Vintage analogni režijski procesor sa nativnom RME TotalMix OSC integracijom, Zero-Bleed DSP matricom i digitalnim internim busom.",
-            image: "/photo/StudioBridge/StudioBridge%20UI.png",
+            note: "Vintage analogni režijski procesor sa nativnom RME TotalMix OSC integracijom, Zero-Bleed DSP matricom i internim busom.",
+            image: "/photo/StudioBridge/StudioBridge UI.png",
           },
           {
             title: "FluxaX Client HUB (Chris Lord-Alge Rack Konzola)",
-            note: "Autentični retro pult za agencije i klijente sa stereo LED VU metrima, dvosmjernim Talkback mikrofonom i biranjem tejkova uživo.",
-            image: "/photo/ClientHUB/ClientHUB%20guest.png",
+            note: "Autentični retro pult za agencije i klijente sa stereo LED VU metrima, dvosmjernim Talkback mikrofonom i biranjem tejkova.",
+            image: "/photo/ClientHUB/ClientHUB guest.png",
           },
           {
             title: "FluxaX Client HUB (Studio Režijska Kontrola)",
             note: "Puni režijski pult za praćenje sesije, komunikaciju sa glumačkom sobom, zvučnicima i klijentima.",
-            image: "/photo/ClientHUB/ClientHUB%20studio.png",
+            image: "/photo/ClientHUB/ClientHUB studio.png",
           },
           {
             title: "StudioBridge Hardverski Ruter & Dijagnostika",
             note: "Hardverski skener zvučnih kartica, automatsko prepoznavanje RME uređaja i mapiranje ulazno/izlaznih kanala.",
-            image: "/photo/StudioBridge/StudioBridge%20HW%20scaner.png",
+            image: "/photo/StudioBridge/StudioBridge HW scaner.png",
           },
           {
-            title: "StudioBridge Napredna Podešavanja & Cloud Sinkronizacija",
-            note: "Konfiguracija osc UDP portova, IP adresa, auto-start servisa i automatska sinhronizacija sesija sa klijentima.",
-            image: "/photo/StudioBridge/StudioBridge%20settings.png",
+            title: "StudioBridge Podešavanja & Cloud Sinhronizacija",
+            note: "Konfiguracija OSC UDP portova, IP adresa, auto-start servisa i automatska sinhronizacija sesija sa klijentima.",
+            image: "/photo/StudioBridge/StudioBridge settings.png",
+          },
+          {
+            title: "Zvanični Vizuelni Identitet & Logotipi",
+            note: "Prepoznatljivi logotipi i ikone FluxaX, StudioBridge i Client HUB sistema u visokoj rezoluciji.",
+            image: "/branding/FluxaX logo.png",
           },
         ],
       },
@@ -968,11 +999,11 @@ export const translations: Record<Language, Translations> = {
       subtitle:
         "Comprehensive, field-proven solutions built for real operating conditions. Each module operates reliably and independently, without downtime.",
       card1: {
-        badge: "100% Autonomous Retail",
-        tag: "Fiscal POS & Accounting Bridge",
+        badge: "Autonomous Retail of Goods, Services & Ticketing",
+        tag: "Universal Retail & Ticketing Shell",
         title: "FluxaPOS & FluxaR",
-        desc: "Offline fiscal checkout that never stops even during internet outages, with an automated bookkeeping bridge eliminating manual receipt entry.",
-        link: "Explore checkout & bridge",
+        desc: "Universal, autonomous POS and sales system for goods, services, and tickets covering all sectors in a single shell — hospitality, retail, theaters, concerts, workshops, sports complexes, boutiques, bakeries, and repair shops. 100% offline operation without downtime with an automated bridge to your accounting.",
+        link: "Explore checkout capabilities",
       },
       card2: {
         badge: "02 • Access Control & Turnstiles",
@@ -1175,39 +1206,69 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxax: [
           {
-            title: "FluxaX Audio Suite (Kompletna Arhitektura Ekosistema)",
-            note: "Povezuje StudioBridge hardverski rack procesor, klijentske hubove i daljinske režije u jedinstven zero-bleed ekosistem.",
-            image: "/branding/graphics%20of%20all.jpg",
+            title: "FluxaX Magic Animation & Visual Identity",
+            note: "Dynamic motion preview of the new FluxaX platform, vintage audio desk, and real-time synchronized video screening.",
+            video: "/branding/FluxaX animation red.mp4",
           },
           {
-            title: "FluxaX Studio Audio Tehnologija (Broadcast Standard)",
-            note: "Vrhunski broadcast kvalitet 48kHz / 24-bit uz 18ms latencije, nativnu RME TotalMix integraciju i potpunu hardversku kontrolu.",
-            image: "/branding/FluxaX%20new%20graphics.jpg",
+            title: "Client HUB Dynamic Director Animation",
+            note: "Interactive console for clients and producers with analog CLA level meters, zero-bleed communication, and instant monitoring.",
+            video: "/branding/ClientHUB animation.mp4",
+          },
+          {
+            title: "StudioBridge Hardware Bridge & DSP Motion",
+            note: "Live director processor overview, automatic ASIO channel scanning, and seamless RME TotalMix OSC integration.",
+            video: "/branding/StudioBridge animation.mp4",
+          },
+          {
+            title: "FluxaX Ecosystem in Full Motion",
+            note: "Complete synchronization across recording studios, remote clients, NLE suites (DaVinci/Premiere), and cloud backend.",
+            video: "/branding/animation of all.mp4",
+          },
+          {
+            title: "FluxaX Magic Broadcast Session",
+            note: "Ultra-low latency of 18ms with crystal-clear 48kHz / 24-bit Opus audio and live video preview screening.",
+            video: "/branding/FluxaX magic.mp4",
+          },
+          {
+            title: "FluxaX System Architecture & Topology",
+            note: "Enterprise broadcast standard: hardware rack processor, web client hubs, P2P WebRTC transport, and cloud coordination.",
+            image: "/branding/FluxaX new graphics.jpg",
+          },
+          {
+            title: "FluxaX Audio Suite (Full Architecture)",
+            note: "Interconnects StudioBridge hardware rack, client hubs, and remote directors into a unified zero-bleed ecosystem.",
+            image: "/branding/graphics of all.jpg",
           },
           {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
-            note: "Vintage analog director audio processor featuring native RME TotalMix OSC integration, Zero-Bleed DSP summing matrix, and lossless 48kHz audio streaming.",
-            image: "/photo/StudioBridge/StudioBridge%20UI.png",
+            note: "Vintage analog director audio processor featuring native RME TotalMix OSC integration, Zero-Bleed DSP summing matrix, and lossless streaming.",
+            image: "/photo/StudioBridge/StudioBridge UI.png",
           },
           {
             title: "FluxaX Client HUB (Chris Lord-Alge Rack Console)",
             note: "Authentic retro studio console for agencies and clients with dual stereo LED VU meters, two-way Talkback microphone, and live take voting.",
-            image: "/photo/ClientHUB/ClientHUB%20guest.png",
+            image: "/photo/ClientHUB/ClientHUB guest.png",
           },
           {
             title: "FluxaX Client HUB (Director Studio Console)",
             note: "Master control deck for monitoring sessions, communication with voiceover talent booth, and client coordination.",
-            image: "/photo/ClientHUB/ClientHUB%20studio.png",
+            image: "/photo/ClientHUB/ClientHUB studio.png",
           },
           {
             title: "StudioBridge Hardware Router & Diagnostics",
             note: "Hardware sound card scanner, automatic RME hardware detection, and input/output routing channel matrix.",
-            image: "/photo/StudioBridge/StudioBridge%20HW%20scaner.png",
+            image: "/photo/StudioBridge/StudioBridge HW scaner.png",
           },
           {
             title: "StudioBridge Advanced Settings & Cloud Sync",
             note: "OSC UDP ports, IP network configuration, auto-start services, and automated session synchronization with clients.",
-            image: "/photo/StudioBridge/StudioBridge%20settings.png",
+            image: "/photo/StudioBridge/StudioBridge settings.png",
+          },
+          {
+            title: "Official Visual Identity & Badges",
+            note: "Signature badges, high-resolution logos, and UI icons for FluxaX, StudioBridge, and Client HUB.",
+            image: "/branding/FluxaX logo.png",
           },
         ],
       },
