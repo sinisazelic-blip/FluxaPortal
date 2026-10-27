@@ -16,29 +16,60 @@ export async function POST(req: NextRequest) {
     const term = identifier.trim();
     const pass = (password || "").trim();
 
-    // Database lookup first (matching portal_username, licence_token, or naziv)
-    const rows = await query<any>(
+    // 1. First check unified klijenti + tenants lookup (ensures portal credentials entered in Klijenti in app.fluxa.ba work immediately)
+    let rows = await query<any>(
       `SELECT 
-        t.tenant_id, 
-        t.naziv, 
-        t.status, 
-        t.studio_licence_profile, 
+        COALESCE(t.tenant_id, k.klijent_id) AS tenant_id,
+        k.klijent_id,
+        COALESCE(t.naziv, k.naziv_klijenta) AS naziv,
+        COALESCE(t.status, IF(k.aktivan = 1, 'AKTIVAN', 'NEAKTIVAN')) AS status,
+        COALESCE(t.studio_licence_profile, 'ENTERSYS') AS studio_licence_profile,
         t.soccs_tier,
         t.soccs_platform_scope,
         COALESCE(t.broj_blagajni, 1) AS broj_blagajni,
-        t.subscription_ends_at,
-        DATEDIFF(t.subscription_ends_at, NOW()) AS days_until_end,
+        COALESCE(t.subscription_ends_at, '2026-12-31') AS subscription_ends_at,
+        COALESCE(DATEDIFF(t.subscription_ends_at, NOW()), 365) AS days_until_end,
         t.licence_token,
-        t.portal_username,
-        t.portal_password
-      FROM tenants t
-      WHERE LOWER(t.portal_username) = LOWER(?)
-         OR t.licence_token = ? 
-         OR LOWER(t.naziv) = LOWER(?) 
-         OR LOWER(t.naziv) LIKE LOWER(?)
+        COALESCE(k.portal_username, t.portal_username) AS portal_username,
+        COALESCE(k.portal_password, t.portal_password) AS portal_password
+      FROM klijenti k
+      LEFT JOIN tenants t ON (t.klijent_id = k.klijent_id OR LOWER(t.portal_username) = LOWER(k.portal_username))
+      WHERE LOWER(COALESCE(k.portal_username, '')) = LOWER(?)
+         OR (t.portal_username IS NOT NULL AND LOWER(t.portal_username) = LOWER(?))
+         OR LOWER(k.naziv_klijenta) = LOWER(?)
+         OR (t.naziv IS NOT NULL AND LOWER(t.naziv) = LOWER(?))
+         OR (t.licence_token IS NOT NULL AND t.licence_token = ?)
+         OR LOWER(k.naziv_klijenta) LIKE LOWER(?)
+      ORDER BY (t.tenant_id IS NOT NULL) DESC
       LIMIT 1`,
-      [term, term, term, `%${term}%`]
+      [term, term, term, term, term, `%${term}%`]
     );
+
+    // 2. Fallback to standalone tenants table if not found in klijenti
+    if (!rows || rows.length === 0) {
+      rows = await query<any>(
+        `SELECT 
+          t.tenant_id, 
+          t.naziv, 
+          t.status, 
+          t.studio_licence_profile, 
+          t.soccs_tier,
+          t.soccs_platform_scope,
+          COALESCE(t.broj_blagajni, 1) AS broj_blagajni,
+          t.subscription_ends_at,
+          DATEDIFF(t.subscription_ends_at, NOW()) AS days_until_end,
+          t.licence_token,
+          t.portal_username,
+          t.portal_password
+        FROM tenants t
+        WHERE LOWER(t.portal_username) = LOWER(?)
+           OR t.licence_token = ? 
+           OR LOWER(t.naziv) = LOWER(?) 
+           OR LOWER(t.naziv) LIKE LOWER(?)
+        LIMIT 1`,
+        [term, term, term, `%${term}%`]
+      );
+    }
 
     if (rows && rows.length > 0) {
       const t = rows[0];

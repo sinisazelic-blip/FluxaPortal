@@ -25,14 +25,18 @@ export default function Home() {
   const [fluxaxModalOpen, setFluxaxModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
   const [activeTenantIdentifier, setActiveTenantIdentifier] = useState("");
+  const [activeTenantData, setActiveTenantData] = useState<any>(null);
 
   const handleOpenContact = (service?: string) => {
     if (service) setSelectedService(service);
     setContactModalOpen(true);
   };
 
-  const handleOpenTenantDashboard = (identifier: string) => {
+  const handleOpenTenantDashboard = (identifier: string, tenantData?: any) => {
     setActiveTenantIdentifier(identifier);
+    if (tenantData) {
+      setActiveTenantData(tenantData);
+    }
     setDashboardModalOpen(true);
   };
 
@@ -64,7 +68,7 @@ export default function Home() {
 
       {/* Pillar 3: Tenant Self-Service Portal */}
       <TenantPortalSection
-        onOpenLogin={(identifier) => handleOpenTenantDashboard(identifier || "aquana")}
+        onOpenLogin={(identifier, tenantData) => handleOpenTenantDashboard(identifier || "aquana", tenantData)}
         onOpenContact={() => handleOpenContact("portal")}
       />
 
@@ -104,15 +108,19 @@ export default function Home() {
           setLoginModalOpen(false);
           handleOpenContact("support");
         }}
-        onSuccessLogin={(identifier) => {
+        onSuccessLogin={(identifier, tenantData) => {
           setLoginModalOpen(false);
-          handleOpenTenantDashboard(identifier);
+          handleOpenTenantDashboard(identifier, tenantData);
         }}
       />
       <TenantDashboardModal
         isOpen={dashboardModalOpen}
-        onClose={() => setDashboardModalOpen(false)}
+        onClose={() => {
+          setDashboardModalOpen(false);
+          setActiveTenantData(null);
+        }}
         initialTenantName={activeTenantIdentifier}
+        initialTenantData={activeTenantData}
       />
     </main>
   );

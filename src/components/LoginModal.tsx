@@ -8,7 +8,7 @@ interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenContact: () => void;
-  onSuccessLogin?: (identifier: string) => void;
+  onSuccessLogin?: (identifier: string, tenantData?: any) => void;
 }
 
 export default function LoginModal({ isOpen, onClose, onOpenContact, onSuccessLogin }: LoginModalProps) {
@@ -37,7 +37,7 @@ export default function LoginModal({ isOpen, onClose, onOpenContact, onSuccessLo
       if (data.ok && data.tenant) {
         setLoading(false);
         if (onSuccessLogin) {
-          onSuccessLogin(data.tenant.naziv || tenant);
+          onSuccessLogin(data.tenant.naziv || tenant, data.tenant);
         }
       } else {
         setLoading(false);

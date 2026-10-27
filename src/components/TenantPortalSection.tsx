@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { QrCode, Download, BookOpen, KeyRound, ArrowRight, Lock } from "lucide-react";
 
 interface TenantPortalSectionProps {
-  onOpenLogin: (identifier?: string) => void;
+  onOpenLogin: (identifier?: string, tenantData?: any) => void;
   onOpenContact: () => void;
 }
 
@@ -31,7 +31,7 @@ export default function TenantPortalSection({ onOpenLogin, onOpenContact }: Tena
       const data = await res.json();
       if (data.ok && data.tenant) {
         setLoading(false);
-        onOpenLogin(data.tenant.naziv || tenantUsername);
+        onOpenLogin(data.tenant.naziv || tenantUsername, data.tenant);
       } else {
         setLoading(false);
         setError(data.error || "Prijava nije uspjela. Provjerite pristupne podatke.");

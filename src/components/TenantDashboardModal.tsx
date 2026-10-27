@@ -27,6 +27,7 @@ interface TenantDashboardModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialTenantName?: string;
+  initialTenantData?: any;
 }
 
 interface TenantData {
@@ -81,6 +82,7 @@ export default function TenantDashboardModal({
   isOpen,
   onClose,
   initialTenantName = "",
+  initialTenantData,
 }: TenantDashboardModalProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "renew" | "updates" | "docs">("overview");
   const [searchTerm, setSearchTerm] = useState(initialTenantName || "aquana");
@@ -101,9 +103,15 @@ export default function TenantDashboardModal({
   // Fetch tenant on open
   useEffect(() => {
     if (isOpen) {
-      fetchTenant(initialTenantName || "aquana");
+      if (initialTenantData) {
+        setTenant(initialTenantData);
+        fetchSlip(initialTenantData.naziv, initialTenantData.profile, selectedMonths);
+        fetchPackages(initialTenantData.profile);
+      } else {
+        fetchTenant(initialTenantName || "aquana");
+      }
     }
-  }, [isOpen, initialTenantName]);
+  }, [isOpen, initialTenantName, initialTenantData]);
 
   const fetchTenant = async (nameOrToken: string) => {
     if (!nameOrToken.trim()) return;
@@ -113,7 +121,7 @@ export default function TenantDashboardModal({
       const res = await fetch("/api/tenant/lookup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: nameOrToken, password: "Aquana01+" }),
+        body: JSON.stringify({ identifier: nameOrToken }),
       });
       const data = await res.json();
       if (data.ok && data.tenant) {
