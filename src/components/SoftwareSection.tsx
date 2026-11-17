@@ -21,6 +21,7 @@ import {
   Maximize2,
   X,
   Radio,
+  Truck,
 } from "lucide-react";
 
 interface SoftwareSectionProps {
@@ -31,7 +32,7 @@ interface SoftwareSectionProps {
 export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }: SoftwareSectionProps) {
   const { t, lang } = useLanguage();
   const [activeTab, setActiveTab] = useState<
-    "pos" | "fluxar" | "dokumentart" | "entersys" | "soccs" | "haas" | "fluxax"
+    "pos" | "fluxar" | "dokumentart" | "entersys" | "soccs" | "logistix" | "haas" | "fluxax"
   >("pos");
   const [activeSlide, setActiveSlide] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -47,6 +48,16 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
       data: t.software.modules.pos,
       accent: "text-sky-600",
       slides: t.software.moduleSlides.pos,
+    },
+    {
+      id: "logistix" as const,
+      icon: Truck,
+      shortName: "LogistiX",
+      name: t.software.modules.logistix.name,
+      tagline: t.software.modules.logistix.tagline,
+      data: t.software.modules.logistix,
+      accent: "text-indigo-600",
+      slides: t.software.moduleSlides.logistix,
     },
     {
       id: "fluxax" as const,
@@ -123,15 +134,15 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting && entry.intersectionRatio > 0.1);
+        setIsVisible(entry.isIntersecting);
       },
-      { threshold: [0, 0.1, 0.5] }
+      { threshold: 0.05 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  // Auto-advance modules every 10 seconds ONLY when visible on screen (pauses on hover or lightbox)
+  // Auto-advance modules every 20 seconds ONLY when visible on screen (pauses on hover or lightbox)
   useEffect(() => {
     if (!isVisible || isPaused || isLightboxOpen) return;
     const moduleTimer = setInterval(() => {
@@ -141,7 +152,7 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
         return modules[nextIdx].id;
       });
       setActiveSlide(0);
-    }, 10000);
+    }, 20000);
     return () => clearInterval(moduleTimer);
   }, [isVisible, modules.length, isPaused, isLightboxOpen]);
 
@@ -155,12 +166,12 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
     }
   }, [activeTab]);
 
-  // Auto-scroll slides within current module every 3.5 seconds ONLY when visible
+  // Auto-scroll slides within current module every 6 seconds ONLY when visible
   useEffect(() => {
     if (!isVisible || totalSlides <= 1 || isPaused || isLightboxOpen) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % totalSlides);
-    }, 3500);
+    }, 6000);
     return () => clearInterval(timer);
   }, [isVisible, activeTab, totalSlides, isPaused, isLightboxOpen]);
 
@@ -225,8 +236,8 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
               <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
               <span>
                 {lang === "sr"
-                  ? "Kliknite na proizvod za pregled modula (automatska rotacija 10s):"
-                  : "Click any product to explore features (auto-cycles every 10s):"}
+                  ? "Kliknite na proizvod za pregled modula (automatska rotacija 20s):"
+                  : "Click any product to explore features (auto-cycles every 20s):"}
               </span>
             </div>
             <span className="text-[11px] font-mono text-slate-400 font-bold shrink-0">
@@ -396,7 +407,7 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                   <div className="relative overflow-hidden aspect-[16/10] bg-slate-100/90 border-b border-slate-300/80">
                     {current.slides.map((s, idx) => (
                       <div
-                        key={idx}
+                        key={`${current.id}-${idx}`}
                         onClick={() => setIsLightboxOpen(true)}
                         className={`absolute inset-0 transition-opacity duration-300 ${
                           activeSlide === idx
@@ -418,7 +429,6 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                             src={s.image}
                             alt={s.title}
                             className="max-h-full max-w-full object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
-                            loading="lazy"
                           />
                         )}
                         <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
@@ -430,7 +440,7 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                       </div>
                     ))}
                   </div>
-                ) : (
+                ) : current.id === "haas" ? (
                   <div className="relative bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 overflow-hidden aspect-[16/10] flex flex-col justify-between border-b border-slate-300/80 p-5 sm:p-6 text-slate-800">
                     <div className="flex items-center justify-between">
                       <span className="px-2.5 py-1 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 text-[10px] font-bold font-mono uppercase tracking-wider">
@@ -469,6 +479,20 @@ export default function SoftwareSection({ onOpenContact, onOpenFluxaxShowcase }:
                       <span className="text-emerald-700 text-[10px] font-semibold shrink-0">
                         ● {lang === "sr" ? "Aktivan" : "Active"}
                       </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative bg-gradient-to-br from-slate-100 via-white to-slate-100 overflow-hidden aspect-[16/10] flex flex-col items-center justify-center border-b border-slate-300/80 p-6 text-center">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center mb-3 shadow-xs">
+                      <ImageIcon className="w-6 h-6 text-indigo-600" />
+                    </div>
+                    <div className="text-xs font-bold text-slate-800 mb-1">
+                      {activeSlideData?.title}
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-500 px-3 py-1 rounded-full bg-slate-200/70 border border-slate-300/80">
+                      {lang === "sr"
+                        ? `Mjesto za sliku #${activeSlide + 1} (u pripremi)`
+                        : `Screenshot slot #${activeSlide + 1} (coming soon)`}
                     </div>
                   </div>
                 )}

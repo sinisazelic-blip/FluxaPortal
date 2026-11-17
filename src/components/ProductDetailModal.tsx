@@ -16,7 +16,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export type ProductType = "fluxapos" | "fluxax" | "dokumentart" | "entersys" | "swisstiming";
+export type ProductType = "fluxapos" | "fluxax" | "dokumentart" | "entersys" | "swisstiming" | "logistix";
 
 interface ProductDetailModalProps {
   product: ProductType | null;
@@ -73,9 +73,11 @@ const productsData: Record<ProductType, ProductInfo> = {
       },
     ],
     screenshots: [
-      { url: "/photo/FluxaPOS/FluxaPOS01.png", title: "Glavni prodajni interfejs kase" },
-      { url: "/photo/FluxaPOS/FluxaPOS02.png", title: "Katalog artikala i brzo pretraživanje" },
-      { url: "/photo/FluxaPOS/FluxaPOS04.png", title: "Izbor načina plaćanja i fiskalizacija" },
+      { url: "/photo/FluxaPOS/Caffe-restoran.png", title: "Caffe & Restoran režim rada" },
+      { url: "/photo/FluxaPOS/RetailShop.png", title: "Maloprodaja & Retail Shop terminal" },
+      { url: "/photo/FluxaPOS/biletarnica.png", title: "Biletarnica & prodaja ulaznica" },
+      { url: "/photo/FluxaPOS/FluxaPOS01.png", title: "Prijava operatera & PIN zaštita" },
+      { url: "/photo/FluxaPOS/FluxaPOS02.png", title: "2D grafička mapa stolova" },
       { url: "/photo/FluxaR/FluxaR01.png", title: "FluxaR knjigovodstveni most i KIF generator" },
     ],
     stats: [
@@ -253,6 +255,51 @@ const productsData: Record<ProductType, ProductInfo> = {
       { value: "100%", label: "Usklađenost sa FINA/WA pravilima" },
     ],
   },
+  logistix: {
+    id: "logistix",
+    badge: "Transport & Upravljanje Flotom",
+    title: "LogistiX Enterprise",
+    subtitle: "Dispečerski Kokpit, CMR, Fiskalizacija i Vozački QR Tunel",
+    themeColor: "text-indigo-700",
+    bgGradient: "from-indigo-50 via-sky-50/40 to-white",
+    badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
+    tagline: "Kompletan transportni ciklus od prijema narudžbe i GPS praćenja do ovjerenog CMR-a, PURS fakture i obračuna vozača.",
+    description: [
+      "LogistiX Enterprise objedinjuje dispečerski kokpit sa live GPS mapom, transportne naloge, automatsku provjeru kompatibilnosti tereta, štampu CMR tovarnih listova i putnih naloga, te 3-korak fakturisanje za domaće (17% PDV) i ino tržište (0% PDV) sa LPFR/PURS QR kodom i KIF izvozom.",
+      "Preko ugrađenog Vozačkog i Vlasničkog QR tunela, vozač sa terena šalje sliku ovjerenog CMR-a, ažurira saldo Euro-paleta i komunicira u realnom vremenu sa dispečerom, dok sistem automatski prati DKV/UTA gorivo, dangubu na rampama, obračun dnevnica i isteke dokumenata (registracija, tahograf, ADR, CEMT).",
+    ],
+    keyFeatures: [
+      {
+        title: "Flota & Live GPS Kokpit",
+        desc: "Praćenje vozila u realnom vremenu kroz sve faze ture (Slobodan → Utovar → Pod teretom → Granica → Rampa → Istovar → Ovjeren CMR).",
+      },
+      {
+        title: "Nalozi, CMR & Fiskalizacija",
+        desc: "Štampa CMR i putnih naloga, 3-step fakturisanje (BiH/INO) sa PURS QR kodom, arhiva dosijea i KIF izvoz.",
+      },
+      {
+        title: "Vozački & Vlasnički QR Tunel",
+        desc: "Bez instalacije na telefonu: QR povezivanje za slanje ovjerenog CMR-a sa rampe, evidenciju paleta i dvosmjerni chat.",
+      },
+      {
+        title: "Troškovnik, Gorivo & Alarmi",
+        desc: "Uvoz DKV/UTA CSV izvoda goriva, obračun dnevnica vozača, praćenje dangube i semafor isteka ADR/CEMT/tahografa.",
+      },
+    ],
+    screenshots: [
+      { url: "/photo/LogisticX/UI.png", title: "LogistiX Enterprise — glavni interfejs" },
+      { url: "/photo/LogisticX/centralni ekran.png", title: "Centralni dispečerski ekran" },
+      { url: "/photo/LogisticX/flota.png", title: "Flota & Live GPS praćenje" },
+      { url: "/photo/LogisticX/nalozi i CMR.png", title: "Transportni nalozi, CMR & PURS fakturisanje" },
+      { url: "/photo/LogisticX/sistem praćenja paleta.png", title: "Sistem praćenja Euro-paleta" },
+      { url: "/photo/LogisticX/tunel uprave za praćenje.png", title: "Vlasnički & vozački QR tunel" },
+    ],
+    stats: [
+      { value: "8 Modula", label: "Od narudžbe do KIF-a i plata" },
+      { value: "QR Tunel", label: "Direktna veza dispečer ↔ vozač" },
+      { value: "BiH / INO", label: "LPFR/PURS fiskalizacija & CMR" },
+    ],
+  },
 };
 
 export default function ProductDetailModal({
@@ -284,6 +331,8 @@ export default function ProductDetailModal({
               ? "bg-amber-500"
               : product === "entersys"
               ? "bg-blue-600"
+              : product === "logistix"
+              ? "bg-indigo-600"
               : "bg-red-600"
           }`}
         />
@@ -360,22 +409,34 @@ export default function ProductDetailModal({
               Prikaz Ekrana & Terenski Izgled Softvera
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {data.screenshots.map((s, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setSelectedImg(s.url)}
-                  className="group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-950/5 hover:shadow-lg transition-all cursor-pointer aspect-[16/10]"
-                >
-                  <img
-                    src={s.url}
-                    alt={s.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white text-[11px] font-medium">
-                    {s.title}
+              {data.screenshots.map((s, idx) =>
+                s.url ? (
+                  <div
+                    key={idx}
+                    onClick={() => setSelectedImg(s.url)}
+                    className="group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-950/5 hover:shadow-lg transition-all cursor-pointer aspect-[16/10]"
+                  >
+                    <img
+                      src={s.url}
+                      alt={s.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white text-[11px] font-medium">
+                      {s.title}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ) : (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-dashed border-slate-300 bg-slate-100/80 flex flex-col items-center justify-center p-4 text-center aspect-[16/10]"
+                  >
+                    <span className="text-[11px] font-semibold text-slate-700">{s.title}</span>
+                    <span className="text-[10px] font-mono text-slate-400 mt-1">
+                      Mjesto za sliku #{idx + 1}
+                    </span>
+                  </div>
+                )
+              )}
             </div>
           </div>
 

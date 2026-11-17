@@ -90,6 +90,7 @@ export interface Translations {
       entersys: string;
       fluxa: string;
       fluxax: string;
+      logistix: string;
     };
     modelTexts: {
       haas: string;
@@ -100,6 +101,7 @@ export interface Translations {
       entersys: string;
       fluxa: string;
       fluxax: string;
+      logistix: string;
     };
     moduleSlides: {
       pos: SlideItem[];
@@ -110,6 +112,7 @@ export interface Translations {
       soccs: SlideItem[];
       haas: SlideItem[];
       fluxax: SlideItem[];
+      logistix: SlideItem[];
     };
     modules: {
       haas: {
@@ -176,6 +179,15 @@ export interface Translations {
         features: string[];
       };
       fluxax: {
+        name: string;
+        tagline: string;
+        problem: string;
+        solution: string;
+        benefit: string;
+        description: string;
+        features: string[];
+      };
+      logistix: {
         name: string;
         tagline: string;
         problem: string;
@@ -431,6 +443,7 @@ export const translations: Record<Language, Translations> = {
         entersys: "Kontrola Objekata:",
         fluxa: "Pouzdanost Sistema:",
         fluxax: "Ultra-Low Latency Audio:",
+        logistix: "Kontrola Flote & Transporta:",
       },
       modelTexts: {
         haas: "Ne kupujete opremu niti brinete o kvarovima. Isporučujemo hardver, montiramo i održavamo uz mjesečni zakup.",
@@ -441,6 +454,7 @@ export const translations: Record<Language, Translations> = {
         dokumentart: "Objedinjeni dokument centar, sjednice NO/Skupštine, javne nabavke i dvofaktorski kripto potpis sa pravom opoziva.",
         fluxa: "Pregledno finansijsko upravljanje, cashflow likvidnost i automatsko rasknjižavanje.",
         fluxax: "Profesionalni broadcast audio sistem i P2P WebRTC pult za daljinsko vođenje i režiju spikera sa 18ms latencije.",
+        logistix: "Kompletan transportni ciklus na jednom mjestu: GPS kokpit, CMR, fiskalizacija, DKV/UTA gorivo, palete i obračun dnevnica.",
       },
       moduleSlides: {
         pos: [
@@ -455,9 +469,19 @@ export const translations: Record<Language, Translations> = {
             image: "/photo/FluxaPOS/FluxaPOS02.png",
           },
           {
-            title: "Glavni Touch Terminal & Brza Naplata",
-            note: "Touchscreen izbor artikala, brza pretraga, prenos na stolove i trenutna fiskalizacija.",
-            image: "/photo/FluxaPOS/FluxaPOS03.png",
+            title: "Caffe & Restoran Režim Rada",
+            note: "Brza narudžba po stolovima, kuhinjski/šank printeri, razdvajanje računa i pregled zauzetosti sale.",
+            image: "/photo/FluxaPOS/Caffe-restoran.png",
+          },
+          {
+            title: "Maloprodaja & Retail Shop Terminal",
+            note: "Bar-kod skeniranje, brza pretraga artikala, popusti, zalihe i trenutna fiskalizacija.",
+            image: "/photo/FluxaPOS/RetailShop.png",
+          },
+          {
+            title: "Biletarnica & Prodaja Ulaznica",
+            note: "Izdavanje dnevnih, sezonskih i numerisanih ulaznica sa integracijom na tripode i kontrolu pristupa.",
+            image: "/photo/FluxaPOS/biletarnica.png",
           },
           {
             title: "Operativne Funkcije, Polog & Dnevni Z-Izvještaj",
@@ -586,41 +610,6 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxax: [
           {
-            title: "FluxaX Magic Animation & Vizuelni Identitet",
-            note: "Dinamički prikaz novog FluxaX sistema, legendarnog audio pulta i sinhronizovanog video screening-a u realnom vremenu.",
-            video: "/branding/FluxaX animation red.mp4",
-          },
-          {
-            title: "Client HUB Dinamička Režijska Animacija",
-            note: "Interaktivni pult za klijente i naručioce sa analognim CLA mjeračima nivoa, zero-bleed komunikacijom i instant monitoringom.",
-            video: "/branding/ClientHUB animation.mp4",
-          },
-          {
-            title: "StudioBridge Hardverski Most & DSP Animacija",
-            note: "Prikaz rada režijskog procesora, automatskog ASIO skeniranja i RME TotalMix OSC integracije.",
-            video: "/branding/StudioBridge animation.mp4",
-          },
-          {
-            title: "FluxaX Cjelokupni Ekosistem u Pokretu",
-            note: "Potpuna sinhronizacija između studija, daljinskih klijenata, montaže (DaVinci/Premiere) i cloud arhitekture.",
-            video: "/branding/animation of all.mp4",
-          },
-          {
-            title: "FluxaX Magic Broadcast Session",
-            note: "Ultra-niska latencija od 18ms sa kristalno čistim 48kHz / 24-bit Opus audiom i video preview screening-om.",
-            video: "/branding/FluxaX magic.mp4",
-          },
-          {
-            title: "FluxaX Tehnološka Arhitektura & Shema",
-            note: "Vrhunski broadcast standard: hardverski rack procesor, klijentski pultovi, P2P WebRTC komunikacija i cloud serveri.",
-            image: "/branding/FluxaX new graphics.jpg",
-          },
-          {
-            title: "FluxaX Ekosistem (Kompletna Arhitektura)",
-            note: "Povezuje StudioBridge hardverski procesor, klijentske hubove i daljinske režije u jedinstven sistem.",
-            image: "/branding/graphics of all.jpg",
-          },
-          {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
             note: "Vintage analogni režijski procesor sa nativnom RME TotalMix OSC integracijom, Zero-Bleed DSP matricom i internim busom.",
             image: "/photo/StudioBridge/StudioBridge UI.png",
@@ -641,14 +630,56 @@ export const translations: Record<Language, Translations> = {
             image: "/photo/StudioBridge/StudioBridge HW scaner.png",
           },
           {
+            title: "StudioBridge Lokalni Audio Routing",
+            note: "Lokalna konfiguracija ulaza, izlaza i loopback kanala bez kašnjenja za studijsku režiju.",
+            image: "/photo/StudioBridge/StudioBridge local.png",
+          },
+          {
             title: "StudioBridge Podešavanja & Cloud Sinhronizacija",
             note: "Konfiguracija OSC UDP portova, IP adresa, auto-start servisa i automatska sinhronizacija sesija sa klijentima.",
             image: "/photo/StudioBridge/StudioBridge settings.png",
           },
+        ],
+        logistix: [
           {
-            title: "Zvanični Vizuelni Identitet & Logotipi",
-            note: "Prepoznatljivi logotipi i ikone FluxaX, StudioBridge i Client HUB sistema u visokoj rezoluciji.",
-            image: "/branding/FluxaX logo.png",
+            title: "LogistiX Enterprise — Glavni Korisnički Interfejs",
+            note: "Kompletan desktop radni prostor dispečera sa brzim pristupom floti, nalozima, paletama i tunelima.",
+            image: "/photo/LogisticX/UI.png",
+          },
+          {
+            title: "Centralni Dispečerski Ekran",
+            note: "Pregled aktivnih tura, statusa vozila i ključnih operativnih parametara na jednom ekranu.",
+            image: "/photo/LogisticX/centralni ekran.png",
+          },
+          {
+            title: "Flota & Live GPS Praćenje",
+            note: "Praćenje svih kamiona u realnom vremenu kroz faze ture (Slobodan → Utovar → Pod teretom → Granica → Rampa → Istovar).",
+            image: "/photo/LogisticX/flota.png",
+          },
+          {
+            title: "Transportni Nalozi, CMR & Fiskalizacija",
+            note: "Upravljanje transportnim nalozima, štampa CMR tovarnog lista i putnog naloga uz 3-step PURS fakturisanje.",
+            image: "/photo/LogisticX/nalozi i CMR.png",
+          },
+          {
+            title: "Praćenje Dangube na Rampama",
+            note: "Automatsko bilježenje čekanja na utovaru i istovaru preko dozvoljenog vremena i obračun naknade.",
+            image: "/photo/LogisticX/praćenje dangube.png",
+          },
+          {
+            title: "Sistem Praćenja Euro-Paleta",
+            note: "Precizan saldo zaduženih i vraćenih Euro-paleta po svakom klijentu, vozilu i skladištu.",
+            image: "/photo/LogisticX/sistem praćenja paleta.png",
+          },
+          {
+            title: "Vlasnički & Vozački Tunel za Praćenje",
+            note: "QR povezivanje telefona direktora i vozača sa terena: slikanje ovjerenog CMR-a i dvosmjerni chat.",
+            image: "/photo/LogisticX/tunel uprave za praćenje.png",
+          },
+          {
+            title: "Usklađenost & Alarmi Isteka Dokumenata",
+            note: "Semafor upozorenja za istek registracije, tahografa, ADR, CEMT dozvola i redovnih servisa vozila.",
+            image: "/photo/LogisticX/alarmi.png",
           },
         ],
       },
@@ -783,6 +814,23 @@ export const translations: Record<Language, Translations> = {
             "Nezavisni Talkback kanali za režiju i klijenta sa automatskim Auto-Duck stišavanjem matrice",
             "Interaktivni scenario: praćenje teksta i glasanje za najbolje tejkove (★) u realnom vremenu",
             "Direktna distribucija i arhiviranje master fajlova kroz licencirani Fluxa Cloud portal",
+          ],
+        },
+        logistix: {
+          name: "LogistiX Enterprise",
+          tagline: "Dispečerski Kokpit, CMR, Fiskalizacija i Upravljanje Flotom",
+          problem: "Rasuti Excel nalozi, gubljenje ovjerenih CMR papira, nejasna zarada po turi, zaboravljeni isteci tahografa/ADR-a i ručni obračun dnevnica i goriva.",
+          solution: "Jedinstveni desktop sistem koji povezuje dispečera, vozača (QR tunel) i direktora: od narudžbe i GPS mape do ovjerenog CMR-a, PURS fakture i KIF izvoza.",
+          benefit: "Tačan profit po svakoj turi u realnom vremenu, brže fakturisanje odmah po istovaru i potpuna kontrola vozila, paleta i troškova.",
+          description:
+            "Kompletna platforma za prevoznike i špedicije koja prati cijelu turu od prijema narudžbe do naplate, arhive dosijea i obračuna vozača.",
+          features: [
+            "Flota & Live GPS Mapa: praćenje svih faza ture od utovara i granice do ovjerenog CMR-a",
+            "Nalozi, CMR & Putni Nalozi: automatska provjera kompatibilnosti tereta i štampa dokumenata",
+            "Fakturisanje u 3 koraka (BiH 17% PDV / INO 0% PDV) sa LPFR/PURS QR kodom i KIF izvozom",
+            "Vozački & Vlasnički QR Tunel: slikanje ovjerenog CMR-a sa terena i dvosmjerni chat sa upravom",
+            "Troškovnik, DKV/UTA uvoz goriva (CSV), saldo Euro-paleta i praćenje dangube na rampama",
+            "Usklađenost & Alarmi: semafor isteka registracije, tahografa, ADR, CEMT i servisa",
           ],
         },
       },
@@ -1051,6 +1099,7 @@ export const translations: Record<Language, Translations> = {
         entersys: "Facility Control:",
         fluxa: "System Reliability:",
         fluxax: "Ultra-Low Latency Audio:",
+        logistix: "Fleet & Transport Control:",
       },
       modelTexts: {
         haas: "No upfront equipment purchases or repair worries. We supply hardware, install it, and provide ongoing maintenance on a monthly lease.",
@@ -1061,6 +1110,7 @@ export const translations: Record<Language, Translations> = {
         dokumentart: "Unified document registry, Board/Assembly governance, public tenders, and 2FA digital signing with revocation rights.",
         fluxa: "Clear financial management, predictive cashflow liquidity, and automated ledger matching.",
         fluxax: "Enterprise broadcast audio engine and P2P WebRTC portal for remote talent recording and voiceover direction with 18ms latency.",
+        logistix: "Complete transport lifecycle in one place: GPS cockpit, CMR, fiscal invoicing, DKV/UTA fuel import, pallet ledger, and driver payroll.",
       },
       moduleSlides: {
         pos: [
@@ -1075,9 +1125,19 @@ export const translations: Record<Language, Translations> = {
             image: "/photo/FluxaPOS/FluxaPOS02.png",
           },
           {
-            title: "Main Touchscreen Terminal & Fast Checkout",
-            note: "Visual menu categories, rapid item search, split checks, and instant fiscal receipt printing.",
-            image: "/photo/FluxaPOS/FluxaPOS03.png",
+            title: "Hospitality & Restaurant Mode",
+            note: "Table ordering, kitchen/bar printer routing, split checks, and live floor occupancy overview.",
+            image: "/photo/FluxaPOS/Caffe-restoran.png",
+          },
+          {
+            title: "Retail Shop & Barcode Checkout",
+            note: "Barcode scanning, rapid product search, discounts, stock sync, and instant fiscal receipt printing.",
+            image: "/photo/FluxaPOS/RetailShop.png",
+          },
+          {
+            title: "Ticketing & Box Office Counter",
+            note: "Day passes, season tickets, and numbered event ticketing integrated with turnstile access control.",
+            image: "/photo/FluxaPOS/biletarnica.png",
           },
           {
             title: "Operations Hub, Cash Float & Daily Z-Report",
@@ -1206,41 +1266,6 @@ export const translations: Record<Language, Translations> = {
         ],
         fluxax: [
           {
-            title: "FluxaX Magic Animation & Visual Identity",
-            note: "Dynamic motion preview of the new FluxaX platform, vintage audio desk, and real-time synchronized video screening.",
-            video: "/branding/FluxaX animation red.mp4",
-          },
-          {
-            title: "Client HUB Dynamic Director Animation",
-            note: "Interactive console for clients and producers with analog CLA level meters, zero-bleed communication, and instant monitoring.",
-            video: "/branding/ClientHUB animation.mp4",
-          },
-          {
-            title: "StudioBridge Hardware Bridge & DSP Motion",
-            note: "Live director processor overview, automatic ASIO channel scanning, and seamless RME TotalMix OSC integration.",
-            video: "/branding/StudioBridge animation.mp4",
-          },
-          {
-            title: "FluxaX Ecosystem in Full Motion",
-            note: "Complete synchronization across recording studios, remote clients, NLE suites (DaVinci/Premiere), and cloud backend.",
-            video: "/branding/animation of all.mp4",
-          },
-          {
-            title: "FluxaX Magic Broadcast Session",
-            note: "Ultra-low latency of 18ms with crystal-clear 48kHz / 24-bit Opus audio and live video preview screening.",
-            video: "/branding/FluxaX magic.mp4",
-          },
-          {
-            title: "FluxaX System Architecture & Topology",
-            note: "Enterprise broadcast standard: hardware rack processor, web client hubs, P2P WebRTC transport, and cloud coordination.",
-            image: "/branding/FluxaX new graphics.jpg",
-          },
-          {
-            title: "FluxaX Audio Suite (Full Architecture)",
-            note: "Interconnects StudioBridge hardware rack, client hubs, and remote directors into a unified zero-bleed ecosystem.",
-            image: "/branding/graphics of all.jpg",
-          },
-          {
             title: "FluxaX StudioBridge (TotalMix OSC Master Rack)",
             note: "Vintage analog director audio processor featuring native RME TotalMix OSC integration, Zero-Bleed DSP summing matrix, and lossless streaming.",
             image: "/photo/StudioBridge/StudioBridge UI.png",
@@ -1261,14 +1286,56 @@ export const translations: Record<Language, Translations> = {
             image: "/photo/StudioBridge/StudioBridge HW scaner.png",
           },
           {
+            title: "StudioBridge Local Audio Routing",
+            note: "Zero-latency local I/O and loopback channel configuration for the studio control room.",
+            image: "/photo/StudioBridge/StudioBridge local.png",
+          },
+          {
             title: "StudioBridge Advanced Settings & Cloud Sync",
             note: "OSC UDP ports, IP network configuration, auto-start services, and automated session synchronization with clients.",
             image: "/photo/StudioBridge/StudioBridge settings.png",
           },
+        ],
+        logistix: [
           {
-            title: "Official Visual Identity & Badges",
-            note: "Signature badges, high-resolution logos, and UI icons for FluxaX, StudioBridge, and Client HUB.",
-            image: "/branding/FluxaX logo.png",
+            title: "LogistiX Enterprise — Main Workspace",
+            note: "Complete dispatcher desktop workspace with instant access to fleet, transport orders, pallets, and mobile tunnels.",
+            image: "/photo/LogisticX/UI.png",
+          },
+          {
+            title: "Central Dispatch Command Screen",
+            note: "Unified overview of active tours, vehicle statuses, and key operational metrics on a single screen.",
+            image: "/photo/LogisticX/centralni ekran.png",
+          },
+          {
+            title: "Fleet & Live GPS Tracking",
+            note: "Real-time truck monitoring across every tour phase (Available → Loading → In Transit → Border → Dock → Unloading).",
+            image: "/photo/LogisticX/flota.png",
+          },
+          {
+            title: "Transport Orders, CMR & Fiscal Invoicing",
+            note: "Manage transport orders, print CMR waybills and travel orders, and run the 3-step PURS/LPFR invoicing wizard.",
+            image: "/photo/LogisticX/nalozi i CMR.png",
+          },
+          {
+            title: "Dock Detention Tracking",
+            note: "Automated tracking of loading/unloading waiting times beyond free allowances and detention fee billing.",
+            image: "/photo/LogisticX/praćenje dangube.png",
+          },
+          {
+            title: "Euro-Pallet Balance Ledger",
+            note: "Accurate ledger of issued and returned Euro-pallets per client, truck, and warehouse.",
+            image: "/photo/LogisticX/sistem praćenja paleta.png",
+          },
+          {
+            title: "Owner & Driver Monitoring Tunnel",
+            note: "QR pairing for executive and driver phones: snap & send signed CMRs from the dock and two-way live chat.",
+            image: "/photo/LogisticX/tunel uprave za praćenje.png",
+          },
+          {
+            title: "Compliance & Document Expiration Alerts",
+            note: "Traffic-light alert monitor for registration, tachograph, ADR, CEMT permits, and scheduled vehicle maintenance.",
+            image: "/photo/LogisticX/alarmi.png",
           },
         ],
       },
@@ -1403,6 +1470,23 @@ export const translations: Record<Language, Translations> = {
             "Independent Talkback channels for director, agency, and talent with intelligent Auto-Duck music attenuation",
             "Live scenario workspace: synchronized script view with real-time take rating (★)",
             "Seamless asset delivery and archival through the integrated Fluxa Cloud tenant portal",
+          ],
+        },
+        logistix: {
+          name: "LogistiX Enterprise",
+          tagline: "Dispatch Cockpit, CMR, Fiscal Invoicing & Fleet Management",
+          problem: "Scattered Excel spreadsheets, lost signed CMR papers, unclear per-tour profit, missed tachograph/ADR expirations, and manual driver allowance calculations.",
+          solution: "A unified desktop platform connecting dispatchers, drivers (via QR tunnel), and owners: from order intake and GPS map to signed CMR, fiscal QR invoice, and KIF export.",
+          benefit: "Real-time net profit per tour, instant invoicing right after unloading, and complete control over vehicles, pallets, and operating costs.",
+          description:
+            "A complete transport & freight forwarding platform that manages the entire tour lifecycle from order intake to settlement, dossier archival, and driver payroll.",
+          features: [
+            "Fleet & Live GPS Map: real-time tracking of every tour phase from loading and border to signed CMR",
+            "Orders, CMR & Travel Orders: automatic cargo-trailer compatibility checks and one-click document printing",
+            "3-Step Fiscal Invoicing (Domestic 17% VAT / Export 0% VAT) with LPFR/PURS QR code and KIF ledger export",
+            "Driver & Owner QR Tunnel: mobile photo upload of signed CMRs from the ramp and two-way dispatch chat",
+            "Expenses, DKV/UTA Fuel Import (CSV), Euro-pallet balance ledger, and dock detention tracking",
+            "Compliance & Alerts: traffic-light monitoring for registration, tachograph, ADR, CEMT, and maintenance",
           ],
         },
       },

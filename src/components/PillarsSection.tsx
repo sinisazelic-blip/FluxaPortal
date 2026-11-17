@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CreditCard, ShieldCheck, FileText, Radio, ArrowRight } from "lucide-react";
+import { CreditCard, ShieldCheck, FileText, Radio, Truck, ArrowRight } from "lucide-react";
 import { ProductType } from "./ProductDetailModal";
 
 interface PillarsSectionProps {
@@ -26,7 +26,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
         <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100/80 border border-sky-200 text-sky-800 text-xs font-semibold tracking-wide mb-4 shadow-xs">
             <span className="w-2 h-2 rounded-full bg-sky-600" />
-            <span>Pet stubova tehnološkog ekosistema</span>
+            <span>Šest stubova tehnološkog ekosistema</span>
           </div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-light text-slate-900 tracking-tight leading-[1.2]">
             Gradimo Vaš oslonac za{" "}
@@ -39,46 +39,41 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
           </p>
         </div>
 
-        {/* Bento Grid: 5 Pillars Layout (Left Vertical Tall + 2x2 Right Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+        {/* Bento Grid: 6 Equal-Sized Pillars Layout (3x2 Grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
 
           {/* ===================================================================
-              STUB 1: Krajnje lijevo - Vertikalni Hero Card (FluxaPOS & FluxaR)
-              Slika 2 tačka 1: Maloprodaja, ulaznice, butici, pekare, servisi.
+              STUB 1: FluxaPOS & FluxaR (veličina usklađena sa ostalim karticama)
           =================================================================== */}
           <div
             onClick={() => handleCardClick("fluxapos")}
-            className="md:col-span-4 rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[520px] sm:min-h-[620px] lg:min-h-[680px]"
+            className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px]"
           >
-            {/* Visokokvalitetna optimistična fotografija modernog cafe-a/restorana i checkout terminala */}
             <div
               className="absolute inset-0 bg-cover bg-[center_top] transition-transform duration-700 group-hover:scale-105 filter saturate-[1.05] contrast-[1.05]"
               style={{
                 backgroundImage: `url('/photo/girl-cafe-optimistic.jpg')`,
               }}
             />
-            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
 
             {/* Top Floating Badge */}
-            <div className="relative z-10 p-5 sm:p-7">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-sm">
-                <CreditCard className="w-4 h-4 text-emerald-600" />
-                <span>Autonomna maloprodaja robe, usluga i ulaznica</span>
+            <div className="relative z-10 p-3.5 sm:p-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
+                <CreditCard className="w-3.5 h-3.5 text-emerald-600" />
+                <span>01 • Maloprodaja, usluge & ulaznice</span>
               </div>
             </div>
 
             {/* Frosted Glass Card Body at Bottom */}
-            <div className="relative z-10 m-3 sm:m-4 p-5 sm:p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-white/80 shadow-lg">
-              <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-emerald-700 font-mono mb-1">
-                Univerzalni Retail & Ticketing Shell
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
+            <div className="relative z-10 m-3 p-3.5 sm:p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/80 shadow-lg">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-1">
                 FluxaPOS & FluxaR
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-4">
-                Univerzalna, autonomna kasa i sistem prodaje robe, usluga i ulaznica koji u istom shell-u pokriva sve djelatnosti — ugostiteljstvo, trgovinu, pozorišta, koncerte, radionice, sportske centre, butike, pekare i servise. 100% offline rad bez zastoja uz automatski most prema vašem računovodstvu.
+              <p className="text-xs text-slate-600 leading-relaxed font-normal mb-2.5">
+                Univerzalna, 100% offline kasa i ticketing sistem za ugostiteljstvo, trgovinu, pozorišta, sportske centre i servise uz automatski KIF most.
               </p>
-              <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 pt-3 border-t border-slate-200/60">
+              <div className="flex items-center justify-between text-xs font-bold text-emerald-700 pt-2 border-t border-slate-200/60">
                 <span>Istražite mogućnosti kase</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -86,11 +81,46 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
           </div>
 
           {/* ===================================================================
-              DESNA STRANA: 4 Boxa u 2x2 Mreži
+              STUB 2: LogistiX Enterprise (tekst boks uspravno uz desnu marginu, maska kamiona vidljiva lijevo)
           =================================================================== */}
-          <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          <div
+            onClick={() => handleCardClick("logistix")}
+            className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px]"
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center scale-[1.28] -translate-x-[14%] transition-transform duration-700 group-hover:scale-[1.33] filter saturate-[1.08] contrast-[1.05]"
+              style={{
+                backgroundImage: `url('/photo/logistix-truck.jpg')`,
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/45 pointer-events-none" />
 
-            {/* STUB 2 (GORE LIJEVO): FluxaX Net - Slika 2 tačka 2 (AV Session, mikrofon, vertikalni tekst desno) */}
+            {/* Badge na vrhu (GORNJI DESNI UGAO) */}
+            <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
+                <Truck className="w-3.5 h-3.5 text-indigo-600" />
+                <span>02 • Transport & Flota</span>
+              </div>
+            </div>
+
+            {/* Uspravni tekst boks uz DESNU marginu */}
+            <div className="absolute bottom-3.5 right-3.5 sm:bottom-4 sm:right-4 z-10 w-[200px] sm:w-[220px] p-3.5 sm:p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/80 shadow-lg">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-indigo-700 transition-colors mb-1">
+                LogistiX Enterprise
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal mb-2.5">
+                Dispečerski kokpit, live GPS mapa, CMR, PURS fiskalizacija, DKV/UTA gorivo, palete i QR tunel za vozače.
+              </p>
+              <div className="flex items-center justify-between text-xs font-bold text-indigo-700 pt-2 border-t border-slate-200/60">
+                <span>Logistika & Flota</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </div>
+
+          {/* ===================================================================
+              STUB 3: FluxaX Net
+          =================================================================== */}
             <div
               onClick={() => handleCardClick("fluxax")}
               className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px]"
@@ -107,7 +137,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
                   <Radio className="w-3.5 h-3.5 text-purple-600" />
-                  <span>02 • Live AV Session</span>
+                  <span>03 • Live AV Session</span>
                 </div>
               </div>
 
@@ -126,7 +156,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               </div>
             </div>
 
-            {/* STUB 3 (GORE DESNO): DokumentArt DMS */}
+            {/* STUB 4: DokumentArt DMS */}
             <div
               onClick={() => handleCardClick("dokumentart")}
               className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px]"
@@ -142,7 +172,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               <div className="relative z-10 p-3.5 sm:p-4">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
                   <FileText className="w-3.5 h-3.5 text-amber-600" />
-                  <span>03 • Poslovni Protokoli & Digitalni Arhiv</span>
+                  <span>04 • Poslovni Protokoli & Digitalni Arhiv</span>
                 </div>
               </div>
 
@@ -160,7 +190,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               </div>
             </div>
 
-            {/* STUB 4 (DOLE LIJEVO): EnterSYS & Argus - Tekst boks GORE LIJEVO, a Pill naslov DOLE LIJEVO */}
+            {/* STUB 5: EnterSYS & Argus - Tekst boks GORE LIJEVO, a Pill naslov DOLE LIJEVO */}
             <div
               onClick={() => handleCardClick("entersys")}
               className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px] flex flex-col justify-between"
@@ -192,12 +222,12 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               <div className="relative z-10 p-3.5 sm:p-4 mr-auto">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
                   <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-                  <span>04 • Elektronska kontrola</span>
+                  <span>05 • Elektronska kontrola</span>
                 </div>
               </div>
             </div>
 
-            {/* STUB 5 (DOLE DESNO): Swiss Timing - Slika 2 tačka 4 (Tekst boks na vrhu/manji, plivač u bazenu potpuno vidljiv) */}
+            {/* STUB 6: Swiss Timing SOCCS & SwimVoice */}
             <div
               onClick={() => handleCardClick("swisstiming")}
               className="rounded-3xl bg-slate-100 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden min-h-[310px] sm:min-h-[330px]"
@@ -227,7 +257,7 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               {/* Pill na dnu (vertikalno zamijenjena mjesta) */}
               <div className="relative z-10 p-3.5 flex items-center justify-between">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-xs font-bold shadow-xs">
-                  <span>05 • Švicarska Preciznost • 15+ Godina</span>
+                  <span>06 • Švicarska Preciznost • 15+ Godina</span>
                 </div>
 
                 <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-red-700 shadow-sm group-hover:scale-110 transition-transform">
@@ -236,7 +266,6 @@ export default function PillarsSection({ onSelectProduct }: PillarsSectionProps)
               </div>
             </div>
 
-          </div>
         </div>
       </div>
     </section>
