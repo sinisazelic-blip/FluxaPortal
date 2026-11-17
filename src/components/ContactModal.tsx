@@ -124,6 +124,7 @@ export default function ContactModal({ isOpen, onClose, initialService = "fluxa"
                   >
                     <option value="fluxa">Fluxa Cloud & ERP</option>
                     <option value="pos">FluxaPOS</option>
+                    <option value="logistix">LogistiX Enterprise</option>
                     <option value="entersys">EnterSYS & ARGUS</option>
                     <option value="dokumentart">DokumentArt DMS</option>
                     <option value="soccs">SOCCS & SwimVoice</option>

@@ -53,6 +53,21 @@ export async function GET(req: NextRequest) {
           "Prilagođavanje zakonskim izmjenama o javnim nabavkama",
         ],
       },
+      {
+        id: "logistix",
+        name: "LogistiX Enterprise (Transport & Flota)",
+        version: "v1.1.25",
+        releaseDate: "2026-11-17",
+        size: "36.4 MB",
+        description: "Dispečerski kokpit, live GPS mapa, nalozi i CMR, 3-step PURS fiskalizacija, DKV/UTA gorivo, Euro-palete i QR tunel za vozače.",
+        downloadUrl: "/downloads/logistix-latest.zip",
+        profileRequired: "LOGISTIX",
+        changelog: [
+          "Live GPS mapa i praćenje svih faza ture do ovjerenog CMR-a",
+          "3-step BiH/INO fakturisanje sa LPFR/PURS QR kodom i KIF izvozom",
+          "Vozački i vlasnički QR tunel sa slanjem CMR-a i dvosmjernim chatom",
+        ],
+      },
     ];
 
     let filtered = packages;

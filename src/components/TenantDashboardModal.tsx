@@ -375,12 +375,14 @@ export default function TenantDashboardModal({
                     { id: "rentals", name: "Rentals", desc: "Iznajmljivanje opreme" },
                     { id: "locker", name: "Locker", desc: "Elektronski ormarići" },
                     { id: "dokumentArt", name: "DokumentArt", desc: "Javne nabavke i ugovori" },
+                    { id: "logistix", name: "LogistiX", desc: "Transport, GPS, CMR i flota" },
                   ].map((m) => {
                     const isIncluded =
                       tenant.modules.includes(m.id) ||
                       tenant.profile === "ENTERSYS" ||
                       (tenant.profile === "FLUXAPOS" && m.id === "fluxaPos") ||
-                      (tenant.profile === "JAVNENABAVKE" && m.id === "dokumentArt");
+                      (tenant.profile === "JAVNENABAVKE" && m.id === "dokumentArt") ||
+                      (tenant.profile === "LOGISTIX" && m.id === "logistix");
 
                     return (
                       <div
